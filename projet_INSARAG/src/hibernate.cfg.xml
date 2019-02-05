@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <mapping resource="Profil.hbm.xml"/>
+        <mapping resource="Membres.hbm.xml"/>
+        <mapping resource="Carte.hbm.xml"/>
+        <mapping resource="Connection.hbm.xml"/>
+        <mapping resource="Equipe.hbm.xml"/>
+        <mapping resource="Medical.hbm.xml"/>
+        <mapping resource="Management.hbm.xml"/>
+        <mapping resource="Mission.hbm.xml"/>
+        <mapping resource="Logistic.hbm.xml"/>
+        <mapping resource="Parametre.hbm.xml"/>
+        <mapping resource="RescueSearch.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

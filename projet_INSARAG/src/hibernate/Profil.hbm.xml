@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 11-Dec-2018 14:37:58 by Hibernate Tools 5.2.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.Profil" optimistic-lock="version" polymorphism="implicit" schema="PROJETPOMPIER" select-before-update="false" table="PROFIL">
+        <id name="id" type="big_decimal">
+            <column name="ID_" scale="0"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="hibernate.Management" embed-xml="true" fetch="select" insert="true" name="management" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="MANAGEMENT_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <many-to-one class="hibernate.RescueSearch" embed-xml="true" fetch="select" insert="true" name="rescueSearch" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="RESCUE_SEARCH_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <many-to-one class="hibernate.Medical" embed-xml="true" fetch="select" insert="true" name="medical" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="MEDICAL_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <many-to-one class="hibernate.Logistic" embed-xml="true" fetch="select" insert="true" name="logistic" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="LOGISTIC_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="nom" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="NOM" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="prenom" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="PRENOM" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="numeroDeTelephone" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="NUMERO_DE_TELEPHONE" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="role" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="ROLE_" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="dateDeNaissance" optimistic-lock="true" type="date" unique="false">
+            <column length="7" name="DATE_DE_NAISSANCE"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="connections" optimistic-lock="true" sort="unsorted" table="CONNECTION">
+            <key on-delete="noaction">
+                <column name="PROFIL_ID" not-null="true" scale="0"/>
+            </key>
+            <one-to-many class="hibernate.Connection" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

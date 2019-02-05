@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 11-Dec-2018 14:37:58 by Hibernate Tools 5.2.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.Parametre" optimistic-lock="version" polymorphism="implicit" schema="PROJETPOMPIER" select-before-update="false" table="PARAMETRE">
+        <id name="id" type="big_decimal">
+            <column name="ID_" scale="0"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="modeNuit" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="MODE_NUIT" precision="1" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="notificationMail" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="NOTIFICATION_MAIL" precision="1" scale="0"/>
+        </property>
+    </class>
+</hibernate-mapping>

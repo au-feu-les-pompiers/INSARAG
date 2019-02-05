@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 11-Dec-2018 14:37:58 by Hibernate Tools 5.2.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.Connection" optimistic-lock="version" polymorphism="implicit" schema="PROJETPOMPIER" select-before-update="false" table="CONNECTION">
+        <id name="id" type="big_decimal">
+            <column name="ID_" scale="0"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="hibernate.Management" embed-xml="true" fetch="select" insert="true" name="management" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="PROFIL_MANAGEMENT_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <many-to-one class="hibernate.RescueSearch" embed-xml="true" fetch="select" insert="true" name="rescueSearch" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="PROFIL_RESCUE_SEARCH_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <many-to-one class="hibernate.Medical" embed-xml="true" fetch="select" insert="true" name="medical" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="PROFIL_MEDICAL_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <many-to-one class="hibernate.Logistic" embed-xml="true" fetch="select" insert="true" name="logistic" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="PROFIL_LOGISTIC_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <many-to-one class="hibernate.Profil" embed-xml="true" fetch="select" insert="true" name="profil" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="PROFIL_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <many-to-one class="hibernate.Carte" embed-xml="true" fetch="select" insert="true" name="carte" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="MISSION_CARTE_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <many-to-one class="hibernate.Mission" embed-xml="true" fetch="select" insert="true" name="mission" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="MISSION_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="cleHash" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="CLE_HASH" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="autorisation" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="AUTORISATION" precision="1" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="EMAIL" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

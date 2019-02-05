@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 11-Dec-2018 14:37:58 by Hibernate Tools 5.2.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.Mission" optimistic-lock="version" polymorphism="implicit" schema="PROJETPOMPIER" select-before-update="false" table="MISSION">
+        <id name="id" type="big_decimal">
+            <column name="ID_" scale="0"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="hibernate.Carte" embed-xml="true" fetch="select" insert="true" name="carte" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="CARTE_ID" not-null="true" scale="0"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="lieu" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="LIEU" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="debut" optimistic-lock="true" type="date" unique="false">
+            <column length="7" name="DEBUT" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="fin" optimistic-lock="true" type="date" unique="false">
+            <column length="7" name="FIN" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="nbDePlaces" optimistic-lock="true" type="short" unique="false">
+            <column name="NB_DE_PLACES" not-null="true" precision="3" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="flagFin" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="FLAG_FIN" precision="1" scale="0"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="membresesForEquipeMissionId" optimistic-lock="true" sort="unsorted" table="MEMBRES">
+            <key on-delete="noaction">
+                <column name="EQUIPE_MISSION_ID" not-null="true" scale="0"/>
+            </key>
+            <one-to-many class="hibernate.Membres" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="equipes" optimistic-lock="true" sort="unsorted" table="EQUIPE">
+            <key on-delete="noaction">
+                <column name="MISSION_ID" not-null="true" scale="0"/>
+            </key>
+            <one-to-many class="hibernate.Equipe" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="membresesForEquipeMissionCarteId" optimistic-lock="true" sort="unsorted" table="MEMBRES">
+            <key on-delete="noaction">
+                <column name="EQUIPE_MISSION_CARTE_ID" not-null="true" scale="0"/>
+            </key>
+            <one-to-many class="hibernate.Membres" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="connections" optimistic-lock="true" sort="unsorted" table="CONNECTION">
+            <key on-delete="noaction">
+                <column name="MISSION_ID" not-null="true" scale="0"/>
+            </key>
+            <one-to-many class="hibernate.Connection" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
