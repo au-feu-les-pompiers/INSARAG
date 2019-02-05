@@ -60,7 +60,7 @@
 		 
 		<div class="row">
 			<label class="col-sm-2">ID</label>
-			<div class="col-sm-10">${missionToShow.id_}</div>
+			<div class="col-sm-10">${missionToShow.idMission}</div>
 		</div>
 		
 		<div class="row">
