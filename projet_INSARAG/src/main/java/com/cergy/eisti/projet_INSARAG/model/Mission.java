@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "MISSION")
 public class Mission implements java.io.Serializable {
-
+	//test
 	private Long idMission;
 	private String lieu;
 	private String debut;
