@@ -129,15 +129,15 @@
          	   </tr>
        		 </tfoot>
        	   <tbody>
-			<c:forEach var="miss" items="${missions}">
+			<c:forEach var="miss" items="${mission}">
 			
-				<spring:url value="/mission/get/${miss.id_}"	var="missUrl" />
-				<spring:url value="/mission/delete/${miss.id_}" var="deleteUrl" />
-				<spring:url value="/mission/update/${miss.id_}" var="updateUrl" />
+				<spring:url value="/mission/get/${miss.idMission}"	var="missUrl" />
+				<spring:url value="/mission/delete/${miss.idMission}" var="deleteUrl" />
+				<spring:url value="/mission/update/${miss.idMission}" var="updateUrl" />
 				<spring:url value="/mission/clear" var="clearUrl" />
 				
 				<tr>
-					<td width="5%">${miss.id_}</td>
+					<td width="5%">${miss.idMission}</td>
 					<td width="20%">${miss.lieu}</td>
 					<td width="20%">${miss.debut}</td>
 					<td width="20%">${miss.fin}</td>
