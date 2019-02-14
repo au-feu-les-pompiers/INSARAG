@@ -91,6 +91,9 @@
 			<button class="btn btn-warning pull-right"	data-toggle="modal" data-target="#clearModal" data-dismiss="modal">
 			 clear
 			</button>
+			<button type="button" class="btn btn-warning" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
+			 Nouvelle Mission
+			</button>
 		</div>
 		</div>
 
