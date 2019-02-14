@@ -7,15 +7,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>:::Tutoriel Spring MVC Boot Data -  JPA Hibernate Bootstrap Jquery- 2017-2018:::</title>
+<title>INSARAG</title>
 
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
 <meta name="Content-Language" content="fr" />
-<meta name="Description" content="" />
-<meta name="Keywords" content=" Tutoriel Spring MVC DAO JPA Hibernate Bootstrap - 2016-2017" />
 <meta name="Subject" content="" />
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,29 +24,21 @@
 
 
 <spring:url value="/css/bootstrap-theme.min.css" var="bootstrapThemeCss" />
-<spring:url value="/css/bootstrap.min.css" var="bootstrapCss" />
 <spring:url value="/css/dataTables.bootstrap.min.css" var="bootstrapdataTablesCss" />
 
 
-<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
 <spring:url value="/js/jquery.dataTables.min.js" var="jquerydataTablesJs" />
-<spring:url value="/js/bootstrap.min.js" var="bootstrapJs" />
+
 <spring:url value="/js/dataTables.bootstrap.min.js" var="bootstrapdataTablesJs" />
 
-<spring:url value="/css/style.css" var="styleCss" />
-<spring:url value="/css/footer.css" var="footerCss" />
-
-<link href="${bootstrapCss}" rel="stylesheet" />
 <link href="${bootstrapThemeCss}" rel="stylesheet" />
 <link href="${bootstrapdataTablesCss}" rel="stylesheet" />
 
-<script src="${jqueryJs}"></script>
+
 <script src="${jquerydataTablesJs}"></script>
-<script src="${bootstrapJs}"></script>
+
 <script src="${bootstrapdataTablesJs}"></script>
 
-<link href="${styleCss}" rel="stylesheet" />
-<link href="${footerCss}" rel="stylesheet" />
 
 <style>
   .modal-header, h4, .close {

@@ -18,8 +18,136 @@
   </nav>
  </header>
   --%>
- 
- 
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<style>
+
+body {
+  margin: 0;
+  font-family: Raleway, sans-serif;
+  background-color: #f4f4f4;
+}
+
+a {
+  color: #000;
+}
+
+
+/* header */
+
+.dropdown-menu li a{
+    padding: 10px 12px !important; 
+    
+}
+
+.dropdown-menu li {
+    width: 100%;
+    
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: #f2f2f2;
+}
+
+.header li {
+    float: left;
+}
+.header li a {
+  display: block;
+  padding: 25px 25px;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 1.6em;
+  padding: 20px 25px;
+  text-decoration: none;
+}
+
+
+.navbar-toggle{
+    border: none;
+}
+
+.navbar-toggle .fa{
+  position: relative;
+  width: 32px;
+  font-size: 20px;
+  margin:0px;
+  padding: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 1520px) {
+.header li a {
+  padding: 25px 20px !important;
+  font-size: 1.1em;
+}
+
+}
+    
+    
+@media (max-width: 1280px) { 
+    
+            .navbar-header {
+            float: none;
+            }
+            .navbar-toggle {
+            display: block;
+            }
+            .navbar-collapse {
+            border-top: 1px solid transparent;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+            }
+            .navbar-collapse.collapse {
+            display: none!important;
+            }
+            .navbar-nav {
+            float: none!important;
+            margin: 7.5px -15px;
+            }
+            .navbar-nav>li {
+            float: none;
+            }
+            .navbar-nav>li>a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            }
+            .navbar-text {
+            float: none;
+            margin: 15px 0;
+            }
+            /* cette classe est à ajouter lorsque que vous utilisez une version de Bootstap supérieure ou égale à la 3.1.0 */
+            .navbar-collapse.collapse.in {
+            display: block!important;
+            }
+            .collapsing {
+            overflow: hidden!important;
+            }
+    
+            .header li a {
+              padding: 18px 15px !important;
+
+             }
+    
+            .dropdown-menu li a{
+            padding: 12px 15px !important; 
+
+            }
+    
+             #doc{
+                padding-bottom:30px !important; 
+             }
+    
+    
+}    
+
+</style>
+
+
  <header class="header">
     <nav id="myNavbar" class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->

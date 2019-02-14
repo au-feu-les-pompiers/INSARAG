@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>:::Tutoriel Spring MVC Boot Data -  JPA Hibernate Bootstrap Jquery- 2017-2018:::</title>
+<title>INSARAG</title>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <meta name="Content-Language" content="fr" />
 <meta name="Description" content="" />
