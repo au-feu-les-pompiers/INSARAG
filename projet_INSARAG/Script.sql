@@ -1,19 +1,19 @@
 DROP TABLE mission;
 DROP TABLE rolesPompier;
-DROP TABLE profil;
+DROP TABLE utilisateur;
 
 
 DROP SEQUENCE mission_seq;
 DROP SEQUENCE role_seq;
-DROP SEQUENCE profil_seq;
+DROP SEQUENCE utilisateur_seq;
 
 
 
 -- ----------------------------
--- Table structure for "profil"
+-- Table structure for "utilisateur"
 -- ---------------------------- 
-CREATE TABLE profil(
-idPompier NUMBER(19,0) NOT NULL ENABLE PRIMARY KEY,
+CREATE TABLE utilisateur(
+idUtilisateur NUMBER(19,0) NOT NULL ENABLE PRIMARY KEY,
 email VARCHAR(50),
 mdp VARCHAR(30),
 nom VARCHAR(30),
@@ -46,7 +46,7 @@ nom VARCHAR (30) NOT NULL
 );
 
 
-CREATE SEQUENCE profil_seq
+CREATE SEQUENCE utilisateur_seq
 minvalue 1
 maxvalue 9999999999999999999999999999
 start with 1 -- Dernier ID des insertions 

@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cergy.eisti.projet_INSARAG.model.Mission;
 import com.cergy.eisti.projet_INSARAG.service.MissionService;
+import com.cergy.eisti.projet_INSARAG.model.Utilisateur;
+import com.cergy.eisti.projet_INSARAG.service.UtilisateurService;
  
  
 @Controller 
@@ -24,7 +26,10 @@ public class IndexController {
 	private final Logger logger = LoggerFactory.getLogger(IndexController.class);
 	
 	@Autowired
-	MissionService missionService;	
+	MissionService missionService;
+	
+	@Autowired
+	UtilisateurService utilisateurService;
 	
 	@RequestMapping(value="/", method= RequestMethod.GET)
 	public String index(Map<String, Object> model) throws Exception {
@@ -50,6 +55,21 @@ public class IndexController {
 
 	 
 			 return "/mission/addUpdateMission";
+
+		}
+		
+		// show new Mission form
+		@RequestMapping(value = "/utilisateur/new", method = RequestMethod.GET)
+		public String showNewUtilisateur(Model model) {
+
+			logger.debug(":::showNewUtilisateur:::");
+
+			Utilisateur utilisateur = new Utilisateur();
+			
+			model.addAttribute("utilisateurForm", utilisateur);
+
+	 
+			 return "/utilisateur/inscriptionUtilisateur";
 
 		}
 		
