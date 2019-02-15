@@ -9,31 +9,29 @@
 <title>INSARAG</title>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <meta name="Content-Language" content="fr" />
-<meta name="Description" content="" />
-<meta name="Keywords" content=" Tutoriel Spring MVC DAO JPA Hibernate Bootstrap - 2016-2017" />
 <meta name="Subject" content="" />
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
   	
 
+<spring:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" var="bootstrapCss" />
+<link href="${bootstrapCss}" rel="stylesheet" />
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" type="text/css" href="header.css"> -->
-<link rel="stylesheet" type="text/css" href="normalize.css">
-
-    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<spring:url value="/css/bootstrap-theme.min.css" var="bootstrapThemeCss" />
-<spring:url value="/js/jquery.form-validator.min.js" var="controlformJs" />
-
-
-<link href="${bootstrapThemeCss}" rel="stylesheet" />
+<spring:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" var="bootstrapJs" />
 <script src="${bootstrapJs}"></script>
+
+<spring:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" var="jqueryJs" />
 <script src="${jqueryJs}"></script>
+
+<spring:url value="/js/jquery.form-validator.min.js" var="controlformJs" />
 <script src="${controlformJs}"></script>
+
+<spring:url value="/css/header.css" var="headerCss" />
+<link href="${headerCss}" rel="stylesheet" /> 
+
+<spring:url value="/css/normalize.css" var="normalize" />
+<link href="${normalize}" rel="stylesheet" /> 
 
 
 </head>
