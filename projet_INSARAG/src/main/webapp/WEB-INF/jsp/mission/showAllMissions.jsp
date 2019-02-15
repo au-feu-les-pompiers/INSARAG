@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>:::Tutoriel Spring MVC Boot Data -  JPA Hibernate Bootstrap Jquery- 2017-2018:::</title>
+<title>INSARAG</title>
 
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
 <meta name="Content-Language" content="fr" />
@@ -98,8 +98,13 @@
 		</div>
 		<div class="col-md-5">
 			<button class="btn btn-warning pull-right"	data-toggle="modal" data-target="#clearModal" data-dismiss="modal">
-			 clear
+				Clear
 			</button>
+			<button type="button" class="btn btn-warning" onclick="location.href='${pageContext.request.contextPath}/mission/new'" >
+				Nouvelle mission
+			</button>
+		<!-- <spring:url value="/mission/new" var ="missNew" /> -->
+				
 		</div>
 		</div>
 
@@ -135,6 +140,7 @@
 				<spring:url value="/mission/delete/${miss.idMission}" var="deleteUrl" />
 				<spring:url value="/mission/update/${miss.idMission}" var="updateUrl" />
 				<spring:url value="/mission/clear" var="clearUrl" />
+				
 				
 				<tr>
 					<td width="5%">${miss.idMission}</td>
