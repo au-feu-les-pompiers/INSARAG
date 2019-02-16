@@ -84,13 +84,17 @@
  <c:otherwise>  <%-- Debut c:otherwise  --%>
 		
 		<div class="row">
-		<div class="col-md-7">
-			<h1> Liste des missions </h1>
-		</div>
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/heads/inscription
+			<div class="d-flex justify-content-between">
+				<div class="col-md-10 col-sm-10">
+					<h1> Liste des missions </h1>
+				
+				</div>
+				<div class="col-md-2 col-sm-2 float-sm-right">
+						<button type="button" style="margin-top:20px;" class="btn btn-warning" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
+						 Nouvelle mission
+						</button>
+				</div>
+			</div>
 		</div>
 
 
@@ -129,7 +133,7 @@
 	
 					<td>
 					
-											<button class="btn btn-success"	onclick="location.href='${missUrl}'">
+						<button class="btn btn-success"	onclick="location.href='${missUrl}'">
 						show
 						</button>
 						<button class="btn btn-primary" onclick="location.href='${updateUrl}'">
