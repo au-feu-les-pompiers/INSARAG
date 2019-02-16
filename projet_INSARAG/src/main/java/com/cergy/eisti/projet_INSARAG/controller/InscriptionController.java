@@ -85,7 +85,21 @@ public class InscriptionController {
 	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	        Utilisateur utilisateur = utilisateurService.getByIdUtilisateur(id);
 	        model.addAttribute("utilisateurForm", utilisateur);
-	        return "/utilisateur/InscriptionUtilisateur";
+	        return "/utilisateur/modificationUtilisateur";
+	    }
+	    
+	    @RequestMapping("/utilisateur/upauto/{id}")
+	    public String upauto(@PathVariable Long id, Model model,final RedirectAttributes redirectAttributes) throws Exception {
+	    	int auto = utilisateurService.getAutoByIdUtilisateur(id);
+	    	if((auto == 0) || (auto == -1)) {
+	    		auto = 1;
+	    	}
+	    	else if(auto == 1) {
+	    		auto = 2;
+	    	}
+	        utilisateurService.updateAuto(auto,id);
+	    	model.addAttribute("utilisateurs", utilisateurService.getAll());
+	        return "/utilisateur/showAllUtilisateurs";
 	    }
  
 }

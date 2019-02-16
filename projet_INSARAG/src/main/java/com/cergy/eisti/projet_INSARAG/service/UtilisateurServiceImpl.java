@@ -24,6 +24,11 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 
 	}
 
+	@Override
+	public  int getAutoByIdUtilisateur(Long id) throws Exception {
+        return  (int) utilisateurRepository.findAutoByIdUtilisateur(id);
+
+	}
  
 	@Override
 	public Long save(Utilisateur utilisateur) throws Exception {
@@ -44,11 +49,11 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	}
 
 
-//	@Override
-//	public int updateLieu(String lieuUtilisateur, Long idUtilisateur) {
-//		return missionRepository.updateLieuUtilisateur(lieuUtilisateur, idUtilisateur) ;
-//
-//	}
+	@Override
+	public int updateAuto(int autoUtilisateur, Long idUtilisateur) {
+		return utilisateurRepository.updateAutoUtilisateur(autoUtilisateur, idUtilisateur) ;
+
+	}
 
 
 

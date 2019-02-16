@@ -12,9 +12,11 @@ public interface UtilisateurService {
  
 	Utilisateur getByIdUtilisateur(Long id) throws Exception;
 	
+	int getAutoByIdUtilisateur(Long id) throws Exception;
+	
 	int updateId (Long id);
 	
-  	//int updateLieu (String lieuUtilisateur, Long idUtilisateur); 
+  	int updateAuto (int autoUtilisateur, Long idUtilisateur); 
 
    
 }

@@ -89,5 +89,20 @@ public class IndexController {
 				 */
 				return new ModelAndView("/mission/showAllMissions", "missions", listeMissions);
 			} 
+			
+			 // show list of All Mission
+				@RequestMapping({"/utilisateur/listAll","utilisateurList"})
+				protected ModelAndView lisAllUtilisateurs(HttpServletRequest request,
+						HttpServletResponse response) throws Exception {
+					/*
+					 * Lancement du Service et récupération données en base
+					 */
+					List<Utilisateur> listeUtilisateurs = utilisateurService.getAll();
+
+					/*
+					 * Envoi Vue + Modèle MVC pour Affichage données vue
+					 */
+					return new ModelAndView("/utilisateur/showAllUtilisateurs", "utilisateurs", listeUtilisateurs);
+				} 
 	
 }

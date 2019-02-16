@@ -18,13 +18,16 @@ public interface UtilisateurRepository extends Repository <Utilisateur, Long>{
 	List<Utilisateur> findAll();
 	
 	Utilisateur save (Utilisateur utilisateur);
+	
+	@Query("select u.autorisation from Utilisateur u where u.id = ?1")
+	int findAutoByIdUtilisateur(Long id);
 	 
 	@Modifying
 	@Query("update Utilisateur u set u.id = ?1")
 	int updateIdUtilisateur(Long id);
 	
-//	@Modifying
-//	@Query("update Mission u set u.lieu = ?1  where u.id_ = ?2")
-//	int updateLieuMission(String lieuMission, Long idMission);
+	@Modifying
+	@Query("update Utilisateur u set u.autorisation = ?1  where u.id = ?2")
+	int updateAutoUtilisateur(int autoUtilisateur, Long idUtilisateur);
 
 }
