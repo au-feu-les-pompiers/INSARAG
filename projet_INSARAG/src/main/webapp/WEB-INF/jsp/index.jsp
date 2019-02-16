@@ -34,37 +34,32 @@
 <spring:url value="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" var="BootstrapJS4_1" />
 <script src="${BootstrapJS4_1}"></script>
 
-<spring:url value="/css/header.css" var="header" />
-<link href="${header}" rel="stylesheet" />
 
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" />
 
 <spring:url value="/css/index.css" var="indexCss" />
-<link href="${indexCss}" rel="stylesheet" />
+<link href="${indexCss}" rel="stylesheet" /> 
 
 </head>
 
 
-<body>
-
-<jsp:include page="/WEB-INF/jsp/common/header.jsp"/>
-
+<body class="bg">
 
 		<section class="login-block">
 	    <div class="container">
 		<div class="row">
 			<div class="col-md-4 login-sec">
-			    <h2 class="text-center">INSARAG</h2>
+			    <h2 class="text-center"><img src="http://www.entente-valabre.com/img/blog/cover/insarag-logo.png" style="height:105px; width:155px;"></img></h2>
 			    <form class="login-form">
 	              <div class="form-group">
 	                <label for="exampleInputEmail1">Email</label>
-	                <input type="text" class="form-control" placeholder="">
+	                <input type="text" class="form-control" placeholder="richard.dupont@gmail.com">
 	
 	              </div>
 	              <div class="form-group">
 	                <label for="exampleInputPassword1">Mot de passe</label>
-	                <input type="password" class="form-control" placeholder="">
+	                <input type="password" class="form-control" placeholder="********">
 	              </div>
 	              
 	            <div class="form-group">
@@ -72,7 +67,7 @@
 	            </div>
 	            <hr class="style1">
 	            <div class="form-group">
-	                <button class="btn btn-lg btn-block" style="color: white; background-color: firebrick" id="inscription" type="submit">Inscription</button>        
+	                <button class="btn btn-lg btn-danger btn-block" style="color: white; background-color: firebrick" id="inscription" type="submit">Inscription</button>        
 	            </div>
 	            </form>
 	
@@ -86,7 +81,7 @@
 	                  </ol>
 	            <div class="carousel-inner" role="listbox">
 	                <div class="carousel-item active">
-	                  <img class="d-block img-fluid" src="https://static.pexels.com/photos/33972/pexels-photo.jpg" alt="First slide">
+	                  <img class="d-block img-fluid" style="height: 536px; width:auto;" src="https://images.pexels.com/photos/36031/firefighter-fire-portrait-training.jpg" alt="First slide">
 	                  <div class="carousel-caption d-none d-md-block">
 	                    <div class="banner-text">
 	                        <h2>INSARAG</h2>
@@ -95,19 +90,19 @@
 	              </div>
 	                </div>
 	                <div class="carousel-item">
-	                  <img class="d-block img-fluid" src="https://images.pexels.com/photos/7097/people-coffee-tea-meeting.jpg" alt="First slide">
+	                  <img class="d-block img-fluid" style="height: 536px; width:auto;" src="https://images.pexels.com/photos/266403/pexels-photo-266403.jpeg" alt="Second slide">
 	                  <div class="carousel-caption d-none d-md-block">
 	                    <div class="banner-text">
-	                        <h2>This is Heaven</h2>
+	                        <h2>INSARAG</h2>
 	                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
 	                    </div>	
 	                </div>
 	                </div>
 	                <div class="carousel-item">
-	                  <img class="d-block img-fluid" src="https://images.pexels.com/photos/872957/pexels-photo-872957.jpeg" alt="First slide">
+	                  <img class="d-block img-fluid" style="height: 536px; width:auto;" src="https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg" alt="Third slide">
 	                  <div class="carousel-caption d-none d-md-block">
 	                    <div class="banner-text">
-	                        <h2>This is Heaven</h2>
+	                        <h2>INSARAG</h2>
 	                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
 	                    </div>	
 	                </div>
