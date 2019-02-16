@@ -7,34 +7,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>:::Tutoriel Spring MVC DAO JPA Hibernate Bootstrap Jquery- 2016-2017:::</title>
+<title>INSARAG</title>
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
 <meta name="Content-Language" content="fr" />
-<meta name="Description" content="" />
-<meta name="Keywords" content=" Tutoriel Spring MVC DAO JPA Hibernate Bootstrap - 2016-2017" />
 <meta name="Subject" content="" />
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
   	
-<spring:url value="/css/bootstrap-theme.min.css" var="bootstrapThemeCss" />
-<spring:url value="/css/bootstrap.min.css" var="bootstrapCss" />
-<spring:url value="/css/style.css" var="styleCss" />
-<spring:url value="/css/footer.css" var="footerCss" />
- 
-<spring:url value="/js/bootstrap.min.js" var="bootstrapJs" />
-<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
-
-
-<link href="${styleCss}" rel="stylesheet" />
- 
-<link href="${footerCss}" rel="stylesheet" />
-
-<link href="${bootstrapCss}" rel="stylesheet" />
-<link href="${bootstrapThemeCss}" rel="stylesheet" />
-
-<script src="${bootstrapJs}"></script>
-<script src="${jqueryJs}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="header.css"> -->
+<link rel="stylesheet" type="text/css" href="normalize.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 

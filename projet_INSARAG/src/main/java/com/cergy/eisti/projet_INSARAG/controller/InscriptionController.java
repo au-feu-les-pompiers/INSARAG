@@ -58,10 +58,11 @@ public class InscriptionController {
 	    
 	    @RequestMapping(value = "/utilisateur/save", method = RequestMethod.POST)
 	    public String saveOrUpdate(@ModelAttribute("utilisateurForm") Utilisateur utilisateur, Model model, final RedirectAttributes redirectAttributes) throws Exception {
+	    	Long id = utilisateurService.save(utilisateur);
 	    	try {
 				
 			
-			Long id = utilisateurService.save(utilisateur);
+			
 
 	    	
 	    	if(  utilisateur.getId()!=null){
@@ -76,7 +77,7 @@ public class InscriptionController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return "redirect:/";
+	        return ("redirect:/utilisateur/get/"+Long.toString(id));
 	    }
 	    
 

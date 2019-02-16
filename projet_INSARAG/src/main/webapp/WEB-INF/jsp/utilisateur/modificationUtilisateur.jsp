@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Inscription</title>
+<title>Modification</title>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <meta name="Content-Language" content="fr" />
 <meta name="Description" content="" />
@@ -200,10 +200,17 @@
 		</div>
 		</spring:bind>
 		
+		<form:hidden path="nom"  value="${utilisateurForm.nom}" />
+		<form:hidden path="prenom"  value="${utilisateurForm.prenom}" />
+		<form:hidden path="naissance"  value="${utilisateurForm.naissance}" />
+		<form:hidden path="matricule"  value="${utilisateurForm.matricule}" />
+		<form:hidden path="autorisation"  value="${utilisateurForm.autorisation}" />
+		<form:hidden path="enMission"  value="${utilisateurForm.enMission}" />
+		
 		
 		<div class="row">
 			<div class="col-md-offset-2 col-md-1">
-						<button type="submit" class="btn  btn-primary pull-left">S'inscrire</button>
+						<button type="submit" class="btn  btn-primary pull-left">Modifier</button>
 	       </div>
 	       <div class="col-md-offset-1 col-md-1 pull-left">
 						<button type="reset" class="btn  btn-default">Reset</button>

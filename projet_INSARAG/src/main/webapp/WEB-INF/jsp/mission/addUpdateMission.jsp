@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>:::Tutoriel Spring MVC Boot Data -  JPA Hibernate Bootstrap Jquery- 2017-2018:::</title>
+<title>INSARAG</title>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <meta name="Content-Language" content="fr" />
 <meta name="Description" content="" />
@@ -16,29 +16,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
   	
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="header.css"> -->
+<link rel="stylesheet" type="text/css" href="normalize.css">
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <spring:url value="/css/bootstrap-theme.min.css" var="bootstrapThemeCss" />
-<spring:url value="/css/bootstrap.min.css" var="bootstrapCss" />
-
-<!--  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<!--  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> -->
-
-
-<spring:url value="/css/style.css" var="styleCss" />
-<spring:url value="/css/footer.css" var="footerCss" />
- 
-<spring:url value="/js/bootstrap.min.js" var="bootstrapJs" />
-<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
 <spring:url value="/js/jquery.form-validator.min.js" var="controlformJs" />
 
 
-<link href="${styleCss}" rel="stylesheet" />
-<link href="${footerCss}" rel="stylesheet" />
-
-
-<link href="${bootstrapCss}" rel="stylesheet" />
 <link href="${bootstrapThemeCss}" rel="stylesheet" />
-
-<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 <script src="${bootstrapJs}"></script>
 <script src="${jqueryJs}"></script>
 <script src="${controlformJs}"></script>

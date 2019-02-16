@@ -52,6 +52,8 @@
 	<jsp:include page="../common/header.jsp" />
 
 	<div class="container">
+	
+	<spring:url value="/utilisateur/update/${utilToShow.id}" var="updateUrl" />
 
 		<h1>Consulter Utilisateur</h1>
 
@@ -83,7 +85,10 @@
 			<div class="col-sm-10">${utilToShow.telephone}</div>
 		</div>
 
-		
+		<div>
+		<button class="btn btn-warning"	onclick="location.href='${updateUrl}'">
+						Modifier
+						</button></div>
 						
 	</div>
 
