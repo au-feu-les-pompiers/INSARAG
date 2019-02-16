@@ -177,6 +177,25 @@
 		</div>
 		</spring:bind>
 		
+		<spring:bind path="matricule">
+		<div class="row">
+			<div class="col-md-offset-2 col-md-4">
+				<div class="form-group">
+				<label>Matricule</label>
+				<form:input type="text"   path="matricule"  class="form-control"  value="${utilisateurForm.matricule}" placeholder="Matricule de l'utilisateur" 
+							required="required" 
+							data-validation-length="max100"
+							data-validation-allowing="-_ éèà'&"
+							data-validation="required alphanumeric length"
+  							data-validation-error-msg-required="Champs designation est Obligatoire"
+ 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+ 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
+				<form:errors path="matricule" class="control-label" />		
+				</div>
+			</div>
+		</div>
+		</spring:bind>
+		
 		
 		<div class="row">
 			<div class="col-md-offset-2 col-md-1">

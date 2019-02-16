@@ -51,8 +51,8 @@ public class InscriptionController {
 
 	    @RequestMapping(value = "/utilisateur/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model) throws Exception {
-	        model.addAttribute("utilisateurToShow", utilisateurService.getByIdUtilisateur(id));
-	        return "/utilisateur/showUtilisateur"; // Afficher la page showUtilisateur.jsp qui se trouve sous /utilisateur
+	        model.addAttribute("utilisateurForm", utilisateurService.getByIdUtilisateur(id));
+	        return "/utilisateur/modificationUtilisateur"; // Afficher la page modificationUtilisateur.jsp qui se trouve sous /utilisateur
 	    }
 	    
 	    
@@ -76,7 +76,7 @@ public class InscriptionController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return "redirect:/utilisateur/listAll";
+	        return "redirect:/";
 	    }
 	    
 
