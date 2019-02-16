@@ -129,12 +129,13 @@
 			
 				<spring:url value="/utilisateur/get/${util.id}"	var="utilUrl" />
  				<spring:url value="/utilisateur/upauto/${util.id}" var="upAutoUrl" />
-				<spring:url value="/utilisateur/update/${util.id}" var="updateUrl" />
+ 				<spring:url value="/utilisateur/down/${util.id}" var="downUrl" />
+<%-- 				<spring:url value="/utilisateur/update/${util.id}" var="updateUrl" /> --%>
 <%-- 				<spring:url value="/utilisateur/clear" var="clearUrl" /> --%>
 				
 				<tr>
 					<td width="5%">${util.matricule}</td>
-					<td width="20%"><font style="text-transform: uppercase;">${util.nom}</font> ${util.prenom}</td>
+					<td width="15%"><font style="text-transform: uppercase;">${util.nom}</font> ${util.prenom}</td>
 					<td width="10%">${util.naissance}</td>
 					<td width="20%">${util.email}</td>
 					<td width="10%">${util.telephone}</td>
@@ -149,6 +150,9 @@
 					<c:choose>  <%-- Debut c:choose  --%>
 					<c:when test="${util.autorisation == 0}"><button class="btn btn-success"	onclick="location.href='${upAutoUrl}'">
 						Confirmer
+						</button>
+						<button class="btn btn-warning"	onclick="location.href='${downUrl}'">
+						Refuser
 						</button></c:when>
 					<c:when test="${util.autorisation == 1}"><button class="btn btn-success"	onclick="location.href='${upAutoUrl}'">
 						Promouvoir
@@ -157,11 +161,8 @@
 						Accepter
 						</button></c:when></c:choose>
 					
-											<button class="btn btn-success"	onclick="location.href='${utilUrl}'">
+											<button class="btn btn-primary"	onclick="location.href='${utilUrl}'">
 						show
-						</button>
-						<button class="btn btn-primary" onclick="location.href='${updateUrl}'">
-						update
 						</button>
 					</td>
 				</tr>

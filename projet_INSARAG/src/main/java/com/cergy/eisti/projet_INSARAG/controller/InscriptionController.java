@@ -101,5 +101,12 @@ public class InscriptionController {
 	    	model.addAttribute("utilisateurs", utilisateurService.getAll());
 	        return "/utilisateur/showAllUtilisateurs";
 	    }
+	    
+	    @RequestMapping("/utilisateur/down/{id}")
+	    public String down(@PathVariable Long id, Model model,final RedirectAttributes redirectAttributes) throws Exception {
+	        utilisateurService.downAuto(id);
+	    	model.addAttribute("utilisateurs", utilisateurService.getAll());
+	        return "/utilisateur/showAllUtilisateurs";
+	    }
  
 }

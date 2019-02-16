@@ -30,4 +30,8 @@ public interface UtilisateurRepository extends Repository <Utilisateur, Long>{
 	@Query("update Utilisateur u set u.autorisation = ?1  where u.id = ?2")
 	int updateAutoUtilisateur(int autoUtilisateur, Long idUtilisateur);
 
+	@Modifying
+	@Query("update Utilisateur u set u.autorisation = -1  where u.id = ?1")
+	int downAutoUtilisateur(Long idUtilisateur);
+
 }

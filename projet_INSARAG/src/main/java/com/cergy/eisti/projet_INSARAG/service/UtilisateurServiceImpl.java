@@ -61,6 +61,11 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	@Override
 	public List<Utilisateur> getAll() {
  		return (List<Utilisateur>) utilisateurRepository.findAll() ;
+	}
+
+	@Override
+	public int downAuto(Long idUtilisateur) {
+		return utilisateurRepository.downAutoUtilisateur(idUtilisateur) ;
 	} 
 
    

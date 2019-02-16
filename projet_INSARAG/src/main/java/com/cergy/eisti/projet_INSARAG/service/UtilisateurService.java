@@ -18,5 +18,7 @@ public interface UtilisateurService {
 	
   	int updateAuto (int autoUtilisateur, Long idUtilisateur); 
 
+  	int downAuto (Long idUtilisateur); 
+
    
 }
