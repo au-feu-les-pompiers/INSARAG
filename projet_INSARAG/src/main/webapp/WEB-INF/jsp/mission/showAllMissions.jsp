@@ -86,7 +86,7 @@
 		<c:when test="${empty missions}">
 			<div class="alert alert-warning alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-				<strong>Aucune mission trouvée ! La liste des missions est vide !</strong>
+				<strong>Aucune mission trouvée ! La liste est vide !</strong>
 			</div>
 		</c:when>
 		
@@ -96,11 +96,6 @@
 		<div class="col-md-7">
 			<h1> Liste des missions </h1>
 		</div>
-		<div class="col-md-5">
-			<button class="btn btn-warning pull-right"	data-toggle="modal" data-target="#clearModal" data-dismiss="modal">
-			 clear
-			</button>
-		</div>
 		</div>
 
 
@@ -109,39 +104,33 @@
 		
 			<thead>
 				<tr>
-				   <th>id</th>
-					<th>lieu</th>
-					<th>date debut</th>
-					<th>date fin</th>
-					<th>nombre de places</th>
-
+				   <th>Id</th>
+					<th>Lieu</th>
+					<th>Date de début</th>
+					<th>Date de fin</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tfoot>
         	    <tr>
- 
-				   <th>id</th>
-					<th>lieu</th>
-					<th>date debut</th>
-					<th>date fin</th>
-					<th>nombre de places</th>
+				   <th>Id</th>
+					<th>Lieu</th>
+					<th>Date de début</th>
+					<th>Date de fin</th>
+					<th>Action</th>
          	   </tr>
        		 </tfoot>
        	   <tbody>
-			<c:forEach var="miss" items="${mission}">
+			<c:forEach var="miss" items="${missions}">
 			
 				<spring:url value="/mission/get/${miss.idMission}"	var="missUrl" />
-				<spring:url value="/mission/delete/${miss.idMission}" var="deleteUrl" />
 				<spring:url value="/mission/update/${miss.idMission}" var="updateUrl" />
-				<spring:url value="/mission/clear" var="clearUrl" />
 				
 				<tr>
 					<td width="5%">${miss.idMission}</td>
 					<td width="20%">${miss.lieu}</td>
 					<td width="20%">${miss.debut}</td>
 					<td width="20%">${miss.fin}</td>
-					<td width="10%">${miss.nb_de_places}</td>
 	
 					<td>
 					
@@ -151,10 +140,6 @@
 						<button class="btn btn-primary" onclick="location.href='${updateUrl}'">
 						update
 						</button>
-  						
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-dismiss="modal" >
-							detele
-						</button>
 					</td>
 				</tr>
 				
@@ -163,59 +148,7 @@
 		</table>
 		
 		
-		 <div class="modal fade" id="deleteModal" role="dialog">
-		    <div class="modal-dialog">
-		      <!-- Modal content-->
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-			    	<h4> <span class="glyphicon  glyphicon-trash"></span> Confirmer Suppresion</h4>
-		        </div>
-		        <div class="modal-body">
-			       <h3>Êtes-vous sûr de vouloir supprimer définitivement cette mission ?
-			         <br><br><small>NB: Cette opération est irréversible !</small>
-			        </h3>
-		        </div>
-		        <div class="modal-footer">
-		           <button type="button" class="btn btn-default" data-dismiss="modal">
-		          	 	<span class="glyphicon glyphicon-remove"></span>Annuler
-		           </button>
-		           <button type="button" class="btn btn-danger" data-toggle="modal" onclick="location.href='${deleteUrl}'"  >
-						<span class="glyphicon glyphicon-trash"></span> Supprimer
-				  </button>
-		        </div>
-		      </div>
-		      
-		    </div>
-		  </div>
-		  
-		
-		<div class="modal fade" id="clearModal" role="dialog">
-		    <div class="modal-dialog">
-		      <!-- Modal content-->
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-			    	<h4> <span class="glyphicon  glyphicon-trash"></span> Confirmer Vidage</h4>
-		        </div>
-		        <div class="modal-body">
-			       <h3>Êtes-vous sûr de vouloir vider la liste de toutes les missions ? 
-			      	 <br><small>Ce vidage engendrer systématiquement la suppression de toutes ses commandes!</small>
-			      	 <br><br><small>NB: Cette opération est irréversible !</small>
-			      	 
-				   </h3>
-		        </div>
-		        <div class="modal-footer">
-		           <button type="button" class="btn btn-default" data-dismiss="modal">
-		          	 	<span class="glyphicon glyphicon-remove"></span>Annuler
-		           </button>
-		           <button type="button" class="btn btn-warning" onclick="location.href='${clearUrl}'" >
-						<span class="glyphicon glyphicon-trash"></span> Clear
-				  </button>
-		        </div>
-		      </div>
-		    </div>
-	   </div>
+		 
 
 </c:otherwise> <%-- Fin c:otherwise  --%>
 </c:choose> <%-- Fin c:choose  --%>

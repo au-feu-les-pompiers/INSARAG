@@ -59,7 +59,7 @@
 <div class="container">
 
    <c:choose>
-		<c:when test="${missionForm.id  != null}">
+		<c:when test="${missionForm.idMission  != null}">
 			<div class="row">
 				<div class="col-md-offset-2 col-md-8">
 				<h1>Modifier mission <br/> <small>Merci de renseigner ces données </small></h1>
@@ -79,7 +79,7 @@
 
 	<form:form id="missionform"  class="form-horizontal"  method="post"  modelAttribute="missionForm"  action="${missionActionUrl}" >
 
-		<form:hidden path="id"  value="${missionForm.id}" />
+		<form:hidden path="idMission"  value="${missionForm.idMission}" />
 		
 		
 	
@@ -136,30 +136,11 @@
 			</div>
 		</div>
 		</spring:bind>
-
-		<spring:bind path="nbDePlaces">
-			<div class="row">
-				<div class="col-md-offset-2 col-md-1">
-					<div class="form-group">
-					<label>Nombre de place</label>
-					<form:input type="text"    path="nbDePlaces"  class="form-control"  value="${missionForm.nbDePlaces}" placeholder="Nombre de places" 
-								required="required"
-								data-validation="required number"
-								data-validation-ignore=".,,"
-								data-validation-error-msg-required="Champs prixest Obligatoire"
-								data-validation-error-msg-number="Champs prix doit être numérique décimal"
-								/>
- 
-					<form:errors path="nbDePlaces" class="control-label" />		
-					</div>
-				</div>
-		</div>
-		</spring:bind>
 		
 		<div class="row">
 			<div class="col-md-offset-2 col-md-1">
 			   <c:choose>
-					<c:when test="${missionForm.id  != null}">
+					<c:when test="${missionForm.idMission  != null}">
 						<button type="submit" class="btn  btn-primary pull-left">Modifier</button>
 					</c:when>
 					<c:otherwise>

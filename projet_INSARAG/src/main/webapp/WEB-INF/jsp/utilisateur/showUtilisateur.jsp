@@ -53,30 +53,36 @@
 
 	<div class="container">
 
-		<h1>Consulter Mission</h1>
+		<h1>Consulter Utilisateur</h1>
 
 		<br />
 
 		 
 		<div class="row">
-			<label class="col-sm-2">ID</label>
-			<div class="col-sm-10">${missionToShow.idMission}</div>
+			<label class="col-sm-2">Matricule</label>
+			<div class="col-sm-10">${utilToShow.matricule}</div>
 		</div>
 		
 		<div class="row">
-			<label class="col-sm-2">Lieu</label>
-			<div class="col-sm-10">${missionToShow.lieu}</div>
-		</div>		
+			<label class="col-sm-2">Nom et prénom</label>
+			<div class="col-sm-10">${utilToShow.nom} ${utilToShow.prenom}</div>
+		</div>	
+		
+		<div class="row">
+			<label class="col-sm-2">Date de naissance </label>
+			<div class="col-sm-10">${utilToShow.naissance}</div>
+		</div>
+		
+		<div class="row">
+			<label class="col-sm-2">Email</label>
+			<div class="col-sm-10">${utilToShow.email}</div>
+		</div>	
 
 		<div class="row">
-			<label class="col-sm-2">Date de début</label>
-			<div class="col-sm-10">${missionToShow.debut}</div>
+			<label class="col-sm-2">Numéro de téléphone</label>
+			<div class="col-sm-10">${utilToShow.telephone}</div>
 		</div>
 
-		<div class="row">
-			<label class="col-sm-2">Date de fin</label>
-			<div class="col-sm-10">${missionToShow.fin}</div>
-		</div>
 		
 						
 	</div>

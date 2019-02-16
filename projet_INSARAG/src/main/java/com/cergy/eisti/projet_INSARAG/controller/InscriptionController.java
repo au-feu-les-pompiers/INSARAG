@@ -51,8 +51,8 @@ public class InscriptionController {
 
 	    @RequestMapping(value = "/utilisateur/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model) throws Exception {
-	        model.addAttribute("utilisateurForm", utilisateurService.getByIdUtilisateur(id));
-	        return "/utilisateur/modificationUtilisateur"; // Afficher la page modificationUtilisateur.jsp qui se trouve sous /utilisateur
+	        model.addAttribute("utilToShow", utilisateurService.getByIdUtilisateur(id));
+	        return "/utilisateur/showUtilisateur"; // Afficher la page modificationUtilisateur.jsp qui se trouve sous /utilisateur
 	    }
 	    
 	    

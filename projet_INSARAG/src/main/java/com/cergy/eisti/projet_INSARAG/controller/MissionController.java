@@ -64,9 +64,9 @@ public class MissionController {
 			Long idMission = missionService.save(mission);
 
 	    	
-	    	if(  mission.getId()!=null){
+	    	if(  mission.getIdMission()!=null){
 				redirectAttributes.addFlashAttribute("typeAlert", "info");
-		    	redirectAttributes.addFlashAttribute("msgAlert", "Mission dont ID : "+mission.getId()+" a été mis à jour.");
+		    	redirectAttributes.addFlashAttribute("msgAlert", "Mission dont ID : "+mission.getIdMission()+" a été mis à jour.");
 
 			}else{
 				redirectAttributes.addFlashAttribute("typeAlert", "success");
