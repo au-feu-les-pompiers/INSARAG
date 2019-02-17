@@ -18,7 +18,7 @@ import com.cergy.eisti.projet_INSARAG.service.MissionService;
  
  
 @Controller 
-@RequestMapping("/") //make all URL's through this controller relative to /index
+@RequestMapping("/index") //make all URL's through this controller relative to /index
 public class IndexController {
 	
 	private final Logger logger = LoggerFactory.getLogger(IndexController.class);
@@ -26,7 +26,7 @@ public class IndexController {
 	@Autowired
 	MissionService missionService;	
 	
-	@RequestMapping(value="/", method= RequestMethod.GET)
+	@RequestMapping(value="/index", method= RequestMethod.GET)
 	public String index(Map<String, Object> model) throws Exception {
 	 
     return "index";
