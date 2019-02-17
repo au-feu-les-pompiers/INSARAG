@@ -127,7 +127,8 @@
 	  							data-validation-error-msg-required="Champs designation est Obligatoire"
 	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-					<form:errors path="mdp" class="control-label" />		
+					<form:errors path="mdp" class="control-label" />	
+					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 8 caratères.</small>	
 					</div>
 				</div>
 			</div>
@@ -165,7 +166,7 @@
 			</div>
 		</div>
 		</spring:bind>
-		<div class="row mb-3">
+		<div class="row">
 		<spring:bind path="telephone">
 		
 		<div class="col-xs-6 col-md-6">
@@ -211,7 +212,11 @@
 			</div>
 		
 		</spring:bind>
-</div>
+		</div>
+		<div class="row justify-content-center align-items-center mb-3">
+			<small class="form-text text-muted">L'administrateur devra valider votre inscription.</small>
+
+		</div>
 		
 		
 		<div class="row justify-content-center align-items-center">
