@@ -39,6 +39,11 @@
 
 <script src="${bootstrapdataTablesJs}"></script>
 
+<spring:url value="/css/header.css" var="headerCss" />
+<link href="${headerCss}" rel="stylesheet" /> 
+
+<spring:url value="/css/normalize.css" var="normalize" />
+<link href="${normalize}" rel="stylesheet" /> 
 
 <style>
   .modal-header, h4, .close {

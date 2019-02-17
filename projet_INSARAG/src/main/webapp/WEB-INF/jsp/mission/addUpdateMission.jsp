@@ -17,7 +17,7 @@
   	
 
 
-<spring:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" var="bootstrapCss" />
+<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" var="bootstrapCss" />
 <link href="${bootstrapCss}" rel="stylesheet" />
 
 <spring:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" var="bootstrapJs" />
@@ -103,7 +103,7 @@
 			<div class="col-6">
 				<div class="form-group">
 				<label class="text-dark">Date de début</label>
-				<form:input type="text" path="debut" data-language='fr' class="form-control datepicker-here"  value="${missionForm.debut}" placeholder="Date de debut" 
+				<form:input type="text" path="debut" data-language='fr' class="form-control datepicker-here"  value="${missionForm.debut}" placeholder="12/01/2019" 
 							required="required" 
 							data-position="bottom left" 
 							id="minMaxExample"
@@ -121,7 +121,7 @@
 			<div class="col-6">
 				<div class="form-group">
 				<label class="text-dark">Date de fin</label>
-				<form:input type="text" path="fin" data-language='fr' class="form-control datepicker-here" value="${missionForm.fin}" placeholder="Date de fin" 
+				<form:input type="text" path="fin" data-language='fr' class="form-control datepicker-here" value="${missionForm.fin}" placeholder="30/01/2019" 
 							 data-position="bottom left" id="end"
 							required="required" 
 							data-validation-length="max100"
