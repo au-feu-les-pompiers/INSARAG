@@ -17,7 +17,6 @@ public class ConnexionService {
 	
 	public boolean isRegistered(String login,String mdp) {
 		for (Utilisateur profilFind : this.getAll()) {
-			String emailGet = profilFind.getEmail();
 			String mdpGet = profilFind.getMdp();
 			/*if (login.equals(emailGet) && mdp.equals(mdpGet)) {
 				this.utilisateur = profilFind;

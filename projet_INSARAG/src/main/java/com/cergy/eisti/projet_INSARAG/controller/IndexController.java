@@ -20,7 +20,7 @@ import com.cergy.eisti.projet_INSARAG.service.UtilisateurService;
  
  
 @Controller 
-@RequestMapping("/index") //make all URL's through this controller relative to /index
+@RequestMapping("/") //make all URL's through this controller relative to /index
 public class IndexController {
 	
 	private final Logger logger = LoggerFactory.getLogger(IndexController.class);
@@ -34,7 +34,7 @@ public class IndexController {
 	@RequestMapping(value="/index", method= RequestMethod.GET)
 	public String index(Map<String, Object> model) throws Exception {
 	 
-    return "index";
+    return "commmon/header";
 	}   
 	
 		/**************************************

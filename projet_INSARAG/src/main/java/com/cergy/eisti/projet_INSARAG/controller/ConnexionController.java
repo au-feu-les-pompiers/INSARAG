@@ -39,7 +39,7 @@ public class ConnexionController {
 			session.setAttribute("connected", "connected");
 			
 			System.out.println(session.getAttribute("accreditation"));
-			return "index";
+			return "utilisateur/showAllUtilisateurs";
 		}
 		
 		return "Connexion";
