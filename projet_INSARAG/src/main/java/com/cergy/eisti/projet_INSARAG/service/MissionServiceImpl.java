@@ -29,7 +29,7 @@ public class MissionServiceImpl implements MissionService{
 	public Long save(Mission mission) throws Exception {
 		
 		mission = missionRepository.save(mission);
-		return mission.getId();
+		return mission.getIdMission();
 	}
 
 
