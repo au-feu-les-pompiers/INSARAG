@@ -15,25 +15,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<%-- 
-<spring:url value="/resources/css/main.css" var="mainCss" />
-	<spring:url value="/resources/js/jquery.1.10.2.min.js" var="jqueryJs" />
-	<spring:url value="/resources/js/main.js" var="mainJs" />
-	
-	<link href="${mainCss}" rel="stylesheet" />
-    <script src="${jqueryJs}"></script>
-    <script src="${mainJs}"></script>
- --%>
-
-<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="BootstrapCSS4_1" />
-<link href="${BootstrapCSS4_1}" rel="stylesheet" />
+<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="Bootstrap4CSS" />
+<link href="${Bootstrap4CSS}" rel="stylesheet" />
 
 <spring:url value="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" var="jqueryJs" />
 <script src="${jqueryJs}"></script>
 
-<spring:url value="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" var="BootstrapJS4_1" />
-<script src="${BootstrapJS4_1}"></script>
-
+<spring:url value="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" var="Bootstrap4JS" />
+<script src="${Bootstrap4JS}"></script>
 
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" />
@@ -67,7 +56,7 @@
 	            </div>
 	            <hr class="style1">
 	            <div class="form-group">
-	                <button class="btn btn-lg btn-danger btn-block" style="color: white; background-color: firebrick" id="inscription" type="submit">Inscription</button>        
+	                <button href="${pageContext.request.contextPath}/utilisateur/new" class="btn btn-lg btn-danger btn-block" style="color: white; background-color: firebrick" id="inscription" type="submit">Inscription</button>        
 	            </div>
 	            </form>
 	
