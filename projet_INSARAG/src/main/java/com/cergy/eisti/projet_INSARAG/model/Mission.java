@@ -20,18 +20,16 @@ public class Mission implements java.io.Serializable {
 	private String lieu;
 	private String debut;
 	private String fin;
-	private short nbDePlaces;
 	private Boolean flagFin;
 	
 	public Mission() {
 	}
 
-	public Mission(Long id, String lieu, String debut, String fin, short nbDePlaces, Boolean flagFin) {
-		this.idMission = id;
+	public Mission(Long idMission, String lieu, String debut, String fin, Boolean flagFin) {
+		this.idMission = idMission;
 		this.lieu = lieu;
 		this.debut = debut;
 		this.fin = fin;
-		this.nbDePlaces = nbDePlaces;
 	}
 
 	@Id
@@ -39,12 +37,12 @@ public class Mission implements java.io.Serializable {
 	@Column(name = "IDMISSION", unique = true, nullable = false, scale = 0)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="MISSION_gen_seq")
     @SequenceGenerator(name="MISSION_gen_seq", sequenceName="MISSION_SEQ", allocationSize=1)
-	public Long getId() {
+	public Long getIdMission() {
 		return this.idMission;
 	}
 
-	public void setId(Long id) {
-		this.idMission = id;
+	public void setIdMission(Long idMission) {
+		this.idMission = idMission;
 	}
 
 	@Column(name = "LIEU", nullable = false, length = 30)
@@ -72,15 +70,6 @@ public class Mission implements java.io.Serializable {
 
 	public void setFin(String fin) {
 		this.fin = fin;
-	}
-
-	@Column(name = "NB_DE_PLACES", nullable = false, precision = 3, scale = 0)
-	public short getNbDePlaces() {
-		return this.nbDePlaces;
-	}
-
-	public void setNbDePlaces(short nbDePlaces) {
-		this.nbDePlaces = nbDePlaces;
 	}
 
 	@Column(name = "FLAG_FIN", precision = 1, scale = 0)

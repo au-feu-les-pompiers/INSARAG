@@ -5,23 +5,23 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cergy.eisti.projet_INSARAG.model.Profil;
+import com.cergy.eisti.projet_INSARAG.model.Utilisateur;
 
 @Service
 public class ConnexionService {
 	
 	@Autowired
 	private ConnexionRepository repo;
-	private Profil profil;
+	private Utilisateur utilisateur;
 
 	
 	public boolean isRegistered(String login,String mdp) {
-		for (Profil profilFind : this.getAll()) {
+		for (Utilisateur profilFind : this.getAll()) {
 			String emailGet = profilFind.getEmail();
 			String mdpGet = profilFind.getMdp();
 			
 			if (login.equals(emailGet) && mdp.equals(mdpGet)) {
-				this.profil = profilFind;
+				this.utilisateur = profilFind;
 				return true;
 			}			
 		}
@@ -29,12 +29,12 @@ public class ConnexionService {
 	}
 	
 	
-	public List<Profil> getAll() {
- 		return (List<Profil>) repo.findAll() ;
+	public List<Utilisateur> getAll() {
+ 		return (List<Utilisateur>) repo.findAll() ;
 	}
 	
 	public String accreditationLvl() throws Exception {
-		if (profil.getAdmin() == 1) {
+		if (utilisateur.getAutorisation() == 1) {
 			return "Administrateur";
 		}
 		return "pompier";

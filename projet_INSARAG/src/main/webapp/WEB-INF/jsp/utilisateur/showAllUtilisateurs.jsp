@@ -11,13 +11,17 @@
 
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
 <meta name="Content-Language" content="fr" />
+<meta name="Description" content="" />
 <meta name="Subject" content="" />
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   
+<spring:url value="/css/bootstrap.min.css" var="bootstrap3Css" />
+<script src="${bootstrap3Css}"></script>
+
 <spring:url value="/css/dataTables.bootstrap.min.css" var="bootstrapdataTablesCss" />
 <link href="${bootstrapdataTablesCss}" rel="stylesheet" />
 
@@ -27,14 +31,17 @@
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
+<spring:url value="/js/bootstrap.min.js" var="bootstrap3Js" />
+<script src="${bootstrap3Js}"></script>
+
 <spring:url value="/js/jquery.dataTables.min.js" var="jquerydataTablesJs" />
 <script src="${jquerydataTablesJs}"></script>
 
 <spring:url value="/js/dataTables.bootstrap.min.js" var="bootstrapdataTablesJs" />
 <script src="${bootstrapdataTablesJs}"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
+<script src="${jqueryJs}"></script>
 
 
 </head>
@@ -43,7 +50,7 @@
 <body>
 
 	<jsp:include page="../common/header.jsp" />
-
+<body>
 
  <div class="container">
 
@@ -59,27 +66,19 @@
 
 		
  <c:choose>  <%-- Debut c:choose  --%>
-		<c:when test="${empty missions}">
+		<c:when test="${empty utilisateurs}">
 			<div class="alert alert-warning alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-				<strong>Aucune mission trouvée ! La liste est vide !</strong>
+				<strong>Aucun utilisateur trouvé ! La liste est vide !</strong>
 			</div>
 		</c:when>
 		
  <c:otherwise>  <%-- Debut c:otherwise  --%>
 		
 		<div class="row">
-			<div class="d-flex justify-content-between">
-				<div class="col-md-10 col-sm-10">
-					<h1> Liste des missions </h1>
-				
-				</div>
-				<div class="col-md-2 col-sm-2 float-sm-right">
-						<button type="button" style="margin-top:20px;" class="btn btn-warning" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
-						 Nouvelle mission
-						</button>
-				</div>
-			</div>
+		<div class="col-md-7">
+			<h1> Administration des utilisateurs </h1>
+		</div>
 		</div>
 
 
@@ -88,41 +87,65 @@
 		
 			<thead>
 				<tr>
-				   <th>Id</th>
-					<th>Lieu</th>
-					<th>Date de début</th>
-					<th>Date de fin</th>
+				   <th>Matricule</th>
+					<th>Utilisateur</th>
+					<th>Date de naissance</th>
+					<th>Email</th>
+					<th>Numéro de téléphone</th>
+					<th>Statut</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tfoot>
         	    <tr>
-				   <th>Id</th>
-					<th>Lieu</th>
-					<th>Date de début</th>
-					<th>Date de fin</th>
+				   <th>Matricule</th>
+					<th>Utilisateur</th>
+					<th>Date de naissance</th>
+					<th>Email</th>
+					<th>Numéro de téléphone</th>
+					<th>Statut</th>
 					<th>Action</th>
          	   </tr>
        		 </tfoot>
        	   <tbody>
-			<c:forEach var="miss" items="${missions}">
+			<c:forEach var="util" items="${utilisateurs}">
 			
-				<spring:url value="/mission/get/${miss.idMission}"	var="missUrl" />
-				<spring:url value="/mission/update/${miss.idMission}" var="updateUrl" />
+				<spring:url value="/utilisateur/get/${util.id}"	var="utilUrl" />
+ 				<spring:url value="/utilisateur/upauto/${util.id}" var="upAutoUrl" />
+ 				<spring:url value="/utilisateur/down/${util.id}" var="downUrl" />
+<%-- 				<spring:url value="/utilisateur/update/${util.id}" var="updateUrl" /> --%>
+<%-- 				<spring:url value="/utilisateur/clear" var="clearUrl" /> --%>
 				
 				<tr>
-					<td width="5%">${miss.idMission}</td>
-					<td width="20%">${miss.lieu}</td>
-					<td width="20%">${miss.debut}</td>
-					<td width="20%">${miss.fin}</td>
-	
+					<td width="5%">${util.matricule}</td>
+					<td width="15%"><font style="text-transform: uppercase;">${util.nom}</font> ${util.prenom}</td>
+					<td width="10%">${util.naissance}</td>
+					<td width="20%">${util.email}</td>
+					<td width="10%">${util.telephone}</td>
+					<td width="10%"><c:choose>  <%-- Debut c:choose  --%>
+					<c:when test="${util.autorisation == 0}">En attente</c:when>
+					<c:when test="${util.autorisation == 1}">Pompier</c:when>
+					<c:when test="${util.autorisation == 2}">Administrateur</c:when>
+					<c:when test="${util.autorisation == 3}">Administrateur médical</c:when>
+					<c:when test="${util.autorisation == 4}">Super Admin</c:when>
+					<c:when test="${util.autorisation == -1}">Refusé</c:when></c:choose></td>
 					<td>
-					
-						<button class="btn btn-success"	onclick="location.href='${missUrl}'">
-						show
+					<c:choose>  <%-- Debut c:choose  --%>
+					<c:when test="${util.autorisation == 0}"><button class="btn btn-success"	onclick="location.href='${upAutoUrl}'">
+						Confirmer
 						</button>
-						<button class="btn btn-primary" onclick="location.href='${updateUrl}'">
-						update
+						<button class="btn btn-warning"	onclick="location.href='${downUrl}'">
+						Refuser
+						</button></c:when>
+					<c:when test="${util.autorisation == 1}"><button class="btn btn-success"	onclick="location.href='${upAutoUrl}'">
+						Promouvoir
+						</button></c:when>
+					<c:when test="${util.autorisation == -1}"><button class="btn btn-success"	onclick="location.href='${upAutoUrl}'">
+						Accepter
+						</button></c:when></c:choose>
+					
+											<button class="btn btn-primary"	onclick="location.href='${utilUrl}'">
+						show
 						</button>
 					</td>
 				</tr>
@@ -130,9 +153,9 @@
 			</c:forEach>
 		 </tbody>	
 		</table>
+		  
 		
 		
-		 
 
 </c:otherwise> <%-- Fin c:otherwise  --%>
 </c:choose> <%-- Fin c:choose  --%>
@@ -143,6 +166,7 @@
 // $(document).ready(function() {
 //     $('#prodtable').DataTable();
 // } );
+
 // $(document).ready(function() {
 //     $('#prodtable').dataTable( {
 //         "language": {
@@ -150,6 +174,7 @@
 //         }
 //     } );
 // } );
+
 $('#prodtable').DataTable( {
     language: {
         processing:     "Traitement en cours...",

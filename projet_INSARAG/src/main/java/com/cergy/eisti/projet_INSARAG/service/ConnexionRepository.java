@@ -4,14 +4,14 @@ import java.util.List;
 
 import org.springframework.data.repository.Repository;
 
-import com.cergy.eisti.projet_INSARAG.model.Profil;
+import com.cergy.eisti.projet_INSARAG.model.Utilisateur;
 
-public interface ConnexionRepository extends Repository <Profil, Long>{
+public interface ConnexionRepository extends Repository <Utilisateur, Long>{
 	
-	Profil findById(Long idPompier);
+	Utilisateur findById(Long idPompier);
 	 
-	List<Profil> findAll();
+	List<Utilisateur> findAll();
 	
-	Profil save (Profil profil);
+	Utilisateur save (Utilisateur utilisateur);
 	
 }
