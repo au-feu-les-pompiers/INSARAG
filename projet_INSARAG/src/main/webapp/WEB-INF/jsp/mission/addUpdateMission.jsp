@@ -56,7 +56,9 @@
  
 <div class="container">
 <div class="row justify-content-center align-items-center">
-<div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 500px;">
+<div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
+	padding: 15px 30px;
+	border: 1px solid grey;">
 
    <c:choose>
 		<c:when test="${missionForm.idMission  != null}">
