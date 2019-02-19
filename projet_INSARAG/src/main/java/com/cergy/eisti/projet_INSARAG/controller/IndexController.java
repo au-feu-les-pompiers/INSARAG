@@ -31,10 +31,10 @@ public class IndexController {
 	@Autowired
 	UtilisateurService utilisateurService;
 	
-	@RequestMapping(value="/", method= RequestMethod.GET)
+	@RequestMapping(value="/index", method= RequestMethod.GET)
 	public String index(Map<String, Object> model) throws Exception {
 	 
-    return "index";
+    return "commmon/header";
 	}   
 	
 		/**************************************

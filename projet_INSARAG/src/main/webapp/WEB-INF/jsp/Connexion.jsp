@@ -40,21 +40,20 @@
 		<div class="row">
 			<div class="col-md-4 login-sec">
 			    <h2 class="text-center"><img src="images/Insarag_logo.jpg" style="height:110px; width:155px;"></img></h2>
-			    <form class="login-form">
+			    <form action="submitConnexion" method="post" class="login-form" >
 	              <div class="form-group">
 	                <label for="exampleInputEmail1">Email</label>
-	                <input type="text" class="form-control" placeholder="richard.dupont@gmail.com">
+	                <input type="text" name="user_identifiant" class="form-control" placeholder="richard.dupont@gmail.com">
 	
 	              </div>
 	              <div class="form-group">
 	                <label for="exampleInputPassword1">Mot de passe</label>
-	                <input type="password" class="form-control" placeholder="********">
+	                <input type="password" name="user_mdp" class="form-control" placeholder="********">
 	              </div>
 	              
-	            <div class="form-group">
-	                <button class="btn btn-lg btn-danger btn-block" id="connexion" type="submit">Connexion</button>        
-	            </div>
-	            <hr class="style1">
+	            <input class="btn btn-lg btn-danger btn-block" id="connexion"  type="submit" value="Connexion">	
+	            
+	            <hr class="style1">  
 
 	            </form>
 	            <div class="form-group">

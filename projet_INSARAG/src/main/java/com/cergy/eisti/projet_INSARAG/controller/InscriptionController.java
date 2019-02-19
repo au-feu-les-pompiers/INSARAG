@@ -3,6 +3,11 @@ package com.cergy.eisti.projet_INSARAG.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.jasper.tagplugins.jstl.core.Redirect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +50,14 @@ public class InscriptionController {
 	}
 
 	 	@RequestMapping(value = "/utilisateur/list", method = RequestMethod.GET)
-	    public String list(Model model) throws Exception {
+	    public String list(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	 		HttpSession session = request.getSession();
 	        model.addAttribute("utilisateurs", utilisateurService.getAll());
-	        return "/utilisateur/showAllUtilisateurs"; // Afficher la page showAllUtilisateurs.jsp qui se trouve sous /utilisateur
+	        if (session.getAttribute("connected") == "connected") {
+		        return "/utilisateur/showAllUtilisateurs"; // Afficher la page showAllUtilisateurs.jsp qui se trouve sous /utilisateur
+	        	
+	        }
+	        return "redirect:/"; // Afficher la page showAllUtilisateurs.jsp qui se trouve sous /utilisateur
 	        
 	    }
 
