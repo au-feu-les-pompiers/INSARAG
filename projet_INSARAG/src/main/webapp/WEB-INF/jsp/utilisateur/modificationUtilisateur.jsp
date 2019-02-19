@@ -80,7 +80,7 @@
 				<div class="col-md-offset-2 col-md-4">
 					<div class="form-group">
 					<label>Mot de passe</label>
-					<form:input type="text"   path="mdp"  class="form-control"  value="${utilisateurForm.mdp}" placeholder="Mdp de l'utilisateur" 
+					<form:input type="text"   path="mdp" class="form-control" value="defaultINSARAG" placeholder="Mdp de l'utilisateur" 
 								required="required" 
 								data-validation-length="max100"
 								data-validation-allowing="-_ יטא'&"
