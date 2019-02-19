@@ -39,7 +39,7 @@
 	    <div class="container">
 		<div class="row">
 			<div class="col-md-4 login-sec">
-			    <h2 class="text-center"><img src="http://www.entente-valabre.com/img/blog/cover/insarag-logo.png" style="height:105px; width:155px;"></img></h2>
+			    <h2 class="text-center"><img src="images/Insarag_logo.jpg" style="height:110px; width:155px;"></img></h2>
 			    <form class="login-form">
 	              <div class="form-group">
 	                <label for="exampleInputEmail1">Email</label>
