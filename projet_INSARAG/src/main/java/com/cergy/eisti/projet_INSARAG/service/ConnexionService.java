@@ -19,11 +19,14 @@ public class ConnexionService {
 		for (Utilisateur profilFind : this.getAll()) {
 			String emailGet = profilFind.getEmail();
 			String mdpGet = profilFind.getMdp();
-			
-			if (login.equals(emailGet) && mdp.equals(mdpGet)) {
+			/*if (login.equals(emailGet) && mdp.equals(mdpGet)) {
 				this.utilisateur = profilFind;
 				return true;
-			}			
+			}*/
+			if (mdpGet.equals(Integer.toString((login + mdp).hashCode()))) {
+				this.utilisateur = profilFind;
+				return true;
+			}
 		}
 		return false;
 	}
