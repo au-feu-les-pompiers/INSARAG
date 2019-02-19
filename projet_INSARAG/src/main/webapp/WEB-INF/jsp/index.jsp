@@ -55,10 +55,11 @@
 	                <button class="btn btn-lg btn-danger btn-block" id="connexion" type="submit">Connexion</button>        
 	            </div>
 	            <hr class="style1">
+
+	            </form>
 	            <div class="form-group">
 	                <button onclick="location.href='${pageContext.request.contextPath}/utilisateur/new'" class="btn btn-lg btn-danger btn-block" style="color: white; background-color: firebrick" id="inscription" type="submit">Inscription</button>        
 	            </div>
-	            </form>
 	
 			</div>
 			<div class="col-md-8 banner-sec">
