@@ -16,20 +16,23 @@
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
-<spring:url value="/css/bootstrap.min.css" var="bootstrap3Css" />
-<script src="${bootstrap3Css}"></script>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
 <spring:url value="/css/dataTables.bootstrap.min.css" var="bootstrapdataTablesCss" />
 <link href="${bootstrapdataTablesCss}" rel="stylesheet" />
+ 
+<%-- <spring:url value="/css/bootstrap.min.css" var="bootstrap3Css" />
+<script src="${bootstrap3Css}"></script> --%>
 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
 
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
+
+<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
+<script src="${jqueryJs}"></script>
 
 <spring:url value="/js/bootstrap.min.js" var="bootstrap3Js" />
 <script src="${bootstrap3Js}"></script>
@@ -40,8 +43,7 @@
 <spring:url value="/js/dataTables.bootstrap.min.js" var="bootstrapdataTablesJs" />
 <script src="${bootstrapdataTablesJs}"></script>
 
-<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
-<script src="${jqueryJs}"></script>
+
 
 
 </head>
@@ -91,7 +93,7 @@
 					<th>Utilisateur</th>
 					<th>Date de naissance</th>
 					<th>Email</th>
-					<th>Numéro de téléphone</th>
+					<th>Téléphone</th>
 					<th>Statut</th>
 					<th>Action</th>
 				</tr>
@@ -102,7 +104,7 @@
 					<th>Utilisateur</th>
 					<th>Date de naissance</th>
 					<th>Email</th>
-					<th>Numéro de téléphone</th>
+					<th>Téléphone</th>
 					<th>Statut</th>
 					<th>Action</th>
          	   </tr>
@@ -122,7 +124,9 @@
 					<td width="10%">${util.naissance}</td>
 					<td width="20%">${util.email}</td>
 					<td width="10%">${util.telephone}</td>
-					<td width="10%"><c:choose>  <%-- Debut c:choose  --%>
+					<td width="10%">
+					
+					<c:choose>  <%-- Debut c:choose  --%>
 					<c:when test="${util.autorisation == 0}">En attente</c:when>
 					<c:when test="${util.autorisation == 1}">Pompier</c:when>
 					<c:when test="${util.autorisation == 2}">Administrateur</c:when>
@@ -130,23 +134,22 @@
 					<c:when test="${util.autorisation == 4}">Super Admin</c:when>
 					<c:when test="${util.autorisation == -1}">Refusé</c:when></c:choose></td>
 					<td>
+					<div class="">
 					<c:choose>  <%-- Debut c:choose  --%>
-					<c:when test="${util.autorisation == 0}"><button class="btn btn-success"	onclick="location.href='${upAutoUrl}'">
-						Confirmer
-						</button>
-						<button class="btn btn-warning"	onclick="location.href='${downUrl}'">
-						Refuser
-						</button></c:when>
-					<c:when test="${util.autorisation == 1}"><button class="btn btn-success"	onclick="location.href='${upAutoUrl}'">
-						Promouvoir
-						</button></c:when>
-					<c:when test="${util.autorisation == -1}"><button class="btn btn-success"	onclick="location.href='${upAutoUrl}'">
-						Accepter
-						</button></c:when></c:choose>
+						<c:when test="${util.autorisation == 0}">
+							<button class="btn btn-success" onclick="location.href='${upAutoUrl}'">Confirmer</button>
+							<button class="btn btn-warning"	onclick="location.href='${downUrl}'">Refuser</button>
+						</c:when>
+						<c:when test="${util.autorisation == 1}">
+							<button class="btn btn-success" onclick="location.href='${upAutoUrl}'">Promouvoir</button>
+						</c:when>
+						<c:when test="${util.autorisation == -1}">
+							<button class="btn btn-success" onclick="location.href='${upAutoUrl}'">Accepter</button>
+						</c:when>
+					</c:choose>
 					
-											<button class="btn btn-primary"	onclick="location.href='${utilUrl}'">
-						show
-						</button>
+						<button class="btn btn-primary"	onclick="location.href='${utilUrl}'">show</button>
+					</div>	
 					</td>
 				</tr>
 				
