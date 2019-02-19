@@ -38,14 +38,11 @@
 <spring:url value="/js/jquery.form-validator.min.js" var="controlformJs" />
 <script src="${controlformJs}"></script>
 
-
-
 <spring:url value="/js/datepicker.min.js" var="datePickerJs" />
 <script src="${datePickerJs}"></script>
 
 <spring:url value="/js/datepicker.fr.js" var="datePickerJsFR" />
 <script src="${datePickerJsFR}"></script>
-
 
 
 </head>
@@ -104,7 +101,9 @@
 			<div class="row">
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
-                        <label for="password" class="text-dark">Mot de passe</label><br>
+                        <label for="password" class="text-dark">Mot de passe</label>
+                        <button class="btn btn-primary btn-sm float-right">Générer un mot de passe</button>
+                        <br>
 					<form:input type="password"   path="mdp"  class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
 								required="required" 
 								data-validation-length="max100"

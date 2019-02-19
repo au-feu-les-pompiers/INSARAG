@@ -38,33 +38,37 @@
 	<jsp:include page="../common/header.jsp" />
 
 	<div class="container">
-
+	<div class="row justify-content-center align-items-center">
+	<div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
+		padding: 10px 30px;
+		border: 1px solid grey;">
 		<h1>Consulter Mission</h1>
 
 		<br />
 
 		 
 		<div class="row">
-			<label class="col-sm-2">ID</label>
-			<div class="col-sm-10">${missionToShow.idMission}</div>
+			<label class="col-sm-5">ID</label>
+			<div class="col-sm-7">${missionToShow.idMission}</div>
 		</div>
 		
 		<div class="row">
-			<label class="col-sm-2">Lieu</label>
-			<div class="col-sm-10">${missionToShow.lieu}</div>
+			<label class="col-sm-5">Lieu</label>
+			<div class="col-sm-7">${missionToShow.lieu}</div>
 		</div>		
 
 		<div class="row">
-			<label class="col-sm-2">Date de début</label>
-			<div class="col-sm-10">${missionToShow.debut}</div>
+			<label class="col-sm-5">Date de début</label>
+			<div class="col-sm-7">${missionToShow.debut}</div>
 		</div>
 
 		<div class="row">
-			<label class="col-sm-2">Date de fin</label>
-			<div class="col-sm-10">${missionToShow.fin}</div>
+			<label class="col-sm-5">Date de fin</label>
+			<div class="col-sm-7">${missionToShow.fin}</div>
 		</div>
 		
-						
+	</div>
+	</div>				
 	</div>
 
 
