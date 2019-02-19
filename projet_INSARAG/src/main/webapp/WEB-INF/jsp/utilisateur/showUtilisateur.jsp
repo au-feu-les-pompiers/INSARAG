@@ -40,6 +40,10 @@
 	<jsp:include page="../common/header.jsp" />
 
 	<div class="container">
+	<div class="row justify-content-center align-items-center">
+	<div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
+		padding: 10px 30px;
+		border: 1px solid grey;">
 	
 	<spring:url value="/utilisateur/update/${utilToShow.id}" var="updateUrl" />
 
@@ -49,37 +53,37 @@
 
 		 
 		<div class="row">
-			<label class="col-sm-2">Matricule</label>
-			<div class="col-sm-10">${utilToShow.matricule}</div>
+			<label class="col-sm-5">Matricule</label>
+			<div class="col-sm-7">${utilToShow.matricule}</div>
 		</div>
 		
 		<div class="row">
-			<label class="col-sm-2">Nom et prénom</label>
-			<div class="col-sm-10">${utilToShow.nom} ${utilToShow.prenom}</div>
+			<label class="col-sm-5">Nom et prénom</label>
+			<div class="col-sm-7">${utilToShow.nom} ${utilToShow.prenom}</div>
 		</div>	
 		
 		<div class="row">
-			<label class="col-sm-2">Date de naissance </label>
-			<div class="col-sm-10">${utilToShow.naissance}</div>
+			<label class="col-sm-5">Date de naissance </label>
+			<div class="col-sm-7">${utilToShow.naissance}</div>
 		</div>
 		
 		<div class="row">
-			<label class="col-sm-2">Email</label>
-			<div class="col-sm-10">${utilToShow.email}</div>
+			<label class="col-sm-5">Email</label>
+			<div class="col-sm-7">${utilToShow.email}</div>
 		</div>	
 
 		<div class="row">
-			<label class="col-sm-2">Numéro de téléphone</label>
-			<div class="col-sm-10">${utilToShow.telephone}</div>
+			<label class="col-sm-5">Numéro de téléphone</label>
+			<div class="col-sm-7">${utilToShow.telephone}</div>
 		</div>
 
-		<div>
-		<button class="btn btn-warning"	onclick="location.href='${updateUrl}'">
-						Modifier
-						</button></div>
+		<div class="text-center mt-3 mb-3">
+		<button class="btn btn-warning"	onclick="location.href='${updateUrl}'">Modifier</button>
+		</div>
 						
 	</div>
-
+	</div>
+	</div>
 
 </body>
 </html>

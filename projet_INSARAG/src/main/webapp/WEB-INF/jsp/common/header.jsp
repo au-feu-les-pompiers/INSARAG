@@ -60,7 +60,7 @@
                         </span>  Contacts</a>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/utilisateur/get/5" class="name order-sm-0" style="font-weight: bold;">Richard Dupont</a></li>
-                    
+                    <li><a><i class="fas fa-power-off"></i></a></li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->
