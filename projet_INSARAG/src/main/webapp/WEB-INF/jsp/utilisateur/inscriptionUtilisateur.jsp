@@ -20,21 +20,24 @@
 <spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrapCss" />
 <link href="${bootstrapCss}" rel="stylesheet" />
 
-<spring:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" var="bootstrapJs" />
-<script src="${bootstrapJs}"></script>
-
-<spring:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" var="jqueryJs" />
-<script src="${jqueryJs}"></script>
-
-<spring:url value="/js/jquery.form-validator.min.js" var="controlformJs" />
-<script src="${controlformJs}"></script>
-
+<spring:url value="/css/datepicker.min.css" var="datePickerCss" />
+<link href="${datePickerCss}" rel="stylesheet" />
 
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
 <spring:url value="/css/SignUp.css" var="SignUp" />
-<link href="${SignUp}" rel="stylesheet" /> 
+<link href="${SignUp}" rel="stylesheet" />  
+
+<spring:url value="/js/bootstrap.min.js" var="bootstrap3JS" />
+<script src="${bootstrap3JS}"></script>
+
+<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
+<script src="${jqueryJs}"></script>
+
+<spring:url value="/js/jquery.form-validator.min.js" var="controlformJs" />
+<script src="${controlformJs}"></script>
+
 
 
 <spring:url value="/js/datepicker.min.js" var="datePickerJs" />
@@ -43,8 +46,7 @@
 <spring:url value="/js/datepicker.fr.js" var="datePickerJsFR" />
 <script src="${datePickerJsFR}"></script>
 
-<spring:url value="/css/datepicker.min.css" var="datePickerCss" />
-<link href="${datePickerCss}" rel="stylesheet" /> 
+
 
 </head>
 

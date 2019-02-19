@@ -16,28 +16,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-<spring:url value="/css/bootstrap-theme.min.css" var="bootstrapThemeCss" />
 <spring:url value="/css/dataTables.bootstrap.min.css" var="bootstrapdataTablesCss" />
-
-
-<spring:url value="/js/jquery.dataTables.min.js" var="jquerydataTablesJs" />
-
-<spring:url value="/js/dataTables.bootstrap.min.js" var="bootstrapdataTablesJs" />
-
-<link href="${bootstrapThemeCss}" rel="stylesheet" />
 <link href="${bootstrapdataTablesCss}" rel="stylesheet" />
-
-
-<script src="${jquerydataTablesJs}"></script>
-
-<script src="${bootstrapdataTablesJs}"></script>
 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
@@ -45,25 +27,23 @@
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
-<style>
-  .modal-header, h4, .close {
-      background-color: #DF7401;
-      color:white !important;
-      text-align: left;
-      font-size: 30px;
-  }
-  .modal-footer {
-      background-color: #E6E6E6;
-  }
-  </style>
-  
+<spring:url value="/js/jquery.dataTables.min.js" var="jquerydataTablesJs" />
+<script src="${jquerydataTablesJs}"></script>
+
+<spring:url value="/js/dataTables.bootstrap.min.js" var="bootstrapdataTablesJs" />
+<script src="${bootstrapdataTablesJs}"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 </head>
 
 
 <body>
 
 	<jsp:include page="../common/header.jsp" />
-<body>
+
 
  <div class="container">
 
@@ -163,7 +143,6 @@
 // $(document).ready(function() {
 //     $('#prodtable').DataTable();
 // } );
-
 // $(document).ready(function() {
 //     $('#prodtable').dataTable( {
 //         "language": {
@@ -171,7 +150,6 @@
 //         }
 //     } );
 // } );
-
 $('#prodtable').DataTable( {
     language: {
         processing:     "Traitement en cours...",
