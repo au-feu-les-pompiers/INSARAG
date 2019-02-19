@@ -68,37 +68,6 @@
 
 	<jsp:include page="../common/header.jsp" />
 
-	<div class="container">
-
-		<h1>Consulter Mission</h1>
-
-		<br />
-
-		 
-		<div class="row">
-			<label class="col-sm-2">ID</label>
-			<div class="col-sm-10">${missionToShow.idMission}</div>
-		</div>
-		
-		<div class="row">
-			<label class="col-sm-2">Lieu</label>
-			<div class="col-sm-10">${missionToShow.lieu}</div>
-		</div>		
-
-		<div class="row">
-			<label class="col-sm-2">Date de début</label>
-			<div class="col-sm-10">${missionToShow.debut}</div>
-		</div>
-
-		<div class="row">
-			<label class="col-sm-2">Date de fin</label>
-			<div class="col-sm-10">${missionToShow.fin}</div>
-		</div>
-		
-						
-	</div>
-	
-
 <div id="map"></div>
     <script>
       // Note: This example requires that you consent to location sharing when

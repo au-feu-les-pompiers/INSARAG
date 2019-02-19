@@ -28,7 +28,7 @@
                               <i class="far fa-comments"></i>
                         </span>  Chat</a>
                     </li>
-                    <li><a href="#map" class="map order-3">
+                    <li><a href="${pageContext.request.contextPath}/carte" class="map order-3">
                         <span style="color: #006600;">
                               <i class="fas fa-map-marked-alt"></i>
                         </span>  Map</a>
