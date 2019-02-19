@@ -66,7 +66,7 @@
 
 <body>
 
-	<jsp:include page="../common/header.jsp" />
+	<!-- <jsp:include page="../common/header.jsp" /> -->
 
 <div id="map"></div>
     <script>

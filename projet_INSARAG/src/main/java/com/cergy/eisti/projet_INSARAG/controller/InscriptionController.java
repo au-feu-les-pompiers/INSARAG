@@ -70,7 +70,9 @@ public class InscriptionController {
 	    
 	    @RequestMapping(value = "/utilisateur/save", method = RequestMethod.POST)
 	    public String saveOrUpdate(@ModelAttribute("utilisateurForm") Utilisateur utilisateur, Model model, final RedirectAttributes redirectAttributes) throws Exception {
+	    	System.out.println("Email " + utilisateur.getEmail() + " Mdp: " + utilisateur.getMdp());
 	    	utilisateur.setMdp(utilisateurService.hash(utilisateur.getEmail(), utilisateur.getMdp()));
+	    	System.out.println("Email " + utilisateur.getEmail() + " Mdp: " + utilisateur.getMdp());
 	    	Long id = utilisateurService.save(utilisateur);
 	    	try {
 				
