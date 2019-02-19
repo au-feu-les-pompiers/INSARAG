@@ -51,12 +51,9 @@
 	                <input type="password" name="user_mdp" class="form-control" placeholder="********">
 	              </div>
 	              
-	            <input type="submit" value="Connexion">	
-	              
-	            <!--<div class="form-group">
-	                <button class="btn btn-lg btn-danger btn-block" id="connexion" type="submit">Connexion</button>        
-	            </div>
-	            <hr class="style1"> -->
+	            <input class="btn btn-lg btn-danger btn-block" id="connexion"  type="submit" value="Connexion">	
+	            
+	            <hr class="style1">  
 
 	            </form>
 	            <div class="form-group">

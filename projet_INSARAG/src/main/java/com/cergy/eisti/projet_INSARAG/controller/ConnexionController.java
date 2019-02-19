@@ -22,8 +22,9 @@ public class ConnexionController {
 	
 	
 	@RequestMapping(value="/", method= RequestMethod.GET)
-	public String getFormAdmission() throws Exception {
-		
+	public String getFormAdmission(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		session.invalidate();
 		return "Connexion";
 	} 
 	
