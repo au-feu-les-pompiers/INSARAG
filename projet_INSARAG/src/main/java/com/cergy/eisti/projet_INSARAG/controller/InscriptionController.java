@@ -18,6 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cergy.eisti.projet_INSARAG.model.Utilisateur;
 import com.cergy.eisti.projet_INSARAG.service.UtilisateurService;
 
+import ch.qos.logback.classic.turbo.MDCValueLevelPair;
+
  
 @Controller("inscriptionController")
 public class InscriptionController {
@@ -58,6 +60,7 @@ public class InscriptionController {
 	    
 	    @RequestMapping(value = "/utilisateur/save", method = RequestMethod.POST)
 	    public String saveOrUpdate(@ModelAttribute("utilisateurForm") Utilisateur utilisateur, Model model, final RedirectAttributes redirectAttributes) throws Exception {
+	    	utilisateur.setMdp(utilisateurService.hash(utilisateur.getEmail(), utilisateur.getMdp()));
 	    	Long id = utilisateurService.save(utilisateur);
 	    	try {
 				

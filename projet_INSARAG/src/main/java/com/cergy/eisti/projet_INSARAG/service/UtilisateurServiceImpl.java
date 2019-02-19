@@ -66,7 +66,11 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	@Override
 	public int downAuto(Long idUtilisateur) {
 		return utilisateurRepository.downAutoUtilisateur(idUtilisateur) ;
-	} 
+	}
 
+	@Override
+	public String hash(String login, String mdp) {
+		return Integer.toString((login + mdp).hashCode());
+	}
    
 }
