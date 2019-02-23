@@ -17,7 +17,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
  
 <spring:url value="/css/dataTables.bootstrap.min.css" var="bootstrapdataTablesCss" />
 <link href="${bootstrapdataTablesCss}" rel="stylesheet" />
@@ -31,11 +31,14 @@
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
-<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
+<%-- <spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
 <script src="${jqueryJs}"></script>
 
 <spring:url value="/js/bootstrap.min.js" var="bootstrap3Js" />
-<script src="${bootstrap3Js}"></script>
+<script src="${bootstrap3Js}"></script> --%>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
 
 <spring:url value="/js/jquery.dataTables.min.js" var="jquerydataTablesJs" />
 <script src="${jquerydataTablesJs}"></script>

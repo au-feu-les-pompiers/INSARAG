@@ -16,8 +16,11 @@
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<spring:url value="/css/bootstrap.min.css" var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" />
+<%-- <spring:url value="/css/bootstrap.min.css" var="bootstrapCss" />
+<link href="${bootstrapCss}" rel="stylesheet" /> --%>
+
+<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" />
 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
@@ -25,12 +28,14 @@
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
-<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
+<%-- <spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
 <script src="${jqueryJs}"></script>
 
 <spring:url value="/js/bootstrap.min.js" var="bootstrap3Js" />
-<script src="${bootstrap3Js}"></script>
+<script src="${bootstrap3Js}"></script> --%>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
 
 </head>
 

@@ -16,9 +16,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-
-<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" />
+<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" />
 
 <spring:url value="/css/datepicker.min.css" var="datePickerCss" />
 <link href="${datePickerCss}" rel="stylesheet" />
