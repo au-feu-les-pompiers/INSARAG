@@ -15,8 +15,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
   	
-<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrap4Css" />
-<link href="${bootstrap4Css}" rel="stylesheet" />
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
@@ -46,9 +46,11 @@
 	<div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
 		padding: 10px 30px;
 		border: 1px solid grey;">
-		<h1>Consulter Mission</h1>
-
-		<br />
+		
+		<div class="row justify-content-center align-items-center">
+			<h3 class="text-center">Consulter Mission</h3>
+		</div>
+		<br/>
 
 		 
 		<div class="row">

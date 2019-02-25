@@ -16,11 +16,9 @@
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<%-- <spring:url value="/css/bootstrap.min.css" var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" /> --%>
 
-<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrap4Css" />
-<link href="${bootstrap4Css}" rel="stylesheet" />
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
@@ -52,8 +50,9 @@
 	
 	<spring:url value="/utilisateur/update/${utilToShow.id}" var="updateUrl" />
 
-		<h1>Consulter Utilisateur</h1>
-
+		<div class="row justify-content-center align-items-center">
+			<h3 class="text-center">Consulter Utilisateur</h3>
+		</div>
 		<br />
 
 		 

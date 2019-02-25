@@ -15,8 +15,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
   	
-<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrap4Css" />
-<link href="${bootstrap4Css}" rel="stylesheet" />
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
@@ -26,7 +26,6 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
-
 
 <spring:url value="/js/jquery.form-validator.min.js" var="controlformJs" />
 <script src="${controlformJs}"></script>
@@ -61,13 +60,13 @@
 
    <c:choose>
 		<c:when test="${missionForm.idMission  != null}">
-			<div class="row">
-				<h3 class="text-center text-dark">Nouvelle mission</h3>
+			<div class="row justify-content-center align-items-center">
+				<h3 class="text-center">Nouvelle mission</h3>
 			</div>
 		</c:when>
 		<c:otherwise>
-			<div class="row">
-				<h3 class="text-center text-dark">Nouvelle mission</h3>
+			<div class="justify-content-center align-items-center">
+				<h3 class="text-center">Nouvelle mission</h3>
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -141,7 +140,7 @@
     
 		
 		<div class="form-group">
-			<div class="mx-auto">
+			<div class="row justify-content-center align-items-center">
 			   <c:choose>
 			   
 					<c:when test="${missionForm.idMission  != null}">
@@ -158,7 +157,7 @@
    
    
  </form:form>
- 
+
  </div>
 </div>
 

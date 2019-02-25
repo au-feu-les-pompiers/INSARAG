@@ -15,13 +15,12 @@
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  
-<spring:url value="/css/dataTables.bootstrap.min.css" var="bootstrapdataTablesCss" />
-<link href="${bootstrapdataTablesCss}" rel="stylesheet" />
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
+ 
+<spring:url value="/css/datatables.css" var="bootstrapdataTablesCss" />
+<link href="${bootstrapdataTablesCss}" rel="stylesheet" /> 
 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
@@ -29,16 +28,13 @@
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+ <spring:url value="https://code.jquery.com/jquery-3.2.1.slim.min.js" var="jqueryJS" />
+<script src="${jqueryJS}"></script> 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+ <spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" var="BootstrapJS" />
+<script src="${BootstrapJS}"></script> 
 
-<spring:url value="/js/jquery.dataTables.min.js" var="jquerydataTablesJs" />
-<script src="${jquerydataTablesJs}"></script>
-
-<spring:url value="/js/dataTables.bootstrap.min.js" var="bootstrapdataTablesJs" />
+<spring:url value="/js/datatables.js" var="bootstrapdataTablesJs" />
 <script src="${bootstrapdataTablesJs}"></script>
 
 
@@ -75,22 +71,23 @@
 		
  <c:otherwise>  <%-- Debut c:otherwise  --%>
 		
-		<div class="row">
-			<div class="col-xs-10">
+
+		<div class="row justify-content-center align-items-center">
+		
 					<h1> Liste des missions </h1>				
-			</div>
-			<div class="col-xs-2">
-					<button type="button" style="margin-top:20px;" class="btn btn-warning pull-right" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
-					 Nouvelle mission
-					</button>
-			</div>
+		</div>
+		<div class="row justify-content-center align-items-center">
+			
+			<button type="button" style="margin-top:20px;" class="btn btn-warning pull-right" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
+				 Nouvelle mission
+			</button>
+			
 		</div>
 
 
-<!-- 		<table  id="prodtable" class="table table-striped"> -->
-		<table id="prodtable" class="table table-striped table-bordered">
+		<table id="prodtable" class="table table-responsive  table-bordered">
 		
-			<thead>
+			<thead class="thead-light">
 				<tr>
 				   <th>Id</th>
 					<th>Lieu</th>
@@ -116,11 +113,10 @@
 				
 				<tr>
 					<td width="5%">${miss.idMission}</td>
-					<td width="20%">${miss.lieu}</td>
-					<td width="20%">${miss.debut}</td>
-					<td width="20%">${miss.fin}</td>
-	
-					<td>
+					<td width="25%">${miss.lieu}</td>
+					<td width="15%">${miss.debut}</td>
+					<td width="15%">${miss.fin}</td>
+					<td width="30%">
 					
 						<button class="btn btn-success"	onclick="location.href='${missUrl}'">
 						show

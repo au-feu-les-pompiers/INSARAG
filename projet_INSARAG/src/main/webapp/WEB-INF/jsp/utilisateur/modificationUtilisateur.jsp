@@ -15,14 +15,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
   	
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
 
-<%-- <spring:url value="/css/bootstrap.min.css" var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" />
- --%>
-<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrap4Css" />
-<link href="${bootstrap4Css}" rel="stylesheet" />
- 
- 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
 
@@ -32,14 +27,17 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
 
-<%-- <spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
-<script src="${jqueryJs}"></script>
-
-<spring:url value="/js/bootstrap.min.js" var="bootstrap3Js" />
-<script src="${bootstrap3Js}"></script> --%>
-
 <spring:url value="/js/jquery.form-validator.min.js" var="controlformJs" />
 <script src="${controlformJs}"></script>
+
+<spring:url value="/js/datepicker.min.js" var="datePickerJs" />
+<script src="${datePickerJs}"></script>
+
+<spring:url value="/js/datepicker.fr.js" var="datePickerJsFR" />
+<script src="${datePickerJsFR}"></script>
+
+<spring:url value="/css/datepicker.min.css" var="datePickerCss" />
+<link href="${datePickerCss}" rel="stylesheet" /> 
 
 
 
@@ -56,7 +54,15 @@
 <jsp:include page="../common/header.jsp" />
  
 <div class="container">
-
+<div class="row justify-content-center align-items-center">
+<div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
+	padding: 15px 30px;
+	border: 1px solid grey;">
+	
+	<div class="row justify-content-center align-items-center">
+				<h3 class="text-center">Modifier un pompier</h3>
+	</div>
+			
 	<spring:url value="/utilisateur/save" var="utilisateurActionUrl" />
 
 	<form:form id="utilisateurform"  class="form-horizontal"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >
@@ -64,58 +70,54 @@
 		<form:hidden path="id"  value="${utilisateurForm.id}" />
 		
 		<spring:bind path="email">
-			<div class="row">
-				<div class="col-md-offset-2 col-md-4">
+			<div class="form-row">
 					<div class="form-group">
-					<label>Email</label>
-					<form:input type="text"   path="email"  class="form-control"  value="${utilisateurForm.email}" placeholder="Email de l'utilisateur" 
-								required="required" 
-								data-validation-length="max100"
-								data-validation-allowing="-_ éèà'&"
-								data-validation="required alphanumeric length"
-	  							data-validation-error-msg-required="Champs designation est Obligatoire"
-	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
-	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-					<form:errors path="email" class="control-label" />		
+						<label>Email</label>
+						<form:input type="text"   path="email"  class="form-control"  value="${utilisateurForm.email}" placeholder="Email de l'utilisateur" 
+									required="required" 
+									data-validation-length="max100"
+									data-validation-allowing="-_ éèà'&"
+									data-validation="required alphanumeric length"
+		  							data-validation-error-msg-required="Champs designation est Obligatoire"
+		 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+		 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
+						<form:errors path="email" class="control-label" />		
 					</div>
-				</div>
 			</div>
 		</spring:bind>
 		
 		<spring:bind path="mdp">
-			<div class="row">
-				<div class="col-md-offset-2 col-md-4">
+			<div class="form-row">
 					<div class="form-group">
-					<label>Mot de passe</label>
-					<form:input type="text"   path="mdp" class="form-control" value="defaultINSARAG" placeholder="Mdp de l'utilisateur" 
+						<label>Mot de passe</label>
+						<form:input type="text"   path="mdp" class="form-control" value="defaultINSARAG" placeholder="Mdp de l'utilisateur" 
+									required="required" 
+									data-validation-length="max100"
+									data-validation-allowing="-_ éèà'&"
+									data-validation="required alphanumeric length"
+		  							data-validation-error-msg-required="Champs designation est Obligatoire"
+		 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+		 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
+						<form:errors path="mdp" class="control-label" />		
+					</div>
+			</div>
+		</spring:bind>
+	
+		<spring:bind path="nom">
+		<div class="form-row">
+			<div class="col-6">
+				<div class="form-group">
+					<label>Nom</label>
+					<form:input type="text"   path="nom"  class="form-control"  value="${utilisateurForm.nom}" placeholder="Nom de l'utilisateur" 
 								required="required" 
 								data-validation-length="max100"
 								data-validation-allowing="-_ éèà'&"
 								data-validation="required alphanumeric length"
 	  							data-validation-error-msg-required="Champs designation est Obligatoire"
 	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
-	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-					<form:errors path="mdp" class="control-label" />		
-					</div>
-				</div>
-			</div>
-		</spring:bind>
-	
-		<spring:bind path="nom">
-		<div class="row">
-			<div class="col-md-offset-2 col-md-4">
-				<div class="form-group">
-				<label>Nom</label>
-				<form:input type="text"   path="nom"  class="form-control"  value="${utilisateurForm.nom}" placeholder="Nom de l'utilisateur" 
-							required="required" 
-							data-validation-length="max100"
-							data-validation-allowing="-_ éèà'&"
-							data-validation="required alphanumeric length"
-  							data-validation-error-msg-required="Champs designation est Obligatoire"
- 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
- 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"
- 							disabled="true"/> 
-				<form:errors path="nom" class="control-label" />		
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"
+	 							disabled="true"/> 
+					<form:errors path="nom" class="control-label" />		
 				</div>
 			</div>
 		</div>
@@ -123,79 +125,77 @@
 		
 		
 		<spring:bind path="prenom">
-		<div class="row">
-			<div class="col-md-offset-2 col-md-4">
+		<div class="form-row">
+			<div class="col-6">
 				<div class="form-group">
-				<label>Prénom</label>
-				<form:input type="text" path="prenom"  class="form-control"  value="${utilisateurForm.prenom}" placeholder="Prenom de l'utilisateur" 
-							required="required" 
-							data-validation-length="max100"
-							data-validation="required length"
-  							data-validation-error-msg-required="Champs config est Obligatoire"
- 							data-validation-error-msg-length="Taille du champs config ne doit pas dépasser 100"
- 							disabled="true"/>
-				<form:errors path="prenom" class="control-label" />		
+					<label>Prénom</label>
+					<form:input type="text" path="prenom"  class="form-control"  value="${utilisateurForm.prenom}" placeholder="Prenom de l'utilisateur" 
+								required="required" 
+								data-validation-length="max100"
+								data-validation="required length"
+	  							data-validation-error-msg-required="Champs config est Obligatoire"
+	 							data-validation-error-msg-length="Taille du champs config ne doit pas dépasser 100"
+	 							disabled="true"/>
+					<form:errors path="prenom" class="control-label" />		
 				</div>
 			</div>
 		</div>
 		</spring:bind>
 		
 		<spring:bind path="telephone">
-		<div class="row">
-			<div class="col-md-offset-2 col-md-4">
+		<div class="form-row">
+			<div class="col-6">
 				<div class="form-group">
-				<label>Numéro de téléphone</label>
-				<form:input type="text"   path="telephone"  class="form-control"  value="${utilisateurForm.telephone}" placeholder="Téléphone de l'utilisateur" 
-							required="required" 
-							data-validation-length="max100"
-							data-validation-allowing="-_ éèà'&"
-							data-validation="required alphanumeric length"
-  							data-validation-error-msg-required="Champs designation est Obligatoire"
- 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
- 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-				<form:errors path="telephone" class="control-label" />		
+					<label>Numéro de téléphone</label>
+					<form:input type="text"   path="telephone"  class="form-control"  value="${utilisateurForm.telephone}" placeholder="Téléphone de l'utilisateur" 
+								required="required" 
+								data-validation-length="max100"
+								data-validation-allowing="-_ éèà'&"
+								data-validation="required alphanumeric length"
+	  							data-validation-error-msg-required="Champs designation est Obligatoire"
+	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
+					<form:errors path="telephone" class="control-label" />		
 				</div>
 			</div>
 		</div>
 		</spring:bind>
 		
 		<spring:bind path="naissance">
-		<div class="row">
-			<div class="col-md-offset-2 col-md-4">
+		<div class="form-row">
+			<div class="col-6">
 				<div class="form-group">
-				<label>Date de naissance</label>
-				<form:input type="text"   path="naissance"  class="form-control"  value="${utilisateurForm.naissance}" placeholder="Date de naissance de l'utilisateur" 
-							required="required" 
-							data-validation-length="max100"
-							data-validation-allowing="-_ éèà'&"
-							data-validation="required alphanumeric length"
-  							data-validation-error-msg-required="Champs designation est Obligatoire"
- 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
- 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"
- 							disabled="true"/> 
-				<form:errors path="naissance" class="control-label" />		
+					<label>Date de naissance</label>
+					<form:input type="text"   path="naissance"  class="form-control"  value="${utilisateurForm.naissance}" placeholder="Date de naissance de l'utilisateur" 
+								required="required" 
+								data-validation-length="max100"
+								data-validation-allowing="-_ éèà'&"
+								data-validation="required alphanumeric length"
+	  							data-validation-error-msg-required="Champs designation est Obligatoire"
+	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"
+	 							disabled="true"/> 
+					<form:errors path="naissance" class="control-label" />		
 				</div>
 			</div>
 		</div>
 		</spring:bind>
 		
 		<spring:bind path="matricule">
-		<div class="row">
-			<div class="col-md-offset-2 col-md-4">
+		<div class="form-row">
 				<div class="form-group">
-				<label>Matricule</label>
-				<form:input type="text"   path="matricule"  class="form-control"  value="${utilisateurForm.matricule}" placeholder="Matricule de l'utilisateur" 
-							required="required" 
-							data-validation-length="max100"
-							data-validation-allowing="-_ éèà'&"
-							data-validation="required alphanumeric length"
-  							data-validation-error-msg-required="Champs designation est Obligatoire"
- 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
- 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"
- 							disabled="true"/> 
-				<form:errors path="matricule" class="control-label" />		
+					<label>Matricule</label>
+					<form:input type="text"   path="matricule"  class="form-control"  value="${utilisateurForm.matricule}" placeholder="Matricule de l'utilisateur" 
+								required="required" 
+								data-validation-length="max100"
+								data-validation-allowing="-_ éèà'&"
+								data-validation="required alphanumeric length"
+	  							data-validation-error-msg-required="Champs designation est Obligatoire"
+	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"
+	 							disabled="true"/> 
+					<form:errors path="matricule" class="control-label" />		
 				</div>
-			</div>
 		</div>
 		</spring:bind>
 		
@@ -207,16 +207,17 @@
 		<form:hidden path="enMission"  value="${utilisateurForm.enMission}" />
 		
 		
-		<div class="row">
-			<div class="col-md-offset-2 col-md-1">
-						<button type="submit" class="btn  btn-primary pull-left">Modifier</button>
+		<div class="form-group">
+			<div class="row justify-content-center align-items-center">
+				<button type="submit" class="btn  btn-primary pull-left">Modifier</button>
+	      		<button type="reset" class="btn  btn-default">Reset</button>
 	       </div>
-	       <div class="col-md-offset-1 col-md-1 pull-left">
-						<button type="reset" class="btn  btn-default">Reset</button>
-	       </div>
-   </div>
+   		</div>
+   		
  </form:form>
 
+</div>
+</div>
 </div>
 
 

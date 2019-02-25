@@ -16,14 +16,12 @@
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
  
-<spring:url value="/css/dataTables.bootstrap.min.css" var="bootstrapdataTablesCss" />
-<link href="${bootstrapdataTablesCss}" rel="stylesheet" />
- 
-<%-- <spring:url value="/css/bootstrap.min.css" var="bootstrap3Css" />
-<script src="${bootstrap3Css}"></script> --%>
+<spring:url value="/css/datatables.css" var="bootstrapdataTablesCss" />
+<link href="${bootstrapdataTablesCss}" rel="stylesheet" /> 
 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
@@ -31,19 +29,13 @@
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
-<%-- <spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
-<script src="${jqueryJs}"></script>
+ <spring:url value="https://code.jquery.com/jquery-3.2.1.slim.min.js" var="jqueryJS" />
+<script src="${jqueryJS}"></script> 
 
-<spring:url value="/js/bootstrap.min.js" var="bootstrap3Js" />
-<script src="${bootstrap3Js}"></script> --%>
+ <spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" var="BootstrapJS" />
+<script src="${BootstrapJS}"></script> 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
-
-<spring:url value="/js/jquery.dataTables.min.js" var="jquerydataTablesJs" />
-<script src="${jquerydataTablesJs}"></script>
-
-<spring:url value="/js/dataTables.bootstrap.min.js" var="bootstrapdataTablesJs" />
+<spring:url value="/js/datatables.js" var="bootstrapdataTablesJs" />
 <script src="${bootstrapdataTablesJs}"></script>
 
 
@@ -57,7 +49,7 @@
 	<jsp:include page="../common/header.jsp" />
 <body>
 
- <div class="container">
+ <div class="container" style="width:100%;">
 
 		<c:if test="${not empty msgAlert}">
 			<div class="alert alert-${typeAlert} alert-dismissible" role="alert">
@@ -80,17 +72,16 @@
 		
  <c:otherwise>  <%-- Debut c:otherwise  --%>
 		
-		<div class="row">
-		<div class="col-md-7">
-			<h1> Administration des utilisateurs </h1>
-		</div>
-		</div>
-
-
-<!-- 		<table  id="prodtable" class="table table-striped"> -->
-		<table id="prodtable" class="table table-striped table-bordered">
+		<div class="row justify-content-center align-items-center">
 		
-			<thead>
+			<h1> Administration des utilisateurs </h1>
+	
+		</div>
+
+
+		<table id="prodtable" class="table table-responsive table-bordered" >
+		
+			<thead class="thead-light">
 				<tr>
 				   <th>Matricule</th>
 					<th>Utilisateur</th>
@@ -129,6 +120,7 @@
 					<td width="10%">${util.telephone}</td>
 					<td width="10%">
 					
+					
 					<c:choose>  <%-- Debut c:choose  --%>
 					<c:when test="${util.autorisation == 0}">En attente</c:when>
 					<c:when test="${util.autorisation == 1}">Pompier</c:when>
@@ -141,7 +133,7 @@
 					<c:choose>  <%-- Debut c:choose  --%>
 						<c:when test="${util.autorisation == 0}">
 							<button class="btn btn-success" onclick="location.href='${upAutoUrl}'">Confirmer</button>
-							<button class="btn btn-warning"	onclick="location.href='${downUrl}'">Refuser</button>
+							<button class="btn btn-danger"	onclick="location.href='${downUrl}'">Refuser</button>
 						</c:when>
 						<c:when test="${util.autorisation == 1}">
 							<button class="btn btn-success" onclick="location.href='${upAutoUrl}'">Promouvoir</button>
@@ -167,7 +159,6 @@
 </c:choose> <%-- Fin c:choose  --%>
 </div> <%-- Fin div class="container" --%>
 
-<!-- https://datatables.net/examples/styling/bootstrap.html -->
 <script>	
 // $(document).ready(function() {
 //     $('#prodtable').DataTable();
