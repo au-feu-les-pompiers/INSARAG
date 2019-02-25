@@ -57,7 +57,7 @@
 
 	            </form>
 	            <div class="form-group">
-	                <button onclick="location.href='${pageContext.request.contextPath}/utilisateur/new'" class="btn btn-lg btn-danger btn-block" style="color: white; background-color: firebrick" id="inscription" type="submit">Inscription</button>        
+	                <button onclick="location.href='${pageContext.request.contextPath}/utilisateur/new'" class="btn btn-block btn-lg inscription" id="inscription" type="submit">Inscription</button>        
 	            </div>
 	
 			</div>

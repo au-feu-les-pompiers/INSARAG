@@ -63,11 +63,13 @@
 			<div class="row justify-content-center align-items-center">
 				<h3 class="text-center">Nouvelle mission</h3>
 			</div>
+	
 		</c:when>
 		<c:otherwise>
 			<div class="justify-content-center align-items-center">
 				<h3 class="text-center">Nouvelle mission</h3>
 			</div>
+		
 		</c:otherwise>
 	</c:choose>
 
