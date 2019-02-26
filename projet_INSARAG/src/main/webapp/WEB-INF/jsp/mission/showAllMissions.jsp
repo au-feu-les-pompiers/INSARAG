@@ -89,10 +89,10 @@
 		
 			<thead class="thead-light">
 				<tr>
-				   <th>Id</th>
-					<th>Lieu</th>
-					<th>Date de début</th>
-					<th>Date de fin</th>
+				   <th>Id <i class="fas fa-sort"></i></th>
+					<th>Lieu <i class="fas fa-sort"></i></th>
+					<th>Date de début <i class="fas fa-sort"></i></th>
+					<th>Date de fin <i class="fas fa-sort"></i></th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -112,7 +112,7 @@
 				<spring:url value="/mission/update/${miss.idMission}" var="updateUrl" />
 				
 				<tr>
-					<td width="5%">${miss.idMission}</td>
+					<td width="8%">${miss.idMission}</td>
 					<td width="25%">${miss.lieu}</td>
 					<td width="15%">${miss.debut}</td>
 					<td width="15%">${miss.fin}</td>

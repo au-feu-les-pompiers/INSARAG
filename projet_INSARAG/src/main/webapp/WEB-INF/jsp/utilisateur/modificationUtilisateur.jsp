@@ -70,7 +70,7 @@
 		<form:hidden path="id"  value="${utilisateurForm.id}" />
 		
 		<spring:bind path="email">
-			<div class="form-row">
+		
 					<div class="form-group">
 						<label>Email</label>
 						<form:input type="text"   path="email"  class="form-control"  value="${utilisateurForm.email}" placeholder="Email de l'utilisateur" 
@@ -83,11 +83,11 @@
 		 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
 						<form:errors path="email" class="control-label" />		
 					</div>
-			</div>
+
 		</spring:bind>
 		
 		<spring:bind path="mdp">
-			<div class="form-row">
+
 					<div class="form-group">
 						<label>Mot de passe</label>
 						<form:input type="text"   path="mdp" class="form-control" value="defaultINSARAG" placeholder="Mdp de l'utilisateur" 
@@ -100,11 +100,11 @@
 		 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
 						<form:errors path="mdp" class="control-label" />		
 					</div>
-			</div>
+		
 		</spring:bind>
 	
 		<spring:bind path="nom">
-		<div class="form-row">
+		<div class="row">
 			<div class="col-6">
 				<div class="form-group">
 					<label>Nom</label>
@@ -120,12 +120,12 @@
 					<form:errors path="nom" class="control-label" />		
 				</div>
 			</div>
-		</div>
+	
 		</spring:bind>
 		
 		
 		<spring:bind path="prenom">
-		<div class="form-row">
+	
 			<div class="col-6">
 				<div class="form-group">
 					<label>Prénom</label>
@@ -143,7 +143,7 @@
 		</spring:bind>
 		
 		<spring:bind path="telephone">
-		<div class="form-row">
+			<div class="row">
 			<div class="col-6">
 				<div class="form-group">
 					<label>Numéro de téléphone</label>
@@ -158,11 +158,11 @@
 					<form:errors path="telephone" class="control-label" />		
 				</div>
 			</div>
-		</div>
+		
 		</spring:bind>
 		
 		<spring:bind path="naissance">
-		<div class="form-row">
+	
 			<div class="col-6">
 				<div class="form-group">
 					<label>Date de naissance</label>
@@ -182,7 +182,7 @@
 		</spring:bind>
 		
 		<spring:bind path="matricule">
-		<div class="form-row">
+
 				<div class="form-group">
 					<label>Matricule</label>
 					<form:input type="text"   path="matricule"  class="form-control"  value="${utilisateurForm.matricule}" placeholder="Matricule de l'utilisateur" 
@@ -196,7 +196,7 @@
 	 							disabled="true"/> 
 					<form:errors path="matricule" class="control-label" />		
 				</div>
-		</div>
+		
 		</spring:bind>
 		
 		<form:hidden path="nom"  value="${utilisateurForm.nom}" />

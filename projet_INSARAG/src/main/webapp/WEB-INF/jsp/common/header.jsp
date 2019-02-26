@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 
 <nav class="navbar navbar-expand-xl fixed-top navbar-light bg-light">
-      <a class="navbar-brand" href="http://localhost:8080">INSARAG</a>
+      <a class="navbar-brand " href="http://localhost:8080">INSARAG</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -60,6 +60,7 @@
                     <i class="far fa-id-card"></i>
                 </span>  Contacts</a>
           </li>
+  <!--         METTRE LE NOM ET PRENOM DE LA PERSONNE CONNECTEE  -->
           <li class="nav-item">
             <a class="nav-link" style="font-weight: bold;" href="${pageContext.request.contextPath}/utilisateur/get/5">Richard Dupont</a>
           </li>

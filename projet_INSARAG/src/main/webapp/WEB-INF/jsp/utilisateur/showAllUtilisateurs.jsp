@@ -49,7 +49,7 @@
 	<jsp:include page="../common/header.jsp" />
 <body>
 
- <div class="container" style="width:100%;">
+ <div class="container" style="max-width:1300px;">
 
 		<c:if test="${not empty msgAlert}">
 			<div class="alert alert-${typeAlert} alert-dismissible" role="alert">
@@ -84,12 +84,12 @@
 			<thead class="thead-light">
 				<tr>
 				   <th>Matricule</th>
-					<th>Utilisateur</th>
-					<th>Date de naissance</th>
-					<th>Email</th>
+					<th>Utilisateur <i class="fas fa-sort"></i></th>
+					<th>Date de naissance <i class="fas fa-sort"></i></th>
+					<th>Email <i class="fas fa-sort"></i></th>
 					<th>Téléphone</th>
-					<th>Statut</th>
-					<th>Action</th>
+					<th>Statut <i class="fas fa-sort"></i></th>
+					<th>Action <i class="fas fa-sort"></i></th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -115,7 +115,7 @@
 				<tr>
 					<td width="5%">${util.matricule}</td>
 					<td width="15%"><font style="text-transform: uppercase;">${util.nom}</font> ${util.prenom}</td>
-					<td width="10%">${util.naissance}</td>
+					<td width="17%">${util.naissance}</td>
 					<td width="20%">${util.email}</td>
 					<td width="10%">${util.telephone}</td>
 					<td width="10%">
