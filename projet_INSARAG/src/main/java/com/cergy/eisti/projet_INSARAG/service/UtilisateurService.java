@@ -19,6 +19,8 @@ public interface UtilisateurService {
   	int updateAuto (int autoUtilisateur, Long idUtilisateur); 
 
   	int downAuto (Long idUtilisateur); 
-
-   
+  	
+  	String hash(String login, String mdp);
+  	
+  	List<Utilisateur> getAllInMission();
 }

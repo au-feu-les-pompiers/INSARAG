@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.cergy.eisti.projet_INSARAG.model.Utilisateur;
 
+import javassist.compiler.NoFieldException;
+
 @Service
 public class ConnexionService {
 	
@@ -17,12 +19,7 @@ public class ConnexionService {
 	
 	public boolean isRegistered(String login,String mdp) {
 		for (Utilisateur profilFind : this.getAll()) {
-			String emailGet = profilFind.getEmail();
 			String mdpGet = profilFind.getMdp();
-			/*if (login.equals(emailGet) && mdp.equals(mdpGet)) {
-				this.utilisateur = profilFind;
-				return true;
-			}*/
 			if (mdpGet.equals(Integer.toString((login + mdp).hashCode()))) {
 				this.utilisateur = profilFind;
 				return true;
@@ -41,6 +38,17 @@ public class ConnexionService {
 			return "Administrateur";
 		}
 		return "pompier";
+	}
+	
+	public Long getPompier(String login,String mdp) throws Exception{
+		for (Utilisateur profilFind : this.getAll()) {
+			String mdpGet = profilFind.getMdp();
+			if (mdpGet.equals(Integer.toString((login + mdp).hashCode()))) {
+				this.utilisateur = profilFind;
+				return profilFind.getId();
+			}
+		}
+		return (long) -1;
 	}
 
 }

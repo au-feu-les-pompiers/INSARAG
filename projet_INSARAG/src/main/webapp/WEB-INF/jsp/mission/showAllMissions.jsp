@@ -27,14 +27,16 @@
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <spring:url value="/js/jquery.dataTables.min.js" var="jquerydataTablesJs" />
 <script src="${jquerydataTablesJs}"></script>
 
 <spring:url value="/js/dataTables.bootstrap.min.js" var="bootstrapdataTablesJs" />
 <script src="${bootstrapdataTablesJs}"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 
 </head>
@@ -69,16 +71,13 @@
  <c:otherwise>  <%-- Debut c:otherwise  --%>
 		
 		<div class="row">
-			<div class="d-flex justify-content-between">
-				<div class="col-md-10 col-sm-10">
-					<h1> Liste des missions </h1>
-				
-				</div>
-				<div class="col-md-2 col-sm-2 float-sm-right">
-						<button type="button" style="margin-top:20px;" class="btn btn-warning" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
-						 Nouvelle mission
-						</button>
-				</div>
+			<div class="col-xs-10">
+					<h1> Liste des missions </h1>				
+			</div>
+			<div class="col-xs-2">
+					<button type="button" style="margin-top:20px;" class="btn btn-warning pull-right" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
+					 Nouvelle mission
+					</button>
 			</div>
 		</div>
 

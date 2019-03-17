@@ -22,8 +22,9 @@ public class ConnexionController {
 	
 	
 	@RequestMapping(value="/", method= RequestMethod.GET)
-	public String getFormAdmission() throws Exception {
-		
+	public String getFormAdmission(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		session.invalidate();
 		return "Connexion";
 	} 
 	
@@ -37,9 +38,10 @@ public class ConnexionController {
 			HttpSession session = request.getSession();
 			session.setAttribute("accreditation", connexionService.accreditationLvl());
 			session.setAttribute("connected", "connected");
+			session.setAttribute("id",connexionService.getPompier(login, mdp) );
 			
 			System.out.println(session.getAttribute("accreditation"));
-			return "index";
+			return "utilisateur/showAllUtilisateurs";
 		}
 		
 		return "Connexion";

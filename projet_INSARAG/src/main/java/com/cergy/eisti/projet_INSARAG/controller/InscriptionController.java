@@ -3,6 +3,11 @@ package com.cergy.eisti.projet_INSARAG.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.jasper.tagplugins.jstl.core.Redirect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +23,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cergy.eisti.projet_INSARAG.model.Utilisateur;
 import com.cergy.eisti.projet_INSARAG.service.UtilisateurService;
 
+import ch.qos.logback.classic.turbo.MDCValueLevelPair;
+
  
 @Controller("inscriptionController")
 public class InscriptionController {
@@ -30,34 +37,46 @@ public class InscriptionController {
  
 
 @RequestMapping(value = "/utilisateur/listAll", method = RequestMethod.GET)
-	protected ModelAndView showAllUtilisateur() throws Exception {
-		/*
-		 * Lancement du Service et recupeation donnees en base
-		 */
+	protected ModelAndView showAllUtilisateur(HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+        if (session.getAttribute("connected") != "connected") {
+	        return new ModelAndView("redirect:/");	        
+        }
 		List<Utilisateur> listeUtilisateurs = utilisateurService.getAll();
-
-		/*
-		 * Envoi Vue + Modele MVC pour Affichage donnees vue
-		 */
 		return new ModelAndView("/utilisateur/showAllUtilisateurs", "utilisateurs", listeUtilisateurs);
 	}
 
 	 	@RequestMapping(value = "/utilisateur/list", method = RequestMethod.GET)
-	    public String list(Model model) throws Exception {
+	    public String list(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	 		HttpSession session = request.getSession();
 	        model.addAttribute("utilisateurs", utilisateurService.getAll());
-	        return "/utilisateur/showAllUtilisateurs"; // Afficher la page showAllUtilisateurs.jsp qui se trouve sous /utilisateur
+	        if (session.getAttribute("connected") == "connected") {
+		        return "/utilisateur/showAllUtilisateurs"; // Afficher la page showAllUtilisateurs.jsp qui se trouve sous /utilisateur
+	        	
+	        }
+	        return "redirect:/"; // Afficher la page showAllUtilisateurs.jsp qui se trouve sous /utilisateur
 	        
 	    }
 
 	    @RequestMapping(value = "/utilisateur/get/{id}" , method = RequestMethod.GET)
-	    public String get(@PathVariable Long id, Model model) throws Exception {
+	    public String get(@PathVariable Long id, Model model, HttpServletRequest request) throws Exception {
+			HttpSession session = request.getSession();
+	        if (session.getAttribute("connected") != "connected") {
+		        return "redirect:/";	        
+	        }
 	        model.addAttribute("utilToShow", utilisateurService.getByIdUtilisateur(id));
 	        return "/utilisateur/showUtilisateur"; // Afficher la page modificationUtilisateur.jsp qui se trouve sous /utilisateur
 	    }
 	    
 	    
 	    @RequestMapping(value = "/utilisateur/save", method = RequestMethod.POST)
-	    public String saveOrUpdate(@ModelAttribute("utilisateurForm") Utilisateur utilisateur, Model model, final RedirectAttributes redirectAttributes) throws Exception {
+	    public String saveOrUpdate(@ModelAttribute("utilisateurForm") Utilisateur utilisateur, Model model,
+	    		HttpServletRequest request, final RedirectAttributes redirectAttributes) throws Exception {
+			HttpSession session = request.getSession();
+	        if (session.getAttribute("connected") != "connected") {
+		        return "redirect:/";	        
+	        }
+	    	utilisateur.setMdp(utilisateurService.hash(utilisateur.getEmail(), utilisateur.getMdp()));
 	    	Long id = utilisateurService.save(utilisateur);
 	    	try {
 				
@@ -83,14 +102,24 @@ public class InscriptionController {
 
  
 	    @RequestMapping("/utilisateur/update/{id}")
-	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
-	        Utilisateur utilisateur = utilisateurService.getByIdUtilisateur(id);
+	    public String update(@PathVariable Long id, Model model, HttpServletRequest request,
+	    		final RedirectAttributes redirectAttributes) throws Exception {
+			HttpSession session = request.getSession();
+	        if (session.getAttribute("connected") != "connected") {
+		        return "redirect:/";	        
+	        }
+	    	Utilisateur utilisateur = utilisateurService.getByIdUtilisateur(id);
 	        model.addAttribute("utilisateurForm", utilisateur);
 	        return "/utilisateur/modificationUtilisateur";
 	    }
 	    
 	    @RequestMapping("/utilisateur/upauto/{id}")
-	    public String upauto(@PathVariable Long id, Model model,final RedirectAttributes redirectAttributes) throws Exception {
+	    public String upauto(@PathVariable Long id, Model model,HttpServletRequest request,
+	    		final RedirectAttributes redirectAttributes) throws Exception {
+			HttpSession session = request.getSession();
+	        if (session.getAttribute("connected") != "connected") {
+		        return "redirect:/";	        
+	        }
 	    	int auto = utilisateurService.getAutoByIdUtilisateur(id);
 	    	if((auto == 0) || (auto == -1)) {
 	    		auto = 1;
@@ -104,8 +133,13 @@ public class InscriptionController {
 	    }
 	    
 	    @RequestMapping("/utilisateur/down/{id}")
-	    public String down(@PathVariable Long id, Model model,final RedirectAttributes redirectAttributes) throws Exception {
-	        utilisateurService.downAuto(id);
+	    public String down(@PathVariable Long id, Model model,
+	    		HttpServletRequest request, final RedirectAttributes redirectAttributes) throws Exception {
+			HttpSession session = request.getSession();
+	        if (session.getAttribute("connected") != "connected") {
+		        return "redirect:/";	        
+	        }
+	    	utilisateurService.downAuto(id);
 	    	model.addAttribute("utilisateurs", utilisateurService.getAll());
 	        return "/utilisateur/showAllUtilisateurs";
 	    }

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,7 @@ import com.cergy.eisti.projet_INSARAG.service.UtilisateurService;
  
  
 @Controller 
-@RequestMapping("/index") //make all URL's through this controller relative to /index
+@RequestMapping("/") //make all URL's through this controller relative to /index
 public class IndexController {
 	
 	private final Logger logger = LoggerFactory.getLogger(IndexController.class);
@@ -34,7 +36,7 @@ public class IndexController {
 	@RequestMapping(value="/index", method= RequestMethod.GET)
 	public String index(Map<String, Object> model) throws Exception {
 	 
-    return "index";
+    return "commmon/header";
 	}   
 	
 		/**************************************
@@ -45,7 +47,11 @@ public class IndexController {
 		
 		// show new Mission form
 		@RequestMapping(value = "/mission/new", method = RequestMethod.GET)
-		public String showNewMission(Model model) {
+		public String showNewMission(Model model, HttpServletRequest request) {
+			HttpSession session = request.getSession();
+	        if (session.getAttribute("connected") != "connected") {
+		        return "redirect:/";	        
+	        }
 
 			logger.debug(":::showNewMission:::");
 
@@ -103,6 +109,26 @@ public class IndexController {
 					 * Envoi Vue + Modèle MVC pour Affichage données vue
 					 */
 					return new ModelAndView("/utilisateur/showAllUtilisateurs", "utilisateurs", listeUtilisateurs);
-				} 
+				}
+				
+				 // show list of All FireFighters in Mission
+					@RequestMapping({"/utilisateur/listAllInMision","utilisateurList"})
+					protected ModelAndView lisAllUtilisateursInMission(HttpServletRequest request,
+							HttpServletResponse response) throws Exception {
+						HttpSession session = request.getSession();
+				        if (session.getAttribute("connected") != "connected") {
+					        return new ModelAndView("redirect:/");	        
+				        }				
+						/*
+						 * Lancement du Service et récupération données en base
+						 */
+						List<Utilisateur> listeUtilisateurs = utilisateurService.getAllInMission();
+
+						/*
+						 * Envoi Vue + Modèle MVC pour Affichage données vue
+						 */
+						return new ModelAndView("/utilisateur/Contact", "utilisateurs", listeUtilisateurs);
+					} 
+				
 	
 }

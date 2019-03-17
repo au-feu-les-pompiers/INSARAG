@@ -13,7 +13,6 @@ public class ProjetInsaragApplicationTests {
 	public void contextLoads() {
 	}
 	
-	//
 
 }
 
