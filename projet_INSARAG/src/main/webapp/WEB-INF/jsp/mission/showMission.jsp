@@ -97,6 +97,14 @@
 			<label class="col-sm-5">Date de fin</label>
 			<div class="col-sm-7">${missionToShow.fin}</div>
 		</div>
+		<div>
+			<spring:url value="/mission/accept" var="utilisateurActionUrl" />
+			
+			<form:form id="utilisateurform"  class="form"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >
+				<input class="btn btn-lg btn-danger btn-block" id="connexion"  type="submit" value="Accepter la mission">			
+			</form:form>
+		
+		</div>
 		
 	</div>
 	</div>				

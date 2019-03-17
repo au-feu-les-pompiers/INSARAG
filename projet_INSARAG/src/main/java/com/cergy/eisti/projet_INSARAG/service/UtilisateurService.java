@@ -21,4 +21,6 @@ public interface UtilisateurService {
   	int downAuto (Long idUtilisateur); 
   	
   	String hash(String login, String mdp);
+  	
+  	List<Utilisateur> getAllInMission();
 }

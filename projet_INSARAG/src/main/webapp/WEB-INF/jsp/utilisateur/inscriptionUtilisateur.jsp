@@ -44,18 +44,51 @@
 <spring:url value="/js/datepicker.fr.js" var="datePickerJsFR" />
 <script src="${datePickerJsFR}"></script>
 
+<!-- 
+<spring:url value="/js/checkConfirmation.js" var="checkMdp" />
+<script src="${checkMdp}"></script>
+-->
+
 
 </head>
 
 <body>
- 
+ <script>
+ 	function checkPass()
+	{
+	    var pass1 = document.getElementById('mdp1');
+	    var pass2 = document.getElementById('mdp2');
+	    //Store the Confimation Message Object ...
+	    var message = document.getElementById('confirmMessage');
+	    //Set the colors we will be using ...
+	    var goodColor = "#66cc66";
+	    var badColor = "#ff6666";
+	    //Compare the values in the password field 
+	    //and the confirmation field
+	    if(pass1.value == pass2.value){
+	        //The passwords match. 
+	        //Set the color to the good color and inform
+	        //the user that they have entered the correct password 
+	        pass2.style.backgroundColor = goodColor;
+	        message.style.color = goodColor;
+	        message.innerHTML = ""
+	    }else{
+	        pass2.style.backgroundColor = badColor;
+	        message.style.color = badColor;
+	        message.innerHTML = "Mauvais mot de passe!"
+	    }
+	}  
+ 	</script>
+ 	 
 <div class="container">
 <div class="row justify-content-center align-items-center">
         <div class="col-xs-12 col-sm-12 col-md-8 well well-sm formulaire">
             <h3 class="text-center text-dark mb-5">Inscription</h3>
 	<spring:url value="/utilisateur/save" var="utilisateurActionUrl" />
 
-	<form:form id="utilisateurform"  class="form-horizontal"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >
+	<form:form id="utilisateurform" name="frm" 
+	class="form-horizontal"  method="post"  modelAttribute="utilisateurForm"  
+	action="${utilisateurActionUrl}">
 
 		<form:hidden path="id"  value="${utilisateurForm.id}" />
 		
@@ -105,6 +138,8 @@
                         <button class="btn btn-primary btn-sm float-right">Générer un mot de passe</button>
                         <br>
 					<form:input type="password"   path="mdp"  class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
+								id="mdp1"
+								ng-model="thePassword"
 								required="required" 
 								data-validation-length="max100"
 								data-validation-allowing="-_ éèà'&"
@@ -120,7 +155,9 @@
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
                         <label for="password" class="text-dark">Confirmer mot de passe</label><br>
-					<form:input type="password"   path="mdp"  class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
+					<form:input type="password"   path="confirmationMdp"  class="form-control"  value="${utilisateurForm.confirmationMdp}" placeholder="**********" 
+								id="mdp2"
+								onkeyup="checkPass();return false;"
 								required="required" 
 								data-validation-length="max100"
 								data-validation-allowing="-_ éèà'&"
@@ -128,8 +165,9 @@
 	  							data-validation-error-msg-required="Champs designation est Obligatoire"
 	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-					<form:errors path="mdp" class="control-label" />	
+					<form:errors path="confirmationMdp" class="control-label" />	
 					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 8 caratères.</small>	
+					<span id="confirmMessage" class="confirmMessage" ></span>
 					</div>
 				</div>
 			</div>
@@ -222,7 +260,7 @@
 		
 		<div class="row justify-content-center align-items-center">
 			
-						<button type="submit" class="btn btn-lg btn-primary">S'inscrire</button>
+						<button type="submit" onclick="return checkConfirmationFiels();" class="btn btn-lg btn-primary">S'inscrire</button>
 	    
 
    </div>
