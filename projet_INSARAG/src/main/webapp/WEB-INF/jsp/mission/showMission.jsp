@@ -15,19 +15,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
   	
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
 
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
-
+<%-- 
 <spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
 <script src="${jqueryJs}"></script>
 
 <spring:url value="/js/bootstrap.min.js" var="bootstrap3Js" />
-<script src="${bootstrap3Js}"></script>
+<script src="${bootstrap3Js}"></script> --%>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
 
 <style>
       /* Always set the map height explicitly to define the size of the div
@@ -73,9 +77,11 @@
 	<div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
 		padding: 10px 30px;
 		border: 1px solid grey;">
-		<h1>Consulter Mission</h1>
-
-		<br />
+		
+		<div class="row justify-content-center align-items-center">
+			<h3 class="text-center">Consulter Mission</h3>
+		</div>
+		<br/>
 
 		 
 		<div class="row">

@@ -15,10 +15,8 @@
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
-<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" />
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
 
 <spring:url value="/css/datepicker.min.css" var="datePickerCss" />
 <link href="${datePickerCss}" rel="stylesheet" />
@@ -135,7 +133,6 @@
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
                         <label for="password" class="text-dark">Mot de passe</label>
-                        <button class="btn btn-primary btn-sm float-right">Générer un mot de passe</button>
                         <br>
 					<form:input type="password"   path="mdp"  class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
 								id="mdp1"
@@ -249,6 +246,21 @@
 				<form:errors path="naissance" class="control-label" />		
 				</div>
 			</div>
+		</spring:bind>
+				<spring:bind path="role">
+	<div class="form-group">
+			<div class="col-xs-12 col-md-12">
+				<label for="username" class="text-dark">Role</label><br>
+                  <div class="form-group input-group"> 
+					    <form:select path="role">
+    <form:option value="0" label="--Please choose--"/>
+    <form:option value="1" label="Recherche / secouriste / logistique"/>
+	<form:option value="2" label="Médecin"/>
+	<form:option value="3" label="Management"/>   
+	</form:select> 
+				</div>
+			</div>
+			</div>
 		
 		</spring:bind>
 		</div>
@@ -260,7 +272,7 @@
 		
 		<div class="row justify-content-center align-items-center">
 			
-						<button type="submit" onclick="return checkConfirmationFiels();" class="btn btn-lg btn-primary">S'inscrire</button>
+						<button type="submit" class="btn btn-lg btn-primary">S'inscrire</button>
 	    
 
    </div>

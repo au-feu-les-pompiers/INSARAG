@@ -72,10 +72,6 @@ public class InscriptionController {
 	    @RequestMapping(value = "/utilisateur/save", method = RequestMethod.POST)
 	    public String saveOrUpdate(@ModelAttribute("utilisateurForm") Utilisateur utilisateur, Model model,
 	    		HttpServletRequest request, final RedirectAttributes redirectAttributes) throws Exception {
-			HttpSession session = request.getSession();
-	        if (session.getAttribute("connected") != "connected") {
-		        return "redirect:/";	        
-	        }
 	    	utilisateur.setMdp(utilisateurService.hash(utilisateur.getEmail(), utilisateur.getMdp()));
 	    	Long id = utilisateurService.save(utilisateur);
 	    	try {
