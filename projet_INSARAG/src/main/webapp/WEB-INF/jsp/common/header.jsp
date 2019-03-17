@@ -55,7 +55,7 @@
                 </span>  Fiches</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath}/utilisateur/listAllInMision">
                 <span style="color: #0080FF;">
                     <i class="far fa-id-card"></i>
                 </span>  Contacts</a>
@@ -101,7 +101,7 @@
                               <i class="far fa-comments"></i>
                         </span>  Chat</a>
                     </li>
-                    <li><a href="#map" class="map order-3">
+                    <li><a href="${pageContext.request.contextPath}/carte" class="map order-3">
                         <span style="color: #006600;">
                               <i class="fas fa-map-marked-alt"></i>
                         </span>  Map</a>
@@ -127,7 +127,7 @@
                               <i class="fas fa-folder-open"></i>
                         </span>  Fiches</a>
                     </li>
-                    <li><a href="#contact" class="contact order-8">
+                    <li><a href="${pageContext.request.contextPath}/utilisateur/listAllInMision" class="contact order-8">
                     <span style="color: #0080FF;">
                               <i class="far fa-id-card"></i>
                         </span>  Contacts</a>

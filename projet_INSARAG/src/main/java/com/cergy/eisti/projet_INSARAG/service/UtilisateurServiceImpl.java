@@ -1,5 +1,6 @@
 package com.cergy.eisti.projet_INSARAG.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,17 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	@Override
 	public String hash(String login, String mdp) {
 		return Integer.toString((login + mdp).hashCode());
+	}
+
+	@Override
+	public List<Utilisateur> getAllInMission() {
+		List<Utilisateur> inMission = new ArrayList<>();
+		for(Utilisateur u : utilisateurRepository.findAll()) {
+			if (u.getEnMission() == 1 ) {
+				inMission.add(u);
+			}
+		}
+		return inMission;
 	}
    
 }

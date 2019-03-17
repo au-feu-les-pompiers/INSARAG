@@ -38,6 +38,7 @@ public class ConnexionController {
 			HttpSession session = request.getSession();
 			session.setAttribute("accreditation", connexionService.accreditationLvl());
 			session.setAttribute("connected", "connected");
+			session.setAttribute("id",connexionService.getPompier(login, mdp) );
 			
 			System.out.println(session.getAttribute("accreditation"));
 			return "utilisateur/showAllUtilisateurs";
