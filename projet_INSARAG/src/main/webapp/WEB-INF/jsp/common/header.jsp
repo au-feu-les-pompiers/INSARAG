@@ -54,7 +54,7 @@
                               <i class="fas fa-folder-open"></i>
                         </span>  Fiches</a>
                     </li>
-                    <li><a href="#contact" class="contact order-8">
+                    <li><a href="${pageContext.request.contextPath}/utilisateur/listAllInMision" class="contact order-8">
                     <span style="color: #0080FF;">
                               <i class="far fa-id-card"></i>
                         </span>  Contacts</a>
