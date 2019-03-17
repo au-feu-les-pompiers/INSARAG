@@ -100,7 +100,6 @@
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
                         <label for="password" class="text-dark">Mot de passe</label>
-                        <button class="btn btn-primary btn-sm float-right">Générer un mot de passe</button>
                         <br>
 					<form:input type="password"   path="mdp"  class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
 								required="required" 
@@ -208,6 +207,21 @@
  							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
 				<form:errors path="naissance" class="control-label" />		
 				</div>
+			</div>
+		</spring:bind>
+				<spring:bind path="role">
+	<div class="form-group">
+			<div class="col-xs-12 col-md-12">
+				<label for="username" class="text-dark">Role</label><br>
+                  <div class="form-group input-group"> 
+					    <form:select path="role">
+    <form:option value="0" label="--Please choose--"/>
+    <form:option value="1" label="Recherche / secouriste / logistique"/>
+	<form:option value="2" label="Médecin"/>
+	<form:option value="3" label="Management"/>   
+	</form:select> 
+				</div>
+			</div>
 			</div>
 		
 		</spring:bind>

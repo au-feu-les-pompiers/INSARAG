@@ -15,7 +15,7 @@
               <a class="dropdown-item" href="${pageContext.request.contextPath}/utilisateur/listAll">Pompiers</a>
               <a class="dropdown-item" href="${pageContext.request.contextPath}/mission/listAll">Missions</a>
               <a class="dropdown-item" href="#">Organigramme</a>
-              <a class="dropdown-item" href="#">Documents</a>
+              <a class="dropdown-item" href="${pageContext.request.contextPath}/documents">Documents</a>
             </div>
           </li>
           <li class="nav-item">
@@ -31,7 +31,7 @@
                 </span>  Map</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath}/documents">
                 <span style="color: #004C99;">
                     <i class="fas fa-file-alt"></i>
                 </span>  Documents</a>
@@ -62,7 +62,7 @@
           </li>
   <!--         METTRE LE NOM ET PRENOM DE LA PERSONNE CONNECTEE  -->
           <li class="nav-item">
-            <a class="nav-link" style="font-weight: bold;" href="${pageContext.request.contextPath}/utilisateur/get/5">Richard Dupont</a>
+            <a class="nav-link" style="font-weight: bold;" href="${pageContext.request.contextPath}/utilisateur/get/5">Mon profil</a>
           </li>
           
           <li class="nav-item">

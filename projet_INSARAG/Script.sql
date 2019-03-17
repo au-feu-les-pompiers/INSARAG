@@ -22,7 +22,8 @@ numero_de_telephone VARCHAR(15),
 date_de_naissance VARCHAR(30),
 matricule VARCHAR(15),
 administrateur NUMBER (1,0),
-enMission NUMBER(1) DEFAULT 0
+enMission NUMBER(1) DEFAULT 0,
+role NUMBER(1)
 );
 
 -- ----------------------------

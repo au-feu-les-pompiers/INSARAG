@@ -22,7 +22,7 @@
                 </span>  Map</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath}/documents">
                 <span style="color: #004C99;">
                     <i class="fas fa-file-alt"></i>
                 </span>  Documents</a>
@@ -52,7 +52,7 @@
                 </span>  Contacts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-weight: bold;" href="#">Richard Dupont</a>
+            <a class="nav-link" style="font-weight: bold;" href="#">Mon profil</a>
           </li>
           
           <li class="nav-item">

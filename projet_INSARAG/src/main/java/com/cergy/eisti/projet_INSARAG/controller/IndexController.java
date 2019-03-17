@@ -104,5 +104,14 @@ public class IndexController {
 					 */
 					return new ModelAndView("/utilisateur/showAllUtilisateurs", "utilisateurs", listeUtilisateurs);
 				} 
+				
+				@RequestMapping(value = "/documents", method = RequestMethod.GET)
+				public String showDocuments() {
+
+					logger.debug(":::showDocuments:::");
+			 
+					 return "/general/documents";
+
+				}
 	
 }

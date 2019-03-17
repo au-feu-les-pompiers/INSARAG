@@ -6,7 +6,7 @@ import com.cergy.eisti.projet_INSARAG.model.Utilisateur;
 
 public interface UtilisateurService {
 
-	public Long save (Utilisateur mission) throws Exception ;
+	public Long save (Utilisateur utilisateur) throws Exception ;
 	
 	List<Utilisateur> getAll();
  
