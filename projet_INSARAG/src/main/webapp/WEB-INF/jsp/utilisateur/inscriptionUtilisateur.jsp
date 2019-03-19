@@ -52,8 +52,25 @@
 
 <body>
  <script>
- 	function checkPass()
-	{
+ function checkPass(){
+	    var pass = document.getElementById('mdp1');
+	    var message = document.getElementById('message');
+	    var goodColor = "#66cc66";
+	    var badColor = "#ff6666";
+	    
+	    if(pass.value.length >= 12){
+	        pass.style.backgroundColor = goodColor
+	        message.innerHTML = ""
+	    }else{
+	    	if (pass.value != ""){
+		        pass.style.backgroundColor = badColor
+		        message.style.color = badColor
+		        message.innerHTML = "Votre mot de passe n'est pas assez long!"
+	    	}
+	    }
+	}
+	
+ 	function checkPassConfirm(){
 	    var pass1 = document.getElementById('mdp1');
 	    var pass2 = document.getElementById('mdp2');
 	    //Store the Confimation Message Object ...
@@ -66,16 +83,160 @@
 	    if(pass1.value == pass2.value){
 	        //The passwords match. 
 	        //Set the color to the good color and inform
-	        //the user that they have entered the correct password 
-	        pass2.style.backgroundColor = goodColor;
-	        message.style.color = goodColor;
-	        message.innerHTML = ""
+	        //the user that they have entered the correct password
+	        if (pass2.value != ""){ 
+		        pass2.style.backgroundColor = goodColor
+		        message.innerHTML = ""
+	        }
 	    }else{
-	        pass2.style.backgroundColor = badColor;
-	        message.style.color = badColor;
-	        message.innerHTML = "Mauvais mot de passe!"
+	        pass2.style.backgroundColor = badColor
+	        message.style.color = badColor
+	        message.innerHTML = "Les deux mots de passe ne sont pas identiques!"
 	    }
 	}  
+
+ 	function checkNaissance(){
+ 		var goodColor = "#66cc66";
+	    var badColor = "#ff6666";
+ 		var birth = document.getElementById('birth');
+	    var naissance = birth.value.split("/");
+	    var message = document.getElementById('confirmNaissance');
+	    var date = new Date();
+	    var ans;
+	    var mois;
+	    
+	    jourN = naissance[0]
+	    moisN = naissance[1]
+	    anneeN = naissance[2]
+	    jourD = date.getDate()
+	    moisD = date.getMonth()+1
+	    anneeD = date.getFullYear()
+
+	    if (moisD >= moisN){ 
+		    ans = anneeD - anneeN 
+		    mois = moisD - moisN 
+		}else{ 
+			ans = (anneeD - anneeN) -1
+			mois = moisD +(12 - moisN) 
+		} 
+
+		if(jourD < jourN){	
+			mois = mois -1 
+			if(moisD < moisN){ 
+				ans = ans -1
+			}	
+		}
+
+		if (ans <= 16){
+			birth.style.backgroundColor = badColor
+			message.style.color = badColor
+			message.innerHTML = "Erreur de saisie, vous devez avoir plus de 16 ans!"
+		}else if (birth.value == ""){
+	        message.innerHTML = ""
+		}else{
+			birth.style.backgroundColor = goodColor
+	        message.innerHTML = ""
+		}
+	}
+
+ 	function checkNom(){
+ 		var goodColor = "#66cc66";
+	    var badColor = "#ff6666";
+	    var nom = document.getElementById('name');
+	    var nomTab = nom.value.split("");
+	    var message = document.getElementById('confirmNom');
+
+	    k = 0
+	    boucle = true
+
+	    while (boucle && k < nomTab.length){
+			if ((nomTab[k].charCodeAt(0) >= 65 && nomTab[k].charCodeAt(0) <= 90) || (nomTab[k].charCodeAt(0) >= 97 && nomTab[k].charCodeAt(0) <= 122)){
+				k++
+			}else{
+				boucle = false
+			}
+		}
+
+		if(boucle){
+			if (nom.value != ""){
+				nom.style.backgroundColor = goodColor
+				message.innerHTML = ""
+			}
+		}else{
+			nom.style.backgroundColor = badColor
+			message.style.color = badColor
+			message.innerHTML = "Nom invalide!"
+		}
+	}
+
+ 	function checkPrenom(){
+ 		var goodColor = "#66cc66";
+	    var badColor = "#ff6666";
+	    var prenom = document.getElementById('firstname');
+	    var prenomTab = prenom.value.split("");
+	    var message = document.getElementById('confirmPrenom');
+
+	    k = 0
+	    boucle = true
+
+	    while (boucle && k < prenomTab.length){
+			if ((prenomTab[k].charCodeAt(0) >= 65 && prenomTab[k].charCodeAt(0) <= 90) || (prenomTab[k].charCodeAt(0) >= 97 && prenomTab[k].charCodeAt(0) <= 122)){
+				k++
+			}else{
+				boucle = false
+			}
+		}
+
+		if(boucle){
+			if (prenom.value != ""){
+				prenom.style.backgroundColor = goodColor
+				message.innerHTML = ""
+			}
+		}else{
+			prenom.style.backgroundColor = badColor
+			message.style.color = badColor
+			message.innerHTML = "Prénom invalide!"
+		}
+	}
+
+ 	function checkPhone(){
+	    var phone = document.getElementById('phone');
+	    var ext = document.getElementById('selectExt');
+	    var telephone = phone.value.split(" ");
+	    var newTelephone = "";
+	    var message = document.getElementById('confirmPhone');
+	    var goodColor = "#66cc66";
+	    var badColor = "#ff6666";
+
+	    for (k = 0; k < telephone.length; k++){
+	    	newTelephone = newTelephone + telephone[k]
+		}
+
+		verif = parseInt(newTelephone)
+		
+		message.innerHTML = verif
+
+		//Vérification de la validité du numéro
+		if (verif != newTelephone && newTelephone != ""){
+			phone.style.backgroundColor = badColor
+			message.style.color = badColor
+			message.innerHTML = "Numéro de téléphone invalide!"
+		}else{
+			//Vérification de la taille du numéro en fonction du pays
+			if (newTelephone.length != 10){
+				if (newTelephone != ""){
+					phone.style.backgroundColor = badColor
+					message.style.color = badColor
+					message.innerHTML = "(+33) Votre numéro de téléphone doit comporter 10 chiffres!"
+				}else{
+					message.innerHTML = ""
+				}
+			}else{
+				phone.style.backgroundColor = goodColor
+				message.innerHTML = ""
+			}
+		}
+	}
  	</script>
  	 
 <div class="container">
@@ -95,7 +256,7 @@
 		
 			<div class="col-xs-6 col-md-6">
 				<div class="form-group">
-				<label>Matricule</label>
+				<label>Matricule*</label>
 				<form:input type="text"   path="matricule"  class="form-control"  value="${utilisateurForm.matricule}" placeholder="M8452386" 
 							required="required" 
 							data-validation-length="max100"
@@ -113,8 +274,8 @@
 
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
-                        <label for="email" class="text-dark">Email</label><br>
-					<form:input type="text"   path="email"  class="form-control"  value="${utilisateurForm.email}" placeholder="richard.dupont@gmail.com" 
+                        <label for="email" class="text-dark">Email*</label><br>
+					<form:input type="email"   path="email"  class="form-control"  value="${utilisateurForm.email}" placeholder="richard.dupont@gmail.com" 
 								required="required" 
 								data-validation-length="max100"
 								data-validation-allowing="-_ éèà'&"
@@ -132,10 +293,11 @@
 			<div class="row">
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
-                        <label for="password" class="text-dark">Mot de passe</label>
+                        <label for="password" class="text-dark">Mot de passe*</label>
                         <br>
 					<form:input type="password"   path="mdp"  class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
 								id="mdp1"
+								onblur="checkPass();return false;"
 								ng-model="thePassword"
 								required="required" 
 								data-validation-length="max100"
@@ -145,16 +307,17 @@
 	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
 					<form:errors path="mdp" class="control-label" />		
-					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 8 caratères.</small>
+					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 12 caratères.</small>
+					<span id="message" class="message" ></span>
 					</div>
 				</div>
 			
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
-                        <label for="password" class="text-dark">Confirmer mot de passe</label><br>
+                        <label for="password" class="text-dark">Confirmer mot de passe*</label><br>
 					<form:input type="password"   path="confirmationMdp"  class="form-control"  value="${utilisateurForm.confirmationMdp}" placeholder="**********" 
 								id="mdp2"
-								onkeyup="checkPass();return false;"
+								onblur="checkPassConfirm();return false;"
 								required="required" 
 								data-validation-length="max100"
 								data-validation-allowing="-_ éèà'&"
@@ -163,7 +326,7 @@
 	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
 					<form:errors path="confirmationMdp" class="control-label" />	
-					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 8 caratères.</small>	
+					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 12 caratères.</small>	
 					<span id="confirmMessage" class="confirmMessage" ></span>
 					</div>
 				</div>
@@ -174,9 +337,11 @@
 		<div class="row">
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
-                        <label for="username" class="text-dark">Nom</label><br>
+                        <label for="username" class="text-dark">Nom*</label><br>
 				
 				<form:input type="text"   path="nom"  class="form-control"  value="${utilisateurForm.nom}" placeholder="Dupont" 
+							id="name"
+							onblur="checkNom();return false;"
 							required="required" 
 							data-validation-length="max100"
 							data-validation-allowing="-_ éèà'&"
@@ -184,46 +349,47 @@
   							data-validation-error-msg-required="Champs designation est Obligatoire"
  							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
  							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-				<form:errors path="nom" class="control-label" />		
+				<form:errors path="nom" class="control-label" />
+				<span id="confirmNom" class="confirmNom" ></span>
 				</div>
 			</div>
 
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
-                        <label for="username" class="text-dark">Prénom</label><br>
+                        <label for="username" class="text-dark">Prénom*</label><br>
 				<form:input type="text" path="prenom"  class="form-control"  value="${utilisateurForm.prenom}" placeholder="Richard" 
+							id="firstname"
+							onblur="checkPrenom();return false;"
 							required="required" 
 							data-validation-length="max100"
 							data-validation="required length"
   							data-validation-error-msg-required="Champs config est Obligatoire"
  							data-validation-error-msg-length="Taille du champs config ne doit pas dépasser 100"/>
-				<form:errors path="prenom" class="control-label" />		
+				<form:errors path="prenom" class="control-label" />
+				<span id="confirmPrenom" class="confirmPrenom" ></span>		
 				</div>
 			</div>
 		</div>
 		</spring:bind>
-		<div class="row">
 		<spring:bind path="telephone">
+		<div class="row">
 		
 		<div class="col-xs-6 col-md-6">
 			<div class="form-group">
-               <label for="username" class="text-dark">Numéro de téléphone</label><br>
+               <label for="username" class="text-dark">Numéro de téléphone*</label><br>
                   <div class="form-group input-group"> 
-                    <select class="custom-select" style="max-width: 120px;">
-					    <option selected="">+33</option>
-					    <option value="1">+972</option>
-					    <option value="2">+198</option>
-					    <option value="3">+701</option>
-		</select> 
-				<form:input type="text"   path="telephone"  class="form-control"  value="${utilisateurForm.telephone}" placeholder="0687658521" 
-							required="required" 
-							data-validation-length="max100"
-							data-validation-allowing="-_ éèà'&"
-							data-validation="required alphanumeric length"
-  							data-validation-error-msg-required="Champs designation est Obligatoire"
- 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
- 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-				<form:errors path="telephone" class="control-label" />		
+					<form:input type="text"   path="telephone"  class="form-control"  value="${utilisateurForm.telephone}" placeholder="0687658521" 
+								id="phone"
+								onblur="checkPhone();return false;"
+								required="required" 
+								data-validation-length="max100"
+								data-validation-allowing="-_ éèà'&"
+								data-validation="required alphanumeric length"
+	  							data-validation-error-msg-required="Champs designation est Obligatoire"
+	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
+					<form:errors path="telephone" class="control-label" />
+					<span id="confirmPhone" class="confirmPhone" ></span>	
 				</div>
 			</div>
 		</div> 
@@ -233,8 +399,10 @@
 	
 			<div class="col-xs-6 col-md-6">
 				<div class="form-group">
-				<label>Date de naissance</label>
+				<label>Date de naissance*</label>
 				<form:input type="text"  data-language='fr' path="naissance" autocomplete="off" class="form-control datepicker-here"  value="${utilisateurForm.naissance}" placeholder="12/05/1986" 
+							id="birth"
+							onblur="checkNaissance();return false;"
 							position="top left" 
 							required="required" 
 							data-validation-length="max100"
@@ -243,21 +411,21 @@
   							data-validation-error-msg-required="Champs designation est Obligatoire"
  							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
  							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-				<form:errors path="naissance" class="control-label" />		
+				<form:errors path="naissance" class="control-label" />
+				<span id="confirmNaissance" class="confirmNaissance" ></span>
 				</div>
 			</div>
 		</spring:bind>
 				<spring:bind path="role">
 	<div class="form-group">
 			<div class="col-xs-12 col-md-12">
-				<label for="username" class="text-dark">Role</label><br>
+				<label for="username" class="text-dark">Role*</label><br>
                   <div class="form-group input-group"> 
 					    <form:select path="role">
-    <form:option value="0" label="--Please choose--"/>
-    <form:option value="1" label="Recherche / secouriste / logistique"/>
-	<form:option value="2" label="Médecin"/>
-	<form:option value="3" label="Management"/>   
-	</form:select> 
+						    <form:option value="1" label="Recherche/Secouriste/Logistique"/>
+							<form:option value="2" label="Médecin"/>
+							<form:option value="3" label="Management"/>   
+						</form:select> 
 				</div>
 			</div>
 			</div>
@@ -266,9 +434,11 @@
 		</div>
 		<div class="row justify-content-center align-items-center mb-3">
 			<small class="form-text text-muted">L'administrateur devra valider votre inscription.</small>
-
 		</div>
 		
+		<div class="row justify-content-center align-items-center mb-3">
+			<small class="form-text text-muted">* Champs obligatoires</small>
+		</div>		
 		
 		<div class="row justify-content-center align-items-center">
 			
