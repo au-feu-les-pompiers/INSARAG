@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 
 <nav class="navbar navbar-expand-xl fixed-top navbar-light bg-light">
-      <a class="navbar-brand" href="#">INSARAG</a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath}/Accueil">INSARAG</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -56,7 +56,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="#" >
+            <a class="nav-link" href="${pageContext.request.contextPath}/" >
                    <i class="fas fa-power-off"></i>
             </a>
           </li>

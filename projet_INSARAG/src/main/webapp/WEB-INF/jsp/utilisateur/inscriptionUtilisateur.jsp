@@ -52,6 +52,13 @@
 
 <body>
  <script>
+	function valideForm(){
+		if (!checkPass()){
+			return false;
+		} 
+		return true;
+	}
+ 
  function checkPass(){
 	    var pass = document.getElementById('mdp1');
 	    var message = document.getElementById('message');
@@ -442,7 +449,7 @@
 		
 		<div class="row justify-content-center align-items-center">
 			
-						<button type="submit" class="btn btn-lg btn-primary">S'inscrire</button>
+						<button type="submit" onclick="valideForm(); return false" class="btn btn-lg btn-primary">S'inscrire</button>
 	    
 
    </div>
