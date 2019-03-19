@@ -76,11 +76,14 @@ public class MissionController {
 	    		Utilisateur utilisateur=utilisateurService.getByIdUtilisateur(idUtilisateur);
 	
 		    	if(utilisateur.getId()!=null) {
-		    		System.out.println(utilisateur.getId()+"ID");
-		    		utilisateur.setEnMission(1);
-		    		utilisateurService.save(utilisateur);
-					redirectAttributes.addFlashAttribute("typeAlert", "info");
-			    	redirectAttributes.addFlashAttribute("msgAlert", "Utilisateur dont ID : "+utilisateur.getId() +" a été mis à jour.");
+		    		if(request.getParameter("Accepter")!= null) {
+			    		utilisateur.setEnMission(1);
+			    		utilisateurService.save(utilisateur);
+		    		}
+		    		if(request.getParameter("Refuser")!= null) {
+			    		utilisateur.setEnMission(0);
+			    		utilisateurService.save(utilisateur);
+		    		}
 		    	}
 		    	return "redirect:/mission/listAll";
 	        }

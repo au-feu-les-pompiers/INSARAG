@@ -8,10 +8,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cergy.eisti.projet_INSARAG.service.ConnexionService;
+import com.cergy.eisti.projet_INSARAG.service.MissionService;
+import com.cergy.eisti.projet_INSARAG.service.UtilisateurService;
 
 @Controller 
 @RequestMapping("/") //make all URL's through this controller relative to /index
@@ -20,6 +25,11 @@ public class ConnexionController {
 	@Autowired
 	ConnexionService connexionService;
 	
+	@Autowired
+	MissionService missionService;
+	
+	@Autowired
+	UtilisateurService utilisateurService;
 	
 	@RequestMapping(value="/", method= RequestMethod.GET)
 	public String getFormAdmission(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -37,14 +47,35 @@ public class ConnexionController {
 		if (isRegistered) {
 			HttpSession session = request.getSession();
 			session.setAttribute("accreditation", connexionService.accreditationLvl());
+			System.out.println(session.getAttribute("accreditation"));
 			session.setAttribute("connected", "connected");
 			session.setAttribute("id",connexionService.getPompier(login, mdp) );
 			
 			System.out.println(session.getAttribute("accreditation"));
-			return "utilisateur/showAllUtilisateurs";
+			return "redirect:/Accueil";
 		}
 		
 		return "Connexion";
+	}
+	
+	@GetMapping(value="Accueil")
+	public String accueilPage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+        if (session.getAttribute("connected") != "connected") {
+	        return "redirect:/";	        
+        }
+    	Long idUtilisateur = (Long) session.getAttribute("id");
+
+    	try {
+			model.addAttribute("missionToShow", missionService.getNextMission());
+	    	model.addAttribute("utilisateurForm", utilisateurService.getByIdUtilisateur(idUtilisateur));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+		return "Accueil";
+
 	}
 
 }
