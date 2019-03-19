@@ -16,8 +16,6 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
 
-  
-	
 	 
 	@Override
 	public  Utilisateur getByIdUtilisateur(Long id) throws Exception {
@@ -83,6 +81,16 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 			}
 		}
 		return inMission;
+	}
+
+	@Override
+	public int getEnMission(Long id) {
+		try {
+			return this.getByIdUtilisateur(id).getEnMission();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
    
 }

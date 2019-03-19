@@ -23,4 +23,6 @@ public interface UtilisateurService {
   	String hash(String login, String mdp);
   	
   	List<Utilisateur> getAllInMission();
+  	
+  	int getEnMission(Long id);
 }
