@@ -46,12 +46,13 @@ public class ConnexionController {
 		boolean isRegistered = connexionService.isRegistered(login, mdp);
 		if (isRegistered) {
 			HttpSession session = request.getSession();
+			Long id = connexionService.getPompier(login, mdp);
 			session.setAttribute("accreditation", connexionService.accreditationLvl());
-			System.out.println(session.getAttribute("accreditation"));
 			session.setAttribute("connected", "connected");
-			session.setAttribute("id",connexionService.getPompier(login, mdp) );
+			session.setAttribute("id",id );
+			session.setAttribute("enMission", utilisateurService.getEnMission(id));
 			
-			System.out.println(session.getAttribute("accreditation"));
+			System.out.println(session.getAttribute("enMission"));
 			return "redirect:/Accueil";
 		}
 		

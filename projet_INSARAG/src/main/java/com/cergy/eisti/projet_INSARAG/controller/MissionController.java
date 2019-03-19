@@ -81,7 +81,7 @@ public class MissionController {
 			    		utilisateurService.save(utilisateur);
 		    		}
 		    		if(request.getParameter("Refuser")!= null) {
-			    		utilisateur.setEnMission(0);
+			    		utilisateur.setEnMission(2);
 			    		utilisateurService.save(utilisateur);
 		    		}
 		    	}

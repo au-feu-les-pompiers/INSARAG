@@ -33,11 +33,8 @@ public class ConnexionService {
  		return (List<Utilisateur>) repo.findAll() ;
 	}
 	
-	public String accreditationLvl() throws Exception {
-		if (utilisateur.getAutorisation() == 1) {
-			return "Administrateur";
-		}
-		return "pompier";
+	public int accreditationLvl() throws Exception {
+		return utilisateur.getAutorisation();
 	}
 	
 	public Long getPompier(String login,String mdp) throws Exception{
