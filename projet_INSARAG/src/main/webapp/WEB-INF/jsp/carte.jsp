@@ -41,44 +41,21 @@
         margin: 0;
         padding: 0;
       }
-    </style>
+</style>
 
-
-
-	<%-- 	<script
-		    src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-		<script>
-		var map;
-		function initialize() {
-		  var mapOptions = {
-		    zoom: 6,
-		    center: new google.maps.LatLng(-34.397, 150.644)
-		  };
-		  map = new google.maps.Map(document.getElementById('map-canvas'),
-		      mapOptions);
-		}
-		
-		google.maps.event.addDomListener(window, 'load', initialize);
-		</script>
---%>
 </head>
 
 
 <body>
 
-	<!-- <jsp:include page="../common/header.jsp" /> -->
+	<jsp:include page="../jsp/common/header.jsp" />
 
-<div id="map"></div>
     <script>
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
       var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
-          zoom: 6
+          zoom: 10
         });
         infoWindow = new google.maps.InfoWindow;
 
@@ -111,12 +88,12 @@
         infoWindow.open(map);
       }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDdzFj2ni5izYop3rXhtKOKC2ytCU7y3_4 &callback=initMap">
-    </script>
+    
+    <div id="map">
+	    <script async defer
+	    	src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDdzFj2ni5izYop3rXhtKOKC2ytCU7y3_4 &callback=initMap">
+	    </script>
+    </div>
 
-
-	<%--	 <div id="map-canvas" style="height:400px; width:600px; float:right; margin-right:100px; margin-bottom:100px"></div>
- --%>
 </body>
 </html>

@@ -56,6 +56,13 @@ public class MissionServiceImpl implements MissionService{
 	@Override
 	public List<Mission> getAll() {
  		return (List<Mission>) missionRepository.findAll() ;
+	}
+
+
+	@Override
+	public String getNameMission(Long id) {
+		Mission mission = missionRepository.findById(id);
+		return mission.getLieu();
 	} 
 
    

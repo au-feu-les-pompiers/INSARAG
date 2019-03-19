@@ -14,6 +14,8 @@ public interface MissionService {
 	
 	int updateId (Long idMission);
 	
+	String getNameMission (Long id);
+	
   	//int updateLieu (String lieuMission, Long idMission); 
 
    
