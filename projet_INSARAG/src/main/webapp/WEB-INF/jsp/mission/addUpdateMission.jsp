@@ -15,7 +15,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
   	
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
 
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
@@ -23,11 +24,8 @@
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
-<spring:url value="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" var="JqueryJS" />
-<script src="${JqueryJS}"></script>
-
-<spring:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" var="bootstrapJs" />
-<script src="${bootstrapJs}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
 
 <spring:url value="/js/jquery.form-validator.min.js" var="controlformJs" />
 <script src="${controlformJs}"></script>
@@ -62,14 +60,16 @@
 
    <c:choose>
 		<c:when test="${missionForm.idMission  != null}">
-			<div class="row">
-				<h3 class="text-center text-dark">Nouvelle mission</h3>
+			<div class="row justify-content-center align-items-center">
+				<h3 class="text-center">Nouvelle mission</h3>
 			</div>
+	
 		</c:when>
 		<c:otherwise>
-			<div class="row">
-				<h3 class="text-center text-dark">Nouvelle mission</h3>
+			<div class="justify-content-center align-items-center">
+				<h3 class="text-center">Nouvelle mission</h3>
 			</div>
+		
 		</c:otherwise>
 	</c:choose>
 
@@ -142,7 +142,7 @@
     
 		
 		<div class="form-group">
-			<div class="mx-auto">
+			<div class="row justify-content-center align-items-center">
 			   <c:choose>
 			   
 					<c:when test="${missionForm.idMission  != null}">
@@ -159,7 +159,7 @@
    
    
  </form:form>
- 
+
  </div>
 </div>
 

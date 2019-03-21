@@ -1,5 +1,7 @@
 package com.cergy.eisti.projet_INSARAG.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +65,25 @@ public class MissionServiceImpl implements MissionService{
 	public String getNameMission(Long id) {
 		Mission mission = missionRepository.findById(id);
 		return mission.getLieu();
+	}
+
+
+	@Override
+	public Mission getNextMission() throws Exception {
+		Mission nextMission = null;
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		
+		for (Mission mission: missionRepository.findAll()) {
+			if (nextMission == null) {
+				nextMission = mission;
+			}
+			Date date1 = format.parse(nextMission.getDebut());
+			Date date2 = format.parse(mission.getDebut());
+			if (date1.compareTo(date2) > 0 ) {
+				nextMission = mission;
+			}
+		}
+		return nextMission;
 	} 
 
    

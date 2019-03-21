@@ -18,11 +18,12 @@ email VARCHAR(50),
 mdp VARCHAR(30),
 nom VARCHAR(30),
 prenom VARCHAR(30),
-numero_de_telephone VARCHAR(15),
+numero_de_telephone VARCHAR(17),
 date_de_naissance VARCHAR(30),
 matricule VARCHAR(15),
 administrateur NUMBER (1,0),
-enMission NUMBER(1) DEFAULT 0
+enMission NUMBER(1) DEFAULT 0,
+role NUMBER(1)
 );
 
 -- ----------------------------

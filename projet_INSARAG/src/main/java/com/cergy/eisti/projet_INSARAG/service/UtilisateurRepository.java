@@ -17,7 +17,7 @@ public interface UtilisateurRepository extends Repository <Utilisateur, Long>{
 	 
 	List<Utilisateur> findAll();
 	
-	Utilisateur save (Utilisateur utilisateur);
+	Utilisateur save(Utilisateur utilisateur);
 	
 	@Query("select u.autorisation from Utilisateur u where u.id = ?1")
 	int findAutoByIdUtilisateur(Long id);

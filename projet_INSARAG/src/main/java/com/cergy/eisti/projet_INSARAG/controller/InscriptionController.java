@@ -1,8 +1,15 @@
 package com.cergy.eisti.projet_INSARAG.controller;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -72,27 +79,41 @@ public class InscriptionController {
 	    @RequestMapping(value = "/utilisateur/save", method = RequestMethod.POST)
 	    public String saveOrUpdate(@ModelAttribute("utilisateurForm") Utilisateur utilisateur, Model model,
 	    		HttpServletRequest request, final RedirectAttributes redirectAttributes) throws Exception {
-			HttpSession session = request.getSession();
-	        if (session.getAttribute("connected") != "connected") {
-		        return "redirect:/";	        
-	        }
+	    	
+	    	boolean newU = true;
+	    	String currentEmail = utilisateur.getEmail();
+	    	String currentMatricule = utilisateur.getMatricule();
+	    	String currentPhone = utilisateur.getTelephone();
+	    	/*
+			 * Lancement du Service et récupération données en base
+			 */
+			List<Utilisateur> listeUtilisateurs = utilisateurService.getAll();
+
+			/*
+			 * Envoi Vue + Modèle MVC pour Affichage données vue
+			 */
+			
+			for (Utilisateur util : listeUtilisateurs) {
+				if (util.getEmail().equals(currentEmail)) {
+					return "redirect:/utilisateur/new?error=email";
+				}else if (util.getMatricule().equals(currentMatricule)){
+					return "redirect:/utilisateur/new?error=matricule";
+				}else if (util.getTelephone().equals(currentPhone)) {
+					return "redirect:/utilisateur/new?error=telephone";
+				}
+			}
+	    	
 	    	utilisateur.setMdp(utilisateurService.hash(utilisateur.getEmail(), utilisateur.getMdp()));
 	    	Long id = utilisateurService.save(utilisateur);
 	    	try {
-				
-			
-			
-
-	    	
-	    	if(  utilisateur.getId()!=null){
-				redirectAttributes.addFlashAttribute("typeAlert", "info");
-		    	redirectAttributes.addFlashAttribute("msgAlert", "Utilisateur dont ID : "+utilisateur.getId()+" a été mis à jour.");
-
-			}else{
-				redirectAttributes.addFlashAttribute("typeAlert", "success");
-		    	redirectAttributes.addFlashAttribute("msgAlert", "Nouveau Utilisateur a été enregsitrée avec ID : "+id);
-			}
-	    	
+		    	if(  utilisateur.getId()!=null){
+					redirectAttributes.addFlashAttribute("typeAlert", "info");
+			    	redirectAttributes.addFlashAttribute("msgAlert", "Utilisateur dont ID : "+utilisateur.getId()+" a été mis à jour.");
+	
+				}else{
+					redirectAttributes.addFlashAttribute("typeAlert", "success");
+			    	redirectAttributes.addFlashAttribute("msgAlert", "Nouveau Utilisateur a été enregsitrée avec ID : "+id);
+				}
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}

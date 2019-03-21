@@ -29,12 +29,13 @@ public class Utilisateur implements java.io.Serializable {
 	private String matricule;
 	private int autorisation;
 	private int enMission;
+	private int role;
 
 	public Utilisateur() {
 	}
 
 	public Utilisateur(Long id, String email, String mdp, String nom, String prenom, String telephone, String naissance, String matricule,
-			int autorisation, int enMission) {
+			int autorisation, int enMission, int role) {
 		this.id = id;
 		this.email = email;
 		this.mdp = mdp;
@@ -45,6 +46,7 @@ public class Utilisateur implements java.io.Serializable {
 		this.matricule = matricule;
 		this.autorisation = autorisation;
 		this.enMission = enMission;
+		this.role = role;
 	}
 
 	@Id
@@ -149,6 +151,15 @@ public class Utilisateur implements java.io.Serializable {
 
 	public void setEnMission(int enMission) {
 		this.enMission = enMission;
+	}
+	
+	@Column(name = "ROLE", nullable = false, length = 30)
+	public int getRole() {
+		return this.role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
 	}
 
 }

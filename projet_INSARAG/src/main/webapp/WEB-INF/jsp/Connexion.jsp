@@ -15,8 +15,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" var="Bootstrap4CSS" />
-<link href="${Bootstrap4CSS}" rel="stylesheet" />
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
 
 <spring:url value="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" var="jqueryJs" />
 <script src="${jqueryJs}"></script>
@@ -57,7 +57,7 @@
 
 	            </form>
 	            <div class="form-group">
-	                <button onclick="location.href='${pageContext.request.contextPath}/utilisateur/new'" class="btn btn-lg btn-danger btn-block" style="color: white; background-color: firebrick" id="inscription" type="submit">Inscription</button>        
+	                <button onclick="location.href='${pageContext.request.contextPath}/utilisateur/new'" class="btn btn-block btn-lg inscription" id="inscription" type="submit">Inscription</button>        
 	            </div>
 	
 			</div>
