@@ -51,15 +51,16 @@
 </head>
 
 <body>
- <script>
-	function valideForm(){
-		if (!checkPass()){
-			return false;
-		} 
-		return true;
+ <script>  
+	function validateForm(){		
+		if (checkPass() && checkPassConfirm() && checkNaissance() && checkNom() && checkPrenom() && checkPhone()) {
+			return true
+		}else{
+			return false
+		}
 	}
  
- function checkPass(){
+ 	function checkPass(){
 	    var pass = document.getElementById('mdp1');
 	    var message = document.getElementById('message');
 	    var goodColor = "#66cc66";
@@ -68,12 +69,14 @@
 	    if(pass.value.length >= 12){
 	        pass.style.backgroundColor = goodColor
 	        message.innerHTML = ""
+		    return true
 	    }else{
 	    	if (pass.value != ""){
 		        pass.style.backgroundColor = badColor
 		        message.style.color = badColor
 		        message.innerHTML = "Votre mot de passe n'est pas assez long!"
 	    	}
+	    	return false
 	    }
 	}
 	
@@ -94,11 +97,15 @@
 	        if (pass2.value != ""){ 
 		        pass2.style.backgroundColor = goodColor
 		        message.innerHTML = ""
-	        }
+		        return true
+	        }else{
+	        	return false
+		    }
 	    }else{
 	        pass2.style.backgroundColor = badColor
 	        message.style.color = badColor
 	        message.innerHTML = "Les deux mots de passe ne sont pas identiques!"
+	        return false
 	    }
 	}  
 
@@ -110,14 +117,13 @@
 	    var message = document.getElementById('confirmNaissance');
 	    var date = new Date();
 	    var ans;
-	    var mois;
-	    
-	    jourN = naissance[0]
-	    moisN = naissance[1]
-	    anneeN = naissance[2]
-	    jourD = date.getDate()
-	    moisD = date.getMonth()+1
-	    anneeD = date.getFullYear()
+	    var mois; 
+	    var jourN = naissance[0];
+	    var moisN = naissance[1];
+	    var anneeN = naissance[2];
+	    var jourD = date.getDate();
+	    var moisD = date.getMonth()+1;
+	    var anneeD = date.getFullYear();
 
 	    if (moisD >= moisN){ 
 		    ans = anneeD - anneeN 
@@ -138,11 +144,14 @@
 			birth.style.backgroundColor = badColor
 			message.style.color = badColor
 			message.innerHTML = "Erreur de saisie, vous devez avoir plus de 16 ans!"
+			return false
 		}else if (birth.value == ""){
 	        message.innerHTML = ""
+	        return false
 		}else{
 			birth.style.backgroundColor = goodColor
 	        message.innerHTML = ""
+	        return true
 		}
 	}
 
@@ -152,9 +161,8 @@
 	    var nom = document.getElementById('name');
 	    var nomTab = nom.value.split("");
 	    var message = document.getElementById('confirmNom');
-
-	    k = 0
-	    boucle = true
+	    var k = 0;
+	    var boucle = true;
 
 	    while (boucle && k < nomTab.length){
 			if ((nomTab[k].charCodeAt(0) >= 65 && nomTab[k].charCodeAt(0) <= 90) || (nomTab[k].charCodeAt(0) >= 97 && nomTab[k].charCodeAt(0) <= 122)){
@@ -168,11 +176,15 @@
 			if (nom.value != ""){
 				nom.style.backgroundColor = goodColor
 				message.innerHTML = ""
+				return true
+			}else{
+				return false
 			}
 		}else{
 			nom.style.backgroundColor = badColor
 			message.style.color = badColor
 			message.innerHTML = "Nom invalide!"
+			return false
 		}
 	}
 
@@ -182,9 +194,8 @@
 	    var prenom = document.getElementById('firstname');
 	    var prenomTab = prenom.value.split("");
 	    var message = document.getElementById('confirmPrenom');
-
-	    k = 0
-	    boucle = true
+	    var k = 0;
+	    var boucle = true;
 
 	    while (boucle && k < prenomTab.length){
 			if ((prenomTab[k].charCodeAt(0) >= 65 && prenomTab[k].charCodeAt(0) <= 90) || (prenomTab[k].charCodeAt(0) >= 97 && prenomTab[k].charCodeAt(0) <= 122)){
@@ -198,59 +209,141 @@
 			if (prenom.value != ""){
 				prenom.style.backgroundColor = goodColor
 				message.innerHTML = ""
+				return true
+			}else{
+				return false
 			}
 		}else{
 			prenom.style.backgroundColor = badColor
 			message.style.color = badColor
 			message.innerHTML = "Prénom invalide!"
+			return false
 		}
 	}
+
+ 	function randomPass(){
+ 		var goodColor = "#66cc66";
+ 		var pass = document.getElementById('mdp1');
+ 		var mdp = "";
+ 		var randC;
+ 		var randL;
+ 		var c;
+ 	 	
+ 	 	while (mdp.length < 12){
+ 	 	 	randC = Math.floor((Math.random() * 3))
+ 	 	 	if (randC == 0){
+ 	 	 	 	randL = Math.floor((Math.random() * 26) + 97)
+ 	 	 	 	c = String.fromCharCode(randL)
+ 	 	 	}else if (randC == 1){
+ 	 	 		randL = Math.floor((Math.random() * 26) + 65)
+ 	 	 	 	c = String.fromCharCode(randL)
+ 	 	 	}else{
+ 	 	 		randL = Math.floor((Math.random() * 10) + 48)
+ 	 	 	 	c = String.fromCharCode(randL)
+ 	 	 	}
+ 	 	 	mdp += c
+		}
+ 		pass.style.backgroundColor = goodColor
+ 		pass.type = "text"
+ 		document.getElementById('mdp1').value = mdp
+ 	}
 
  	function checkPhone(){
 	    var phone = document.getElementById('phone');
 	    var ext = document.getElementById('selectExt');
 	    var telephone = phone.value.split(" ");
 	    var newTelephone = "";
+	    var test = "";
 	    var message = document.getElementById('confirmPhone');
 	    var goodColor = "#66cc66";
 	    var badColor = "#ff6666";
+	    var k;
+	    var verif;
+	    var copy;
 
 	    for (k = 0; k < telephone.length; k++){
 	    	newTelephone = newTelephone + telephone[k]
 		}
 
 		verif = parseInt(newTelephone)
-		
-		message.innerHTML = verif
 
 		//Vérification de la validité du numéro
 		if (verif != newTelephone && newTelephone != ""){
 			phone.style.backgroundColor = badColor
 			message.style.color = badColor
 			message.innerHTML = "Numéro de téléphone invalide!"
+			return false
 		}else{
 			//Vérification de la taille du numéro en fonction du pays
 			if (newTelephone.length != 10){
 				if (newTelephone != ""){
-					phone.style.backgroundColor = badColor
-					message.style.color = badColor
-					message.innerHTML = "(+33) Votre numéro de téléphone doit comporter 10 chiffres!"
+					if (phone.value.length == 17){
+						telephone = phone.value.split(" ")
+						for (k = 0; k < telephone.length; k++){
+							test = test + telephone[k]
+						}
+						if (test.length == 12 && test.substring(0, 3) == "+33"){
+							phone.style.backgroundColor = goodColor
+							message.innerHTML = ""
+							return true
+						}else{
+							phone.style.backgroundColor = badColor
+							message.style.color = badColor
+							message.innerHTML = "Numéro de téléphone invalide!"
+							return false
+						}
+					}else{
+						phone.style.backgroundColor = badColor
+						message.style.color = badColor
+						message.innerHTML = "(+33) Votre numéro de téléphone doit comporter 10 chiffres!"
+						return false
+					}					
 				}else{
 					message.innerHTML = ""
+					return false
 				}
 			}else{
-				phone.style.backgroundColor = goodColor
-				message.innerHTML = ""
+				if (newTelephone.substring(0, 1) != "0"){
+					phone.style.backgroundColor = badColor
+					message.style.color = badColor
+					message.innerHTML = "Numéro de téléphone invalide! Votre numéro doit commencer par un 0!"
+					return false
+				}else{
+					phone.style.backgroundColor = goodColor
+					message.innerHTML = ""
+					copy = newTelephone.substring(1, 10)
+					newTelephone = copy.substring(0, 1) + " "
+					copy = copy.substring(1, 9)
+					k = 0
+					
+					while (copy != ""){
+						newTelephone = newTelephone + copy.substring(0, 2) + " "
+						copy = copy.substring(2, 8 - 2*k)
+						k++
+					}
+					document.getElementById('phone').value = "+33 " + newTelephone.substring(0, newTelephone.length-1)
+					return true
+				}
 			}
 		}
 	}
+
+ 	function changePassword2Text() {
+ 		var pass = document.getElementById("mdp1");
+ 		
+ 		if (pass.type == 'text') {
+ 			pass.type = "password"
+ 		}else{
+ 			pass.type = "text"
+ 		}
+ 	}
  	</script>
  	 
 <div class="container">
 <div class="row justify-content-center align-items-center">
         <div class="col-xs-12 col-sm-12 col-md-8 well well-sm formulaire">
             <h3 class="text-center text-dark mb-5">Inscription</h3>
-	<spring:url value="/utilisateur/save" var="utilisateurActionUrl" />
+	<spring:url value="/utilisateur/save" var="utilisateurActionUrl"/>
 
 	<form:form id="utilisateurform" name="frm" 
 	class="form-horizontal"  method="post"  modelAttribute="utilisateurForm"  
@@ -258,7 +351,7 @@
 
 		<form:hidden path="id"  value="${utilisateurForm.id}" />
 		
-		<div class="row">		
+		<div class="row">	
 		<spring:bind path="matricule">
 		
 			<div class="col-xs-6 col-md-6">
@@ -301,10 +394,11 @@
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
                         <label for="password" class="text-dark">Mot de passe*</label>
+                        <button type="button" class="btn btn-sm btn-primary" onclick="randomPass();">Générer un mot de passe</button>
                         <br>
-					<form:input type="password"   path="mdp"  class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
+					<form:input type="password" path="mdp"  class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
 								id="mdp1"
-								onblur="checkPass();return false;"
+								onblur='checkPass();'
 								ng-model="thePassword"
 								required="required" 
 								data-validation-length="max100"
@@ -313,7 +407,8 @@
 	  							data-validation-error-msg-required="Champs designation est Obligatoire"
 	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-					<form:errors path="mdp" class="control-label" />		
+					<form:errors path="mdp" class="control-label" />
+					<button type="button" class="btn btn-sm btn-primary" onclick="changePassword2Text();">See/Hide</button>		
 					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 12 caratères.</small>
 					<span id="message" class="message" ></span>
 					</div>
@@ -449,7 +544,7 @@
 		
 		<div class="row justify-content-center align-items-center">
 			
-						<button type="submit" onclick="valideForm(); return false" class="btn btn-lg btn-primary">S'inscrire</button>
+						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">S'inscrire</button>
 	    
 
    </div>
