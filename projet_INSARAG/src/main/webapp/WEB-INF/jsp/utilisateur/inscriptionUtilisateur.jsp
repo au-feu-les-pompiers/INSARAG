@@ -165,7 +165,7 @@
 	    var boucle = true;
 
 	    while (boucle && k < nomTab.length){
-			if ((nomTab[k].charCodeAt(0) >= 65 && nomTab[k].charCodeAt(0) <= 90) || (nomTab[k].charCodeAt(0) >= 97 && nomTab[k].charCodeAt(0) <= 122)){
+			if ((nomTab[k].charCodeAt(0) >= 65 && nomTab[k].charCodeAt(0) <= 90) || (nomTab[k].charCodeAt(0) >= 97 && nomTab[k].charCodeAt(0) <= 122) || (nomTab[k].charCodeAt(0) >= 192 && nomTab[k].charCodeAt(0) <= 221 && nomTab[k].charCodeAt(0) != 215) || (nomTab[k].charCodeAt(0) >= 224 && nomTab[k].charCodeAt(0) <= 253 && nomTab[k].charCodeAt(0) != 247)){
 				k++
 			}else{
 				boucle = false
@@ -176,6 +176,7 @@
 			if (nom.value != ""){
 				nom.style.backgroundColor = goodColor
 				message.innerHTML = ""
+				nom.value = nom.value.toUpperCase()
 				return true
 			}else{
 				return false
@@ -183,7 +184,7 @@
 		}else{
 			nom.style.backgroundColor = badColor
 			message.style.color = badColor
-			message.innerHTML = "Nom invalide!"
+			message.innerHTML = "Nom invalide! "
 			return false
 		}
 	}
@@ -198,7 +199,7 @@
 	    var boucle = true;
 
 	    while (boucle && k < prenomTab.length){
-			if ((prenomTab[k].charCodeAt(0) >= 65 && prenomTab[k].charCodeAt(0) <= 90) || (prenomTab[k].charCodeAt(0) >= 97 && prenomTab[k].charCodeAt(0) <= 122)){
+			if ((prenomTab[k].charCodeAt(0) >= 65 && prenomTab[k].charCodeAt(0) <= 90) || (prenomTab[k].charCodeAt(0) >= 97 && prenomTab[k].charCodeAt(0) <= 122) || (prenomTab[k].charCodeAt(0) >= 192 && prenomTab[k].charCodeAt(0) <= 221 && prenomTab[k].charCodeAt(0) != 215) || (prenomTab[k].charCodeAt(0) >= 224 && prenomTab[k].charCodeAt(0) <= 253 && prenomTab[k].charCodeAt(0) != 247)){
 				k++
 			}else{
 				boucle = false
@@ -209,6 +210,7 @@
 			if (prenom.value != ""){
 				prenom.style.backgroundColor = goodColor
 				message.innerHTML = ""
+				prenom.value = prenom.value[0].toUpperCase() + prenom.value.substring(1, prenom.value.length).toLowerCase()
 				return true
 			}else{
 				return false
@@ -343,6 +345,22 @@
 <div class="row justify-content-center align-items-center">
         <div class="col-xs-12 col-sm-12 col-md-8 well well-sm formulaire">
             <h3 class="text-center text-dark mb-5">Inscription</h3>
+            <h6 class="text-center text-dark mb-5">
+            <%
+	       	try {
+	        	String error = request.getParameter("error");
+	        	if (error.equals("email")){%>
+	     	<font color = 'red'> Erreur, cet email est déjà enregistré dans la base de donnée!</font>
+	        	<%}else if (error.equals("matricule")){%>
+	        <font color = 'red'> Erreur, ce matricule est déjà enregistré dans la base de donnée!</font>		
+	        	<%}else{%>
+	        <font color = 'red'> Erreur, ce numéro de téléphone est déjà enregistré dans la base de donnée!</font>	
+	        	<%}
+	       	}catch (Exception e){
+	            out.println("");	                   		
+	       	}
+	       	%>
+	       	</h6>
 	<spring:url value="/utilisateur/save" var="utilisateurActionUrl"/>
 
 	<form:form id="utilisateurform" name="frm" 
@@ -374,7 +392,7 @@
 
                 <div class="col-xs-6 col-md-6">
                    <div class="form-group">
-                        <label for="email" class="text-dark">Email*</label><br>
+                       	<label for="email" class="text-dark">Email*</label><br>
 					<form:input type="email"   path="email"  class="form-control"  value="${utilisateurForm.email}" placeholder="richard.dupont@gmail.com" 
 								required="required" 
 								data-validation-length="max100"
