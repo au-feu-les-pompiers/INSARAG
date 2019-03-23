@@ -55,7 +55,7 @@
 	
 	
 	
-	<div class="d-flex justify-content-center">
+	<div class="d-flex flex-lg-nowrap  flex-md-wrap flex-sm-wrap ">
 	
 	
 	<div class="row justify-content-center align-items-center">
