@@ -55,13 +55,13 @@
 	
 	
 	
-	<div class="d-flex justify-content-around">
+	<div class="d-flex justify-content-center">
 	
 	
 	<div class="row justify-content-center align-items-center">
 		
 		<h5> Liste des secouristes ayant acceptés la mission </h5>				
-		
+		<div  class="row justify-content-center align-items-center">
 	
 		<table id="prodtable" class="table table-responsive  table-bordered">
 			
@@ -105,7 +105,7 @@
 			 </tbody>	
 			</table>
 		
-		
+		</div>
 		</div>
 		
 		
@@ -113,7 +113,7 @@
 			<div class="row justify-content-center align-items-center">
 		
 				<h5> Liste des médecins ayant acceptés la mission </h5>				
-		
+				<div  class="row justify-content-center align-items-center">
 		
 				<table id="prodtable" class="table table-responsive  table-bordered">
 				
@@ -156,13 +156,14 @@
 					</c:forEach>
 				 </tbody>	
 				</table>
+				</div>
 		</div>
 		
 			<div class="row justify-content-center align-items-center">
 		
 				<h5> Liste des managers ayant acceptés la mission </h5>				
 		
-		
+				<div class="row justify-content-center align-items-center">
 				<table id="prodtable" class="table table-responsive  table-bordered">
 				
 					<thead class="thead-light">
@@ -204,7 +205,10 @@
 					</c:forEach>
 				 </tbody>	
 				</table>
+				</div>
 		</div>
+		
+		
 	</div>
 <script>	
 // $(document).ready(function() {
