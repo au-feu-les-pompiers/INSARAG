@@ -197,6 +197,5 @@ $('#prodtable').DataTable( {
 } );
 </script>
 
-
 </body>
 </html>

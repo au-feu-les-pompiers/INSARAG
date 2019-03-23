@@ -119,6 +119,7 @@
 			
 				<spring:url value="/mission/get/${miss.idMission}"	var="missUrl" />
 				<spring:url value="/mission/update/${miss.idMission}" var="updateUrl" />
+				<spring:url value="/mission/close/${miss.idMission}" var="closeUrl" />
 				
 				<tr>
 					<td width="8%">${miss.idMission}</td>
