@@ -100,7 +100,7 @@ public class MissionController {
 			    		utilisateurService.save(utilisateur);
 		    		}
 		    	}
-		    	return "redirect:/mission/listAll";
+		    	return "redirect:/Accueil";
 	        }
 	        return "redirect:/";	        
 	    }

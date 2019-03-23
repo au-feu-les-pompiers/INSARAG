@@ -96,10 +96,14 @@
 					<h1> Liste des missions </h1>				
 		</div>
 		<div class="row justify-content-center align-items-center">
+<c:set var="bool" value="${0}"/>
 <c:forEach var="item" items="${missions}" varStatus="loop">
-       	<c:if test="${loop.last}">
+       	<c:if test="${item.flagFin == 0}" >
+       	<c:set var="bool" value="${1}"/>
+       	</c:if>
+       			</c:forEach>
        	<c:choose>
-           <c:when test="${item.flagFin == 1}">
+           <c:when test="${bool != 1}">
            <button type="button" style="margin-top:20px;" class="btn btn-warning pull-right" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
 				 Nouvelle mission
 			</button>
@@ -108,8 +112,7 @@
 			<h5>Veuillez cloturer la mission en cours avant de créer une nouvelle mission</h5>
 			</c:otherwise>
            </c:choose>
-       	</c:if>
-		</c:forEach>
+
 		</div>
 
 

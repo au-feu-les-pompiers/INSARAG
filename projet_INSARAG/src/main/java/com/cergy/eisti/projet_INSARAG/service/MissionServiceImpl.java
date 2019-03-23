@@ -71,17 +71,17 @@ public class MissionServiceImpl implements MissionService{
 	@Override
 	public Mission getNextMission() throws Exception {
 		Mission nextMission = null;
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 		
 		for (Mission mission: missionRepository.findAll()) {
-			if (nextMission == null) {
+			if (mission.getFlagFin() == 0) {
 				nextMission = mission;
 			}
-			Date date1 = format.parse(nextMission.getDebut());
-			Date date2 = format.parse(mission.getDebut());
-			if (date1.compareTo(date2) > 0 ) {
-				nextMission = mission;
-			}
+//			Date date1 = format.parse(nextMission.getDebut());
+//			Date date2 = format.parse(mission.getDebut());
+//			if (date1.compareTo(date2) > 0 ) {
+//				nextMission = mission;
+//			}
 		}
 		return nextMission;
 	}

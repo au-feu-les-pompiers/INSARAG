@@ -102,7 +102,7 @@
 					<c:otherwise>
 						<form:form id="utilisateurform"  class="form"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >
 							<input class="btn btn-lg btn-success btn-block" id="connexion" name="Accepter" type="submit" value="Accepter la mission" href="/mission/accept/${missionToShow.idMission}">			
-							<input class="btn btn-lg btn-danger btn-block" id="connexion" name="Refuser" type="submit" value="Refuser la mission">							
+							<input class="btn btn-lg btn-danger btn-block" id="connexion" name="Refuser" type="submit" value="Refuser la mission" >							
 						</form:form>
 					</c:otherwise>
 				</c:choose>
