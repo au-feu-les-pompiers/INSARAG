@@ -39,9 +39,9 @@
 
 <body>
 
-		<div id="header">
+	<div id="header">
 		<c:choose>
-			<c:when test="${sessionScope.accreditation == 1}">
+			<c:when test="${sessionScope.accreditation == 2}">
 					<jsp:include page="../common/header.jsp" />
 			</c:when>
 			<c:otherwise>

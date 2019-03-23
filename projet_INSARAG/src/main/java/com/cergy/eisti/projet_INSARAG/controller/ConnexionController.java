@@ -53,7 +53,6 @@ public class ConnexionController {
 			session.setAttribute("idUtilisateur", connexionService.numId());
 			session.setAttribute("enMission", utilisateurService.getEnMission(id));
 			
-			System.out.println(session.getAttribute("enMission"));
 			return "redirect:/Accueil";
 		}
 		
@@ -70,6 +69,7 @@ public class ConnexionController {
 
     	try {
 			model.addAttribute("missionToShow", missionService.getNextMission());
+			request.setAttribute("idMission", missionService.getNextMission().getIdMission());
 	    	model.addAttribute("utilisateurForm", utilisateurService.getByIdUtilisateur(idUtilisateur));
 
 		} catch (Exception e) {

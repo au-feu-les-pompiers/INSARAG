@@ -49,6 +49,9 @@ public class InscriptionController {
         if (session.getAttribute("connected") != "connected") {
 	        return new ModelAndView("redirect:/");	        
         }
+        if ((int) session.getAttribute("accreditation" ) != 2) {
+			return new ModelAndView("redirect:/Accueil");
+        }
 		List<Utilisateur> listeUtilisateurs = utilisateurService.getAll();
 		return new ModelAndView("/utilisateur/showAllUtilisateurs", "utilisateurs", listeUtilisateurs);
 	}

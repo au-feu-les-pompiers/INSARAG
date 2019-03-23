@@ -50,7 +50,6 @@
 <!-- http://www.jqueryscript.net/form/HTML5-Form-Validation-Plugin-For-Bootstrap-Bootstrap-Validator.html -->
 
 <body>
-
 	<div id="header">
 		<c:choose>
 			<c:when test="${sessionScope.accreditation == 2}">
@@ -61,8 +60,7 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	
-
+	 
  
 <div class="container">
 <div class="row justify-content-center align-items-center">
