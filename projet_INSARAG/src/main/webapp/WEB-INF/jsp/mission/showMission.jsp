@@ -104,8 +104,17 @@ function initMap() {
 
 <body>
 
-	<jsp:include page="../common/header.jsp" />
-
+	<div id="header">
+		<c:choose>
+			<c:when test="${sessionScope.accreditation == 2}">
+					<jsp:include page="../common/header.jsp" />
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="../common/navbar_uti.jsp" />
+			</c:otherwise>
+		</c:choose>
+	</div>
+	
 	<div class="container">
 	<div class="row justify-content-center align-items-center">
 	<div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 1500px; max-height: 1500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
@@ -145,11 +154,6 @@ function initMap() {
 			<div class="col-sm-7">${missionToShow.fin}</div>
 		</div>
 		<div>
-			<spring:url value="/mission/accept" var="utilisateurActionUrl" />
-			
-			<form:form id="utilisateurform"  class="form"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >
-				<input class="btn btn-lg btn-danger btn-block" id="connexion"  type="submit" value="Accepter la mission">			
-			</form:form>
 		
 		</div>
 		

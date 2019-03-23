@@ -16,7 +16,7 @@
                 </span>  Chat</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath}/carte">
                 <span style="color: #006600;">
                     <i class="fas fa-map-marked-alt"></i>
                 </span>  Map</a>
@@ -46,13 +46,13 @@
                 </span>  Fiches</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath}/utilisateur/listAllInMision">
                 <span style="color: #0080FF;">
                     <i class="far fa-id-card"></i>
                 </span>  Contacts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-weight: bold;" href="#">Mon profil</a>
+            <a class="nav-link" style="font-weight: bold;" href="${pageContext.request.contextPath}/utilisateur/get/${sessionScope.id}">Mon profil</a>
           </li>
           
           <li class="nav-item">

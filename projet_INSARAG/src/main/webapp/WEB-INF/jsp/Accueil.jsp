@@ -42,7 +42,7 @@
 <body>
 	<div id="header">
 		<c:choose>
-			<c:when test="${sessionScope.accreditation == 1}">
+			<c:when test="${sessionScope.accreditation == 2}">
 					<jsp:include page="common/header.jsp" />
 			</c:when>
 			<c:otherwise>
@@ -82,7 +82,6 @@
 			
 			<div>
 			<spring:url value="/mission/accept" var="utilisateurActionUrl" />
-			
 				<c:choose>
 					<c:when test="${sessionScope.enMission == 1}">
 						<h2>Vous avez accpté la mission</h2>	
@@ -92,7 +91,7 @@
 					</c:when>
 					<c:otherwise>
 						<form:form id="utilisateurform"  class="form"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >
-							<input class="btn btn-lg btn-success btn-block" id="connexion" name="Accepter" type="submit" value="Accepter la mission">			
+							<input class="btn btn-lg btn-success btn-block" id="connexion" name="Accepter" type="submit" value="Accepter la mission" href="/mission/accept">			
 							<input class="btn btn-lg btn-danger btn-block" id="connexion" name="Refuser" type="submit" value="Refuser la mission">							
 						</form:form>
 					</c:otherwise>
