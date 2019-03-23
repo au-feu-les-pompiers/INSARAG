@@ -28,7 +28,7 @@ public interface MissionRepository extends Repository <Mission, Long>{
 	int resetEnMission();
 	
 	@Modifying
-	@Query("update Mission m set m.flagFin = 1 where m.id = ?1")
+	@Query("update Mission m set m.flagFin = 1 where m.flagFin = 0")
 	int fermerMission(Long id);
 	
 //	@Modifying

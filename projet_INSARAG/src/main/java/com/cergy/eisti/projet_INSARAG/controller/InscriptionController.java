@@ -59,6 +59,9 @@ public class InscriptionController {
 	 	@RequestMapping(value = "/utilisateur/list", method = RequestMethod.GET)
 	    public String list(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	 		HttpSession session = request.getSession();
+	        if ((int) session.getAttribute("accreditation" ) != 2) {
+				return "redirect:/Accueil";
+	        }
 	        model.addAttribute("utilisateurs", utilisateurService.getAll());
 	        if (session.getAttribute("connected") == "connected") {
 		        return "/utilisateur/showAllUtilisateurs"; // Afficher la page showAllUtilisateurs.jsp qui se trouve sous /utilisateur
@@ -71,6 +74,9 @@ public class InscriptionController {
 	    @RequestMapping(value = "/utilisateur/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model, HttpServletRequest request) throws Exception {
 			HttpSession session = request.getSession();
+			if ((int) session.getAttribute("accreditation" ) < 1) {
+				return ("redirect:/Accueil");
+	        }
 	        if (session.getAttribute("connected") != "connected") {
 		        return "redirect:/";	        
 	        }

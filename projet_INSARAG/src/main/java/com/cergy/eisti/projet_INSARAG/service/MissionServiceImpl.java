@@ -29,7 +29,7 @@ public class MissionServiceImpl implements MissionService{
  
 	@Override
 	public Long save(Mission mission) throws Exception {
-		
+		mission.setFlagFin(0);
 		mission = missionRepository.save(mission);
 		return mission.getIdMission();
 	}
