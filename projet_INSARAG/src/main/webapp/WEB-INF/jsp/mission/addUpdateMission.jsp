@@ -18,9 +18,6 @@
 <spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
 <link href="${bootstrap4Css}" rel="stylesheet" /> 
 
-<spring:url value="/css/header.css" var="headerCss" />
-<link href="${headerCss}" rel="stylesheet" /> 
-
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
@@ -50,7 +47,20 @@
 
 <body>
 
-<jsp:include page="../common/header.jsp" />
+	<div id="header">
+		<c:choose>
+			<c:when test="${sessionScope.accreditation == 2}">
+					<jsp:include page="../common/header.jsp" />
+					<spring:url value="/css/header.css" var="headerCss" />
+					<link href="${headerCss}" rel="stylesheet" /> 
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="../common/navbar_uti.jsp" />
+				<spring:url value="/css/navbar_uti.css" var="navbar_uti" />
+					<link href="${navbar_uti}" rel="stylesheet" /> 
+			</c:otherwise>
+		</c:choose>
+	</div>
  
 <div class="container">
 <div class="row justify-content-center align-items-center">

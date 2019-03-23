@@ -93,6 +93,7 @@ public class InscriptionController {
 	    	String currentEmail = utilisateur.getEmail();
 	    	String currentMatricule = utilisateur.getMatricule();
 	    	String currentPhone = utilisateur.getTelephone();
+	    	Long currentId = utilisateur.getId();
 	    	/*
 			 * Lancement du Service et récupération données en base
 			 */
@@ -101,14 +102,22 @@ public class InscriptionController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			
 			for (Utilisateur util : listeUtilisateurs) {
-				if (util.getEmail().equals(currentEmail)) {
-					return "redirect:/utilisateur/new?error=email";
-				}else if (util.getMatricule().equals(currentMatricule)){
-					return "redirect:/utilisateur/new?error=matricule";
-				}else if (util.getTelephone().equals(currentPhone)) {
-					return "redirect:/utilisateur/new?error=telephone";
+				if (util.getId().equals(currentId)) {
+					newU = false;
+					break;
+				}
+			}
+			
+			if (newU) {
+				for (Utilisateur util : listeUtilisateurs) {
+					if (util.getEmail().equals(currentEmail)) {
+						return "redirect:/utilisateur/new?error=email";
+					}else if (util.getMatricule().equals(currentMatricule)){
+						return "redirect:/utilisateur/new?error=matricule";
+					}else if (util.getTelephone().equals(currentPhone)) {
+						return "redirect:/utilisateur/new?error=telephone";
+					}
 				}
 			}
 	    	
