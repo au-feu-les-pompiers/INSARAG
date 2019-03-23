@@ -14,18 +14,18 @@
             <div class="dropdown-menu" aria-labelledby="dropdown06">
               <a class="dropdown-item" href="${pageContext.request.contextPath}/utilisateur/listAll">Pompiers</a>
               <a class="dropdown-item" href="${pageContext.request.contextPath}/mission/listAll">Missions</a>
-              <a class="dropdown-item" href="#">Organigramme</a>
-              <a class="dropdown-item" href="${pageContext.request.contextPath}/documents">Documents</a>
+<!--               <a class="dropdown-item" href="#">Organigramme</a> -->
+<%--               <a class="dropdown-item" href="${pageContext.request.contextPath}/documents">Documents</a> --%>
             </div>
           </li>
+<!--           <li class="nav-item"> -->
+<!--             <a class="nav-link" href="#"> -->
+<!--                 <span style="color: blue;"> -->
+<!--                     <i class="far fa-comments"></i> -->
+<!--                 </span>  Chat</a> -->
+<!--           </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span style="color: blue;">
-                    <i class="far fa-comments"></i>
-                </span>  Chat</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath}/carte">
                 <span style="color: #006600;">
                     <i class="fas fa-map-marked-alt"></i>
                 </span>  Map</a>
@@ -37,23 +37,23 @@
                 </span>  Documents</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath}/organigramme">
                 <span style="color: #660033;">
                     <i class="fas fa-users"></i>
                 </span>  Organigramme</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span style="color: #E9DB0E;">
-                    <i class="fas fa-link"></i>
-                </span>  Liens utiles</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span style="color: #CC6600;">
-                    <i class="fas fa-folder-open"></i>
-                </span>  Fiches</a>
-          </li>
+<!--           <li class="nav-item"> -->
+<!--             <a class="nav-link" href="#"> -->
+<!--                 <span style="color: #E9DB0E;"> -->
+<!--                     <i class="fas fa-link"></i> -->
+<!--                 </span>  Liens utiles</a> -->
+<!--           </li> -->
+<!--           <li class="nav-item"> -->
+<!--             <a class="nav-link" href="#"> -->
+<!--                 <span style="color: #CC6600;"> -->
+<!--                     <i class="fas fa-folder-open"></i> -->
+<!--                 </span>  Fiches</a> -->
+<!--           </li> -->
           <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/utilisateur/listAllInMision">
                 <span style="color: #0080FF;">

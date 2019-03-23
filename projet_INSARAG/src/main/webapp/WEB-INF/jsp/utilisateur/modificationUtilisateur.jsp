@@ -50,7 +50,6 @@
 <!-- http://www.jqueryscript.net/form/HTML5-Form-Validation-Plugin-For-Bootstrap-Bootstrap-Validator.html -->
 
 <body>
-
 	<div id="header">
 		<c:choose>
 			<c:when test="${sessionScope.accreditation == 2}">
@@ -62,6 +61,7 @@
 		</c:choose>
 	</div>
 	 
+ 
 <div class="container">
 <div class="row justify-content-center align-items-center">
 <div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
@@ -69,13 +69,14 @@
 	border: 1px solid grey;">
 	
 	<div class="row justify-content-center align-items-center">
-				<h3 class="text-center">Modifier un pompier</h3>
+				<h3 class="text-center">Modifier votre profil</h3>
 	</div>
 			
 	<spring:url value="/utilisateur/save" var="utilisateurActionUrl" />
 
 	<form:form id="utilisateurform"  class="form-horizontal"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >
-
+	<c:choose>
+ <c:when test="${sessionScope.idUtilisateur == utilisateurForm.id}">
 		<form:hidden path="id"  value="${utilisateurForm.id}" />
 		
 		<spring:bind path="email">
@@ -129,7 +130,7 @@
 					<form:errors path="nom" class="control-label" />		
 				</div>
 			</div>
-	
+	</div>
 		</spring:bind>
 		
 		
@@ -148,7 +149,6 @@
 					<form:errors path="prenom" class="control-label" />		
 				</div>
 			</div>
-		</div>
 		</spring:bind>
 		
 		<spring:bind path="telephone">
@@ -167,7 +167,7 @@
 					<form:errors path="telephone" class="control-label" />		
 				</div>
 			</div>
-		
+		</div>
 		</spring:bind>
 		
 		<spring:bind path="naissance">
@@ -187,7 +187,6 @@
 					<form:errors path="naissance" class="control-label" />		
 				</div>
 			</div>
-		</div>
 		</spring:bind>
 		
 		<spring:bind path="matricule">
@@ -222,14 +221,19 @@
 	      		<button type="reset" class="btn  btn-default">Reset</button>
 	       </div>
    		</div>
+   		</c:when>
+   		<c:otherwise>
+   		<div>
+   		<h6> Vous ne pouvez pas modifier le profil d'un autre utilisateur</h6></div>
+   		</c:otherwise>
+
+</c:choose>
    		
  </form:form>
 
 </div>
 </div>
 </div>
-
-
 
 </body>
 </html>

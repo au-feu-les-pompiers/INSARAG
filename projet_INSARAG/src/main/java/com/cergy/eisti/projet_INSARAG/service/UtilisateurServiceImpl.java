@@ -82,6 +82,39 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 		}
 		return inMission;
 	}
+	
+	@Override
+	public List<Utilisateur> getPompierInMission() {
+		List<Utilisateur> inMission = new ArrayList<>();
+		for(Utilisateur u : utilisateurRepository.findAll()) {
+			if (u.getEnMission() == 1 && u.getRole() == 1) {
+				inMission.add(u);
+			}
+		}
+		return inMission;
+	}
+	
+	@Override
+	public List<Utilisateur> getMedecinInMission() {
+		List<Utilisateur> inMission = new ArrayList<>();
+		for(Utilisateur u : utilisateurRepository.findAll()) {
+			if (u.getEnMission() == 1 && u.getRole() == 2) {
+				inMission.add(u);
+			}
+		}
+		return inMission;
+	}
+	
+	@Override
+	public List<Utilisateur> getManagerInMission() {
+		List<Utilisateur> inMission = new ArrayList<>();
+		for(Utilisateur u : utilisateurRepository.findAll()) {
+			if (u.getEnMission() == 1 && u.getRole() == 3) {
+				inMission.add(u);
+			}
+		}
+		return inMission;
+	}
 
 	@Override
 	public int getEnMission(Long id) {

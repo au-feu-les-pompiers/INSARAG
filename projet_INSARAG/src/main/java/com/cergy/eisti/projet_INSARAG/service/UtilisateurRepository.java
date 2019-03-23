@@ -17,6 +17,15 @@ public interface UtilisateurRepository extends Repository <Utilisateur, Long>{
 	 
 	List<Utilisateur> findAll();
 	
+	@Query("select u.id,u.nom,u.prenom,u.matricule,u.role from Utilisateur u where u.enMission = 1 and u.role = 1")
+	List<Utilisateur> findPompier();
+	
+	@Query("select u.id,u.nom,u.prenom,u.matricule,u.role from Utilisateur u where u.enMission = 1 and u.role = 2")
+	List<Utilisateur> findMedecin();
+	
+	@Query("select u.id,u.nom,u.prenom,u.matricule,u.role from Utilisateur u where u.enMission = 1 and u.role = 3")
+	List<Utilisateur> findManager();
+	
 	Utilisateur save(Utilisateur utilisateur);
 	
 	@Query("select u.autorisation from Utilisateur u where u.id = ?1")

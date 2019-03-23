@@ -140,4 +140,16 @@ public class MissionController {
 	        return "/mission/addUpdateMission";
 	    }
 	    
+	    @RequestMapping("/mission/close/{id}")
+	    public String close(@PathVariable Long id, Model model, 
+	    		final RedirectAttributes redirectAttributes, HttpServletRequest request) throws Exception {
+	 		HttpSession session = request.getSession();
+	        if (session.getAttribute("connected") != "connected") {
+		        return "redirect:/";	        
+	        }
+	    	missionService.closeMission(id);
+	    	model.addAttribute("missions", missionService.getAll());
+        	return "/mission/showAllMissions";
+	    }
+	    
 }

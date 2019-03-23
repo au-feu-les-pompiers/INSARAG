@@ -150,5 +150,17 @@ public class IndexController {
 					 return "/general/documents";
 
 				}
+				
+			 	@RequestMapping(value = "/organigramme", method = RequestMethod.GET)
+			    public String list(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+			 		HttpSession session = request.getSession();
+			        if (session.getAttribute("connected") == "connected") {
+			        	model.addAttribute("pompier", utilisateurService.getPompierInMission());
+			        	model.addAttribute("medecin", utilisateurService.getMedecinInMission());
+			        	model.addAttribute("manager", utilisateurService.getManagerInMission());
+			        	return "/general/organigramme"; // Afficher la page showAllMissions.jsp qui se trouve sous /mission
+			        }
+			        return "redirect:/";
+			    }
 	
 }

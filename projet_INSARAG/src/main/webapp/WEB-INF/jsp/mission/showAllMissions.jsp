@@ -110,6 +110,7 @@
 			
 				<spring:url value="/mission/get/${miss.idMission}"	var="missUrl" />
 				<spring:url value="/mission/update/${miss.idMission}" var="updateUrl" />
+				<spring:url value="/mission/close/${miss.idMission}" var="closeUrl" />
 				
 				<tr>
 					<td width="8%">${miss.idMission}</td>
@@ -124,6 +125,11 @@
 						<button class="btn btn-primary" onclick="location.href='${updateUrl}'">
 						update
 						</button>
+						<c:choose>
+						<c:when test="${miss.flagFin == 0}">
+						<button class="btn btn-danger"	onclick="location.href='${closeUrl}'">Terminer</button>
+						</c:when>
+						</c:choose>
 					</td>
 				</tr>
 				

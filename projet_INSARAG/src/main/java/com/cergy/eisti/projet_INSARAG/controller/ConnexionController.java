@@ -49,7 +49,8 @@ public class ConnexionController {
 			Long id = connexionService.getPompier(login, mdp);
 			session.setAttribute("accreditation", connexionService.accreditationLvl());
 			session.setAttribute("connected", "connected");
-			session.setAttribute("id",id );
+			session.setAttribute("id",id);
+			session.setAttribute("idUtilisateur", connexionService.numId());
 			session.setAttribute("enMission", utilisateurService.getEnMission(id));
 			
 			return "redirect:/Accueil";

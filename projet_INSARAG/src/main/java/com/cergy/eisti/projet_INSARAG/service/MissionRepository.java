@@ -22,6 +22,14 @@ public interface MissionRepository extends Repository <Mission, Long>{
 	@Modifying
 	@Query("update Mission u set u.id = ?1")
 	int updateIdMission(Long idMission);
+
+	@Modifying
+	@Query("update Utilisateur u set u.enMission = 0 where u.id <> 0")
+	int resetEnMission();
+	
+	@Modifying
+	@Query("update Mission m set m.flagFin = 1 where m.id = ?1")
+	int fermerMission(Long id);
 	
 //	@Modifying
 //	@Query("update Mission u set u.lieu = ?1  where u.id_ = ?2")
