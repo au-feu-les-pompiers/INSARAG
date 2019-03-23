@@ -130,7 +130,7 @@
 					<form:errors path="nom" class="control-label" />		
 				</div>
 			</div>
-	</div>
+
 		</spring:bind>
 		
 		
@@ -149,10 +149,11 @@
 					<form:errors path="prenom" class="control-label" />		
 				</div>
 			</div>
+		</div>
 		</spring:bind>
 		
 		<spring:bind path="telephone">
-			<div class="row">
+		 <div class="row">
 			<div class="col-6">
 				<div class="form-group">
 					<label>Numéro de téléphone</label>
@@ -167,7 +168,7 @@
 					<form:errors path="telephone" class="control-label" />		
 				</div>
 			</div>
-		</div>
+		
 		</spring:bind>
 		
 		<spring:bind path="naissance">
@@ -186,6 +187,7 @@
 	 							disabled="true"/> 
 					<form:errors path="naissance" class="control-label" />		
 				</div>
+			</div>
 			</div>
 		</spring:bind>
 		

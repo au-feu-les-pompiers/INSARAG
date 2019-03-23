@@ -18,8 +18,7 @@
 <spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
 <link href="${bootstrap4Css}" rel="stylesheet" /> 
 
-<spring:url value="/css/header.css" var="headerCss" />
-<link href="${headerCss}" rel="stylesheet" /> 
+
 
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
@@ -43,154 +42,170 @@
 		<c:choose>
 			<c:when test="${sessionScope.accreditation == 1}">
 					<jsp:include page="../common/header.jsp" />
+					<spring:url value="/css/header.css" var="headerCss" />
+					<link href="${headerCss}" rel="stylesheet" /> 
 			</c:when>
 			<c:otherwise>
 				<jsp:include page="../common/navbar_uti.jsp" />
+				<spring:url value="/css/navbar_uti.css" var="navbar_uti" />
+					<link href="${navbar_uti}" rel="stylesheet" /> 
 			</c:otherwise>
 		</c:choose>
 	</div>
 	
+	
+	
+	<div class="d-flex justify-content-around">
+	
+	
 	<div class="row justify-content-center align-items-center">
 		
-					<h1> Liste des secouristes ayant acceptés la mission </h1>				
-		</div>
-	
-	<table id="prodtable" class="table table-responsive  table-bordered">
+		<h5> Liste des secouristes ayant acceptés la mission </h5>				
 		
-			<thead class="thead-light">
-				<tr>
-				   <th>Id <i class="fas fa-sort"></i></th>
-					<th>Nom <i class="fas fa-sort"></i></th>
-					<th>Prénom <i class="fas fa-sort"></i></th>
-					<th>Matricule <i class="fas fa-sort"></i></th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tfoot>
-        	    <tr>
-				   <th>Id</th>
-					<th>Nom</th>
-					<th>Prénom</th>
-					<th>Matricule</th>
-					<th>Action</th>
-         	   </tr>
-       		 </tfoot>
-       	   <tbody>
-			<c:forEach var="pomp" items="${pompier}">
+	
+		<table id="prodtable" class="table table-responsive  table-bordered">
 			
-				<spring:url value="/utilisateur/get/${pomp.id}"	var="missUrl" />
+				<thead class="thead-light">
+					<tr>
+					   <th>Id <i class="fas fa-sort"></i></th>
+						<th>Nom <i class="fas fa-sort"></i></th>
+						<th>Prénom <i class="fas fa-sort"></i></th>
+						<th>Matricule <i class="fas fa-sort"></i></th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tfoot>
+	        	    <tr>
+					   <th>Id</th>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Matricule</th>
+						<th>Action</th>
+	         	   </tr>
+	       		 </tfoot>
+	       	   <tbody>
+				<c:forEach var="pomp" items="${pompier}">
 				
-				<tr>
-					<td width="8%">${pomp.id}</td>
-					<td width="25%">${pomp.nom}</td>
-					<td width="25%">${pomp.prenom}</td>
-					<td width="22%">${pomp.matricule}</td>
-					<td width="20%">
+					<spring:url value="/utilisateur/get/${pomp.id}"	var="missUrl" />
 					
-						<button class="btn btn-success"	onclick="location.href='${missUrl}'">
-						show
-						</button>
-					</td>
-				</tr>
-				
-			</c:forEach>
-		 </tbody>	
-		</table>
+					<tr>
+						<td width="8%">${pomp.id}</td>
+						<td width="25%">${pomp.nom}</td>
+						<td width="25%">${pomp.prenom}</td>
+						<td width="22%">${pomp.matricule}</td>
+						<td width="20%">
+						
+							<button class="btn btn-success"	onclick="location.href='${missUrl}'">
+							show
+							</button>
+						</td>
+					</tr>
+					
+				</c:forEach>
+			 </tbody>	
+			</table>
+		
+		
+		</div>
+		
+		
 		
 			<div class="row justify-content-center align-items-center">
 		
-					<h1> Liste des médecins ayant acceptés la mission </h1>				
-		</div>
+				<h5> Liste des médecins ayant acceptés la mission </h5>				
 		
-		<table id="prodtable" class="table table-responsive  table-bordered">
 		
-			<thead class="thead-light">
-				<tr>
-				   <th>Id <i class="fas fa-sort"></i></th>
-					<th>Nom <i class="fas fa-sort"></i></th>
-					<th>Prénom <i class="fas fa-sort"></i></th>
-					<th>Matricule <i class="fas fa-sort"></i></th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tfoot>
-        	    <tr>
-				   <th>Id</th>
-					<th>Nom</th>
-					<th>Prénom</th>
-					<th>Matricule</th>
-					<th>Action</th>
-         	   </tr>
-       		 </tfoot>
-       	   <tbody>
-			<c:forEach var="mede" items="${medecin}">
-			
-				<spring:url value="/utilisateur/get/${mede.id}"	var="missUrl" />
+				<table id="prodtable" class="table table-responsive  table-bordered">
 				
-				<tr>
-					<td width="8%">${mede.id}</td>
-					<td width="25%">${mede.nom}</td>
-					<td width="15%">${mede.prenom}</td>
-					<td width="15%">${mede.matricule}</td>
-					<td width="30%">
+					<thead class="thead-light">
+						<tr>
+						   <th>Id <i class="fas fa-sort"></i></th>
+							<th>Nom <i class="fas fa-sort"></i></th>
+							<th>Prénom <i class="fas fa-sort"></i></th>
+							<th>Matricule <i class="fas fa-sort"></i></th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tfoot>
+		        	    <tr>
+						   <th>Id</th>
+							<th>Nom</th>
+							<th>Prénom</th>
+							<th>Matricule</th>
+							<th>Action</th>
+		         	   </tr>
+		       		 </tfoot>
+		       	   <tbody>
+					<c:forEach var="mede" items="${medecin}">
 					
-						<button class="btn btn-success"	onclick="location.href='${missUrl}'">
-						show
-						</button>
-					</td>
-				</tr>
-				
-			</c:forEach>
-		 </tbody>	
-		</table>
+						<spring:url value="/utilisateur/get/${mede.id}"	var="missUrl" />
+						
+						<tr>
+							<td width="8%">${mede.id}</td>
+							<td width="25%">${mede.nom}</td>
+							<td width="15%">${mede.prenom}</td>
+							<td width="15%">${mede.matricule}</td>
+							<td width="30%">
+							
+								<button class="btn btn-success"	onclick="location.href='${missUrl}'">
+								show
+								</button>
+							</td>
+						</tr>
+						
+					</c:forEach>
+				 </tbody>	
+				</table>
+		</div>
 		
 			<div class="row justify-content-center align-items-center">
 		
-					<h1> Liste des managers ayant acceptés la mission </h1>				
-		</div>
+				<h5> Liste des managers ayant acceptés la mission </h5>				
 		
-		<table id="prodtable" class="table table-responsive  table-bordered">
 		
-			<thead class="thead-light">
-				<tr>
-				   <th>Id <i class="fas fa-sort"></i></th>
-					<th>Nom <i class="fas fa-sort"></i></th>
-					<th>Prénom <i class="fas fa-sort"></i></th>
-					<th>Matricule <i class="fas fa-sort"></i></th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tfoot>
-        	    <tr>
-				   <th>Id</th>
-					<th>Nom</th>
-					<th>Prénom</th>
-					<th>Matricule</th>
-					<th>Action</th>
-         	   </tr>
-       		 </tfoot>
-       	   <tbody>
-			<c:forEach var="mana" items="${manager}">
-			
-				<spring:url value="/utilisateur/get/${mana.id}"	var="missUrl" />
+				<table id="prodtable" class="table table-responsive  table-bordered">
 				
-				<tr>
-					<td width="8%">${mana.id}</td>
-					<td width="25%">${mana.nom}</td>
-					<td width="15%">${mana.prenom}</td>
-					<td width="15%">${mana.matricule}</td>
-					<td width="30%">
+					<thead class="thead-light">
+						<tr>
+						   <th>Id <i class="fas fa-sort"></i></th>
+							<th>Nom <i class="fas fa-sort"></i></th>
+							<th>Prénom <i class="fas fa-sort"></i></th>
+							<th>Matricule <i class="fas fa-sort"></i></th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tfoot>
+		        	    <tr>
+						   <th>Id</th>
+							<th>Nom</th>
+							<th>Prénom</th>
+							<th>Matricule</th>
+							<th>Action</th>
+		         	   </tr>
+		       		 </tfoot>
+		       	   <tbody>
+					<c:forEach var="mana" items="${manager}">
 					
-						<button class="btn btn-success"	onclick="location.href='${missUrl}'">
-						show
-						</button>
-					</td>
-				</tr>
-				
-			</c:forEach>
-		 </tbody>	
-		</table>
-	
+						<spring:url value="/utilisateur/get/${mana.id}"	var="missUrl" />
+						
+						<tr>
+							<td width="8%">${mana.id}</td>
+							<td width="25%">${mana.nom}</td>
+							<td width="15%">${mana.prenom}</td>
+							<td width="15%">${mana.matricule}</td>
+							<td width="30%">
+							
+								<button class="btn btn-success"	onclick="location.href='${missUrl}'">
+								show
+								</button>
+							</td>
+						</tr>
+						
+					</c:forEach>
+				 </tbody>	
+				</table>
+		</div>
+	</div>
 <script>	
 // $(document).ready(function() {
 //     $('#prodtable').DataTable();
