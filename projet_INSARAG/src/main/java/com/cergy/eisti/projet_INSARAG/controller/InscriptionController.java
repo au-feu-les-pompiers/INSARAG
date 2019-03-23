@@ -135,7 +135,7 @@ public class InscriptionController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return ("redirect:/utilisateur/get/"+Long.toString(id));
+	        return ("redirect:/Accueil");
 	    }
 	    
 
