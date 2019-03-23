@@ -52,6 +52,9 @@ public class IndexController {
 	        if (session.getAttribute("connected") != "connected") {
 		        return "redirect:/";	        
 	        }
+	        if ((int) session.getAttribute("accreditation" ) != 2) {
+				return "redirect:/Accueil";
+	        }
 
 			logger.debug(":::showNewMission:::");
 
@@ -85,6 +88,10 @@ public class IndexController {
 			@RequestMapping({"/mission/listAll","missionList"})
 			protected ModelAndView lisAllMissions(HttpServletRequest request,
 					HttpServletResponse response) throws Exception {
+				HttpSession session = request.getSession();
+		        if ((int) session.getAttribute("accreditation" ) != 2) {
+					return new ModelAndView("/Accueil");
+		        }
 				/*
 				 * Lancement du Service et récupération données en base
 				 */
@@ -100,6 +107,10 @@ public class IndexController {
 				@RequestMapping({"/utilisateur/listAll","utilisateurList"})
 				protected ModelAndView lisAllUtilisateurs(HttpServletRequest request,
 						HttpServletResponse response) throws Exception {
+					HttpSession session = request.getSession();
+			        if ((int) session.getAttribute("accreditation" ) != 2) {
+						return new ModelAndView("redirect:/Accueil");
+			        }
 					/*
 					 * Lancement du Service et récupération données en base
 					 */
@@ -139,5 +150,17 @@ public class IndexController {
 					 return "/general/documents";
 
 				}
+				
+			 	@RequestMapping(value = "/organigramme", method = RequestMethod.GET)
+			    public String list(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+			 		HttpSession session = request.getSession();
+			        if (session.getAttribute("connected") == "connected") {
+			        	model.addAttribute("pompier", utilisateurService.getPompierInMission());
+			        	model.addAttribute("medecin", utilisateurService.getMedecinInMission());
+			        	model.addAttribute("manager", utilisateurService.getManagerInMission());
+			        	return "/general/organigramme"; // Afficher la page showAllMissions.jsp qui se trouve sous /mission
+			        }
+			        return "redirect:/";
+			    }
 	
 }

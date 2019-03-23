@@ -62,6 +62,13 @@ public class MissionServiceImpl implements MissionService{
 
 
 	@Override
+	public String getNameMission(Long id) {
+		Mission mission = missionRepository.findById(id);
+		return mission.getLieu();
+	}
+
+
+	@Override
 	public Mission getNextMission() throws Exception {
 		Mission nextMission = null;
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -77,7 +84,14 @@ public class MissionServiceImpl implements MissionService{
 			}
 		}
 		return nextMission;
-	} 
+	}
+
+
+	@Override
+	public int closeMission(Long id) {
+		missionRepository.resetEnMission();
+		return missionRepository.fermerMission(id) ;
+	}
 
    
 }

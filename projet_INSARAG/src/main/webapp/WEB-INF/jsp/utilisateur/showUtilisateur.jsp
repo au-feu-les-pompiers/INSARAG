@@ -40,8 +40,17 @@
 
 <body>
 
-	<jsp:include page="../common/header.jsp" />
-
+	<div id="header">
+		<c:choose>
+			<c:when test="${sessionScope.accreditation == 2}">
+					<jsp:include page="../common/header.jsp" />
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="../common/navbar_uti.jsp" />
+			</c:otherwise>
+		</c:choose>
+	</div>
+	
 	<div class="container">
 	<div class="row justify-content-center align-items-center">
 	<div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
@@ -80,10 +89,14 @@
 			<label class="col-sm-5">Numéro de téléphone</label>
 			<div class="col-sm-7">${utilToShow.telephone}</div>
 		</div>
-
+		
+<%-- 		<c:choose> --%>
+<%-- 		<c:when test="${sessionScope.id} == "> --%>
 		<div class="text-center mt-3 mb-3">
 		<button class="btn btn-warning"	onclick="location.href='${updateUrl}'">Modifier</button>
 		</div>
+<%-- 		</c:when> --%>
+<%-- 		</c:choose> --%>
 						
 	</div>
 	</div>

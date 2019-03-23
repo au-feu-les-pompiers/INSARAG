@@ -45,8 +45,8 @@
 
 
 <body>
+	
 	<jsp:include page="../common/header.jsp" />
-<body>
 
  <div class="container" style="max-width:1300px;">
 

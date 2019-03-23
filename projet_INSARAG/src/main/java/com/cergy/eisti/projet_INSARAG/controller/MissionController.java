@@ -38,6 +38,9 @@ public class MissionController {
 @RequestMapping(value = "/mission/listAll", method = RequestMethod.GET)
 	protected ModelAndView showAllMissions(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
+        if ((int) session.getAttribute("accreditation" ) != 2) {
+			return new ModelAndView("redirect:/Accueil");
+        }
         if (session.getAttribute("connected") == "connected") {
         	List<Mission> listeMissions = missionService.getAll();
         	return new ModelAndView("/mission/showAllMissions", "missions", listeMissions);
@@ -48,6 +51,9 @@ public class MissionController {
 	 	@RequestMapping(value = "/mission/list", method = RequestMethod.GET)
 	    public String list(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	 		HttpSession session = request.getSession();
+	        if ((int) session.getAttribute("accreditation" ) != 2) {
+				return "redirect:/Accueil";
+	        }
 	        if (session.getAttribute("connected") == "connected") {
 	        	model.addAttribute("missions", missionService.getAll());
 	        	return "/mission/showAllMissions"; // Afficher la page showAllMissions.jsp qui se trouve sous /mission
@@ -79,6 +85,7 @@ public class MissionController {
 		    		if(request.getParameter("Accepter")!= null) {
 			    		utilisateur.setEnMission(1);
 			    		utilisateurService.save(utilisateur);
+			    		return "redirect:/mission/get/21";
 		    		}
 		    		if(request.getParameter("Refuser")!= null) {
 			    		utilisateur.setEnMission(2);
@@ -131,6 +138,18 @@ public class MissionController {
 	    	Mission mission = missionService.getByIdMission(id);
 	        model.addAttribute("missionForm", mission);
 	        return "/mission/addUpdateMission";
+	    }
+	    
+	    @RequestMapping("/mission/close/{id}")
+	    public String close(@PathVariable Long id, Model model, 
+	    		final RedirectAttributes redirectAttributes, HttpServletRequest request) throws Exception {
+	 		HttpSession session = request.getSession();
+	        if (session.getAttribute("connected") != "connected") {
+		        return "redirect:/";	        
+	        }
+	    	missionService.closeMission(id);
+	    	model.addAttribute("missions", missionService.getAll());
+        	return "/mission/showAllMissions";
 	    }
 	    
 }

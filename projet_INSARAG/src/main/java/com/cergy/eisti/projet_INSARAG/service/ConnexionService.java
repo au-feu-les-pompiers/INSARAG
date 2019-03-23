@@ -37,6 +37,10 @@ public class ConnexionService {
 		return utilisateur.getAutorisation();
 	}
 	
+	public Long numId() throws Exception {
+		return utilisateur.getId();
+	}
+	
 	public Long getPompier(String login,String mdp) throws Exception{
 		for (Utilisateur profilFind : this.getAll()) {
 			String mdpGet = profilFind.getMdp();
