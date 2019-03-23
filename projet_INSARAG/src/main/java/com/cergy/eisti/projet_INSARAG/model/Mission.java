@@ -20,7 +20,7 @@ public class Mission implements java.io.Serializable {
 	private String lieu;
 	private String debut;
 	private String fin;
-	private Boolean flagFin;
+	private int flagFin;
 	
 	public Mission() {
 	}
@@ -73,11 +73,11 @@ public class Mission implements java.io.Serializable {
 	}
 
 	@Column(name = "FLAG_FIN", precision = 1, scale = 0)
-	public Boolean getFlagFin() {
+	public int getFlagFin() {
 		return this.flagFin;
 	}
 
-	public void setFlagFin(Boolean flagFin) {
+	public void setFlagFin(int flagFin) {
 		this.flagFin = flagFin;
 	}
 

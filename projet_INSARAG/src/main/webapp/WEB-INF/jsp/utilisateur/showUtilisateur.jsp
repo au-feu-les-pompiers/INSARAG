@@ -80,10 +80,14 @@
 			<label class="col-sm-5">Numéro de téléphone</label>
 			<div class="col-sm-7">${utilToShow.telephone}</div>
 		</div>
-
+		
+<%-- 		<c:choose> --%>
+<%-- 		<c:when test="${sessionScope.id} == "> --%>
 		<div class="text-center mt-3 mb-3">
 		<button class="btn btn-warning"	onclick="location.href='${updateUrl}'">Modifier</button>
 		</div>
+<%-- 		</c:when> --%>
+<%-- 		</c:choose> --%>
 						
 	</div>
 	</div>

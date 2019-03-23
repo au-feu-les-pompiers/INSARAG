@@ -39,7 +39,16 @@
 
 <body>
 
-	<jsp:include page="../common/header.jsp" />
+		<div id="header">
+		<c:choose>
+			<c:when test="${sessionScope.accreditation == 1}">
+					<jsp:include page="../common/header.jsp" />
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="../common/navbar_uti.jsp" />
+			</c:otherwise>
+		</c:choose>
+	</div>
 	
 	<iframe src="https://docs.google.com/file/d/1Uy08SvlBGGBRJzX6U4bTMRCWBCiL6z1N/preview" width="100%" height="500"></iframe>
 	

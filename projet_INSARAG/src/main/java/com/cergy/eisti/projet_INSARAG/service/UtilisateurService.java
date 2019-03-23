@@ -24,5 +24,9 @@ public interface UtilisateurService {
   	
   	List<Utilisateur> getAllInMission();
   	
+  	List<Utilisateur> getPompierInMission();
+  	List<Utilisateur> getMedecinInMission();
+  	List<Utilisateur> getManagerInMission();
+  	
   	int getEnMission(Long id);
 }

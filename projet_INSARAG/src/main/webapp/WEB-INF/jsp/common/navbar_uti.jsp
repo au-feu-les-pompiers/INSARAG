@@ -9,14 +9,14 @@
       <div class="collapse navbar-collapse" id="navbarsExample">
         <ul class="navbar-nav ml-auto ">
          
+<!--           <li class="nav-item"> -->
+<!--             <a class="nav-link" href="#"> -->
+<!--                 <span style="color: blue;"> -->
+<!--                     <i class="far fa-comments"></i> -->
+<!--                 </span>  Chat</a> -->
+<!--           </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span style="color: blue;">
-                    <i class="far fa-comments"></i>
-                </span>  Chat</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath}/carte">
                 <span style="color: #006600;">
                     <i class="fas fa-map-marked-alt"></i>
                 </span>  Map</a>
@@ -28,31 +28,31 @@
                 </span>  Documents</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath}/organigramme">
                 <span style="color: #660033;">
                     <i class="fas fa-users"></i>
                 </span>  Organigramme</a>
           </li>
+<!--           <li class="nav-item"> -->
+<!--             <a class="nav-link" href="#"> -->
+<!--                 <span style="color: #E9DB0E;"> -->
+<!--                     <i class="fas fa-link"></i> -->
+<!--                 </span>  Liens utiles</a> -->
+<!--           </li> -->
+<!--           <li class="nav-item"> -->
+<!--             <a class="nav-link" href="#"> -->
+<!--                 <span style="color: #CC6600;"> -->
+<!--                     <i class="fas fa-folder-open"></i> -->
+<!--                 </span>  Fiches</a> -->
+<!--           </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span style="color: #E9DB0E;">
-                    <i class="fas fa-link"></i>
-                </span>  Liens utiles</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span style="color: #CC6600;">
-                    <i class="fas fa-folder-open"></i>
-                </span>  Fiches</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath}/utilisateur/listAllInMision">
                 <span style="color: #0080FF;">
                     <i class="far fa-id-card"></i>
                 </span>  Contacts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-weight: bold;" href="#">Mon profil</a>
+            <a class="nav-link" style="font-weight: bold;" href="${pageContext.request.contextPath}/utilisateur/get/${sessionScope.id}">Mon profil</a>
           </li>
           
           <li class="nav-item">

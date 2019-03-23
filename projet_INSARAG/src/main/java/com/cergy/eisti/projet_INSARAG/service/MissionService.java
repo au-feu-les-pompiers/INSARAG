@@ -15,6 +15,8 @@ public interface MissionService {
 	int updateId (Long idMission);
 	
 	Mission getNextMission() throws Exception;
+
+	int closeMission(Long id);
 	
   	//int updateLieu (String lieuMission, Long idMission); 
 

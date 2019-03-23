@@ -77,7 +77,14 @@ public class MissionServiceImpl implements MissionService{
 			}
 		}
 		return nextMission;
-	} 
+	}
+
+
+	@Override
+	public int closeMission(Long id) {
+		missionRepository.resetEnMission();
+		return missionRepository.fermerMission(id) ;
+	}
 
    
 }

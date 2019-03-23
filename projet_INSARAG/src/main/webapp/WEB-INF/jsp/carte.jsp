@@ -66,7 +66,16 @@
 
 <body>
 
-	<!-- <jsp:include page="../common/header.jsp" /> -->
+		<div id="header">
+		<c:choose>
+			<c:when test="${sessionScope.accreditation == 1}">
+					<jsp:include page="common/header.jsp" />
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="common/navbar_uti.jsp" />
+			</c:otherwise>
+		</c:choose>
+	</div>
 
 <div id="map"></div>
     <script>

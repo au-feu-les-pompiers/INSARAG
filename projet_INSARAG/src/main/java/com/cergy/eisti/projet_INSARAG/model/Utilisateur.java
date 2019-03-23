@@ -33,6 +33,14 @@ public class Utilisateur implements java.io.Serializable {
 
 	public Utilisateur() {
 	}
+	
+	public Utilisateur(Long id, String nom, String prenom, String matricule, int role) {
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.matricule = matricule;
+		this.role = role;
+	}
 
 	public Utilisateur(Long id, String email, String mdp, String nom, String prenom, String telephone, String naissance, String matricule,
 			int autorisation, int enMission, int role) {
