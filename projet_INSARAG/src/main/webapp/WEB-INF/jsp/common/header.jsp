@@ -62,7 +62,7 @@
           </li>
   <!--         METTRE LE NOM ET PRENOM DE LA PERSONNE CONNECTEE  -->
           <li class="nav-item">
-            <a class="nav-link" style="font-weight: bold;" href="${pageContext.request.contextPath}/utilisateur/get/5">Mon profil</a>
+            <a class="nav-link" style="font-weight: bold;" href="${pageContext.request.contextPath}/utilisateur/get/${sessionScope.id}">Mon profil</a>
           </li>
           
           <li class="nav-item">

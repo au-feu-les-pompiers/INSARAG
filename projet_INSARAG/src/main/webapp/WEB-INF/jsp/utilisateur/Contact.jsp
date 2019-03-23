@@ -4,11 +4,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Page de contact</title>
 
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
@@ -18,37 +16,39 @@
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<spring:url value="/css/dataTables.bootstrap.min.css"
-	var="bootstrapdataTablesCss" />
-<link href="${bootstrapdataTablesCss}" rel="stylesheet" />
+  
+<spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
+<link href="${bootstrap4Css}" rel="stylesheet" /> 
+ 
+<spring:url value="/css/datatables.css" var="bootstrapdataTablesCss" />
+<link href="${bootstrapdataTablesCss}" rel="stylesheet" /> 
 
 <spring:url value="/css/header.css" var="headerCss" />
-<link href="${headerCss}" rel="stylesheet" />
+<link href="${headerCss}" rel="stylesheet" /> 
 
 <spring:url value="/css/normalize.css" var="normalize" />
-<link href="${normalize}" rel="stylesheet" />
+<link href="${normalize}" rel="stylesheet" /> 
 
-<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
-<script src="${jqueryJs}"></script>
+ <spring:url value="https://code.jquery.com/jquery-3.2.1.slim.min.js" var="jqueryJS" />
+<script src="${jqueryJS}"></script> 
 
-<spring:url value="/js/bootstrap.min.js" var="bootstrap3Js" />
-<script src="${bootstrap3Js}"></script>
+ <spring:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" var="BootstrapJS" />
+<script src="${BootstrapJS}"></script> 
 
-<spring:url value="/js/jquery.dataTables.min.js"
-	var="jquerydataTablesJs" />
-<script src="${jquerydataTablesJs}"></script>
-
-<spring:url value="/js/dataTables.bootstrap.min.js"
-	var="bootstrapdataTablesJs" />
+<spring:url value="/js/datatables.js" var="bootstrapdataTablesJs" />
 <script src="${bootstrapdataTablesJs}"></script>
 
 </head>
 <body>
-	<div>
-		<jsp:include page="../common/header.jsp" />
+	<div id="header">
+		<c:choose>
+			<c:when test="${sessionScope.accreditation == 2}">
+					<jsp:include page="../common/header.jsp" />
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="../common/navbar_uti.jsp" />
+			</c:otherwise>
+		</c:choose>
 	</div>
 
 	<div class="container">
