@@ -103,7 +103,7 @@ function initMap() {
 
 	<div id="header">
 		<c:choose>
-			<c:when test="${sessionScope.accreditation == 1}">
+			<c:when test="${sessionScope.accreditation == 2}">
 					<jsp:include page="../common/header.jsp" />
 					<spring:url value="/css/header.css" var="headerCss" />
 					<link href="${headerCss}" rel="stylesheet" /> 
