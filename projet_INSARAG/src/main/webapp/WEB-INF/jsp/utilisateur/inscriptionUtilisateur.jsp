@@ -339,7 +339,7 @@
  			pass.type = "text"
  		}
  	}
- 	</script>
+</script>
  	 
 <div class="container">
 <div class="row justify-content-center align-items-center">

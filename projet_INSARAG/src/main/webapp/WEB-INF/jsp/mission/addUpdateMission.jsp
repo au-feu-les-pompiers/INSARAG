@@ -46,6 +46,46 @@
 <!-- http://www.jqueryscript.net/form/HTML5-Form-Validation-Plugin-For-Bootstrap-Bootstrap-Validator.html -->
 
 <body>
+<script>  
+	function validateForm(){		
+		if (checkDates()) {
+			return true
+		}else{
+			return false
+		}
+	}
+
+	function checkDates(){
+ 		var goodColor = "#66cc66";
+	    var badColor = "#ff6666";
+ 		var debut = document.getElementById('dateDebut').value.split("/");
+ 		var fin = document.getElementById('dateFin').value.split("/");
+ 		var dateDebut = new Date(parseInt(debut[0]), parseInt(debut[1]), parseInt(debut[2]));
+ 		var dateFin = new Date(parseInt(fin[0]), parseInt(fin[1]), parseInt(fin[2]));
+	    var date = new Date();
+	    var duree;
+	    var erreurD;
+	    var erreurF;
+	    			
+	    dateDebut = dateDebut.getTime() / 86400000
+	    dateFin = dateFin.getTime() / 86400000
+	    date = date.getTime() / 86400000
+
+	    duree = fin - debut
+	    erreurD = date - dateDebut
+	    erreurF = date - dateFin
+
+	    if (duree < 7 || erreurD >= -7 || erreurF >= -14){
+	    	document.getElementById('dateDebut').style.backgroundColor = badColor
+	    	document.getElementById('dateFin').style.backgroundColor = badColor
+			return false
+		}else{
+			document.getElementById('dateDebut').style.backgroundColor = goodColor
+	    	document.getElementById('dateFin').style.backgroundColor = goodColor
+	        return true
+		}
+	}
+</script>
 
 	<div id="header">
 		<c:choose>
@@ -113,9 +153,9 @@
 				<div class="form-group">
 				<label class="text-dark">Date de début</label>
 				<form:input type="text" path="debut" data-language='fr' class="form-control datepicker-here"  value="${missionForm.debut}" placeholder="12/01/2019" 
+							id="dateDebut"
 							required="required" 
 							data-position="bottom left" 
-							id="minMaxExample"
 							data-validation-length="max100"
 							data-validation="required length"
   							data-validation-error-msg-required="Champs config est Obligatoire"
@@ -131,7 +171,7 @@
 				<div class="form-group">
 				<label class="text-dark">Date de fin</label>
 				<form:input type="text" path="fin" data-language='fr' class="form-control datepicker-here" value="${missionForm.fin}" placeholder="30/01/2019" 
-							 data-position="bottom left" id="end"
+							id="dateFin"
 							required="required" 
 							data-validation-length="max100"
 							data-validation="required length"
@@ -159,7 +199,7 @@
 						<button type="submit" class="btn btn-lg btn-primary">Modifier</button>
 					</c:when>
 					<c:otherwise>
-						<button type="submit" class="btn btn-lg btn-danger">Valider</button>
+						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-danger">Valider</button>
 					</c:otherwise>
 				</c:choose>
 	
