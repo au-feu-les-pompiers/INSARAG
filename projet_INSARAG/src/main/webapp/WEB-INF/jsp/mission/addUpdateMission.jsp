@@ -55,33 +55,64 @@
 		}
 	}
 
+	function dateDiff(date1, date2){
+	    var diff = {}                           // Initialisation du retour
+	    var tmp = date2 - date1;
+	 
+	    tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
+	    diff.sec = tmp % 60;                    // Extraction du nombre de secondes
+	 
+	    tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie entière)
+	    diff.min = tmp % 60;                    // Extraction du nombre de minutes
+	 
+	    tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures (entières)
+	    diff.hour = tmp % 24;                   // Extraction du nombre d'heures
+	     
+	    tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
+	    diff.day = tmp;
+	     
+	    return diff.day;
+	}
+
 	function checkDates(){
  		var goodColor = "#66cc66";
 	    var badColor = "#ff6666";
  		var debut = document.getElementById('dateDebut').value.split("/");
  		var fin = document.getElementById('dateFin').value.split("/");
- 		var dateDebut = new Date(parseInt(debut[0]), parseInt(debut[1]), parseInt(debut[2]));
- 		var dateFin = new Date(parseInt(fin[0]), parseInt(fin[1]), parseInt(fin[2]));
-	    var date = new Date();
+ 		var message = document.getElementById('confirmDate');
+ 		var dateDebut = new Date(debut[2] + "-" + debut[1] + "-" + debut[0]);
+ 		var dateFin = new Date(fin[2] + "-" + fin[1] + "-" + fin[0]);
+	    var dateOld = new Date();
 	    var duree;
 	    var erreurD;
 	    var erreurF;
-	    			
-	    dateDebut = dateDebut.getTime() / 86400000
-	    dateFin = dateFin.getTime() / 86400000
-	    date = date.getTime() / 86400000
+	    var month = parseInt(dateOld.getMonth());
+	    var date = new Date(parseInt(dateOld.getFullYear()).toString() + "-" + parseInt(dateOld.getMonth() + 1).toString() + "-" + parseInt(dateOld.getDate()).toString());
 
-	    duree = fin - debut
-	    erreurD = date - dateDebut
-	    erreurF = date - dateFin
-
-	    if (duree < 7 || erreurD >= -7 || erreurF >= -14){
+	    duree = dateDiff(dateDebut, dateFin)
+	    erreurD = dateDiff(date, dateDebut)
+	    erreurF = dateDiff(date, dateFin)
+		
+	    if (duree < 7){
 	    	document.getElementById('dateDebut').style.backgroundColor = badColor
 	    	document.getElementById('dateFin').style.backgroundColor = badColor
+	    	message.style.color = badColor
+	    	message.innerHTML = "La durée de la mission doit être d'au moins 7 jours!"
+			return false
+		}else if (erreurD <= 7){
+			document.getElementById('dateDebut').style.backgroundColor = badColor
+	    	message.style.color = badColor
+	    	message.innerHTML = "Le début de la mission doit être dans 7 jours ou plus!"
+			return false
+		}else if (erreurF <= 14){
+	    	document.getElementById('dateFin').style.backgroundColor = badColor
+	    	message.style.color = badColor
+	    	message.innerHTML = "La fin de la mission doit être dans 14 jours ou plus!"
 			return false
 		}else{
 			document.getElementById('dateDebut').style.backgroundColor = goodColor
 	    	document.getElementById('dateFin').style.backgroundColor = goodColor
+	    	message.innerHTML = ""
 	        return true
 		}
 	}
@@ -160,7 +191,8 @@
 							data-validation="required length"
   							data-validation-error-msg-required="Champs config est Obligatoire"
  							data-validation-error-msg-length="Taille du champs config ne doit pas dépasser 100"/>
-				<form:errors path="debut" class="control-label" />		
+				<form:errors path="debut" class="control-label" />
+				<span id="confirmDate" class="confirmDate" ></span>
 				</div>
 			</div>
 		
