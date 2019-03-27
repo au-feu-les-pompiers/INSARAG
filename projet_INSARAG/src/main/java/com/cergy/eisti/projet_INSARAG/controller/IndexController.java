@@ -127,6 +127,9 @@ public class IndexController {
 					protected ModelAndView lisAllUtilisateursInMission(HttpServletRequest request,
 							HttpServletResponse response) throws Exception {
 						HttpSession session = request.getSession();
+						if ((int) session.getAttribute("accreditation" ) < 1) {
+							return new ModelAndView("redirect:/Accueil");
+				        }
 				        if (session.getAttribute("connected") != "connected") {
 					        return new ModelAndView("redirect:/");	        
 				        }				
@@ -143,17 +146,24 @@ public class IndexController {
 				
 				
 				@RequestMapping(value = "/documents", method = RequestMethod.GET)
-				public String showDocuments() {
-
+				public String showDocuments(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+					HttpSession session = request.getSession();
+					if ((int) session.getAttribute("accreditation" ) < 1) {
+						return ("redirect:/Accueil");
+			        }
 					logger.debug(":::showDocuments:::");
-			 
+					if (session.getAttribute("connected") == "connected") {
 					 return "/general/documents";
-
+					}
+					return "redirect:/";
 				}
 				
 			 	@RequestMapping(value = "/organigramme", method = RequestMethod.GET)
 			    public String list(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 			 		HttpSession session = request.getSession();
+					if ((int) session.getAttribute("accreditation" ) < 1) {
+						return ("redirect:/Accueil");
+			        }
 			        if (session.getAttribute("connected") == "connected") {
 			        	model.addAttribute("pompier", utilisateurService.getPompierInMission());
 			        	model.addAttribute("medecin", utilisateurService.getMedecinInMission());

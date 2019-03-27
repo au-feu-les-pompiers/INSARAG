@@ -46,10 +46,81 @@
 <!-- http://www.jqueryscript.net/form/HTML5-Form-Validation-Plugin-For-Bootstrap-Bootstrap-Validator.html -->
 
 <body>
+<script>  
+	function validateForm(){		
+		if (checkDates()) {
+			return true
+		}else{
+			return false
+		}
+	}
+
+	function dateDiff(date1, date2){
+	    var diff = {}                           // Initialisation du retour
+	    var tmp = date2 - date1;
+	 
+	    tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
+	    diff.sec = tmp % 60;                    // Extraction du nombre de secondes
+	 
+	    tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie entière)
+	    diff.min = tmp % 60;                    // Extraction du nombre de minutes
+	 
+	    tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures (entières)
+	    diff.hour = tmp % 24;                   // Extraction du nombre d'heures
+	     
+	    tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
+	    diff.day = tmp;
+	     
+	    return diff.day;
+	}
+
+	function checkDates(){
+ 		var goodColor = "#66cc66";
+	    var badColor = "#ff6666";
+ 		var debut = document.getElementById('dateDebut').value.split("/");
+ 		var fin = document.getElementById('dateFin').value.split("/");
+ 		var message = document.getElementById('confirmDate');
+ 		var dateDebut = new Date(debut[2] + "-" + debut[1] + "-" + debut[0]);
+ 		var dateFin = new Date(fin[2] + "-" + fin[1] + "-" + fin[0]);
+	    var dateOld = new Date();
+	    var duree;
+	    var erreurD;
+	    var erreurF;
+	    var month = parseInt(dateOld.getMonth());
+	    var date = new Date(parseInt(dateOld.getFullYear()).toString() + "-" + parseInt(dateOld.getMonth() + 1).toString() + "-" + parseInt(dateOld.getDate()).toString());
+
+	    duree = dateDiff(dateDebut, dateFin)
+	    erreurD = dateDiff(date, dateDebut)
+	    erreurF = dateDiff(date, dateFin)
+		
+	    if (duree < 7){
+	    	document.getElementById('dateDebut').style.backgroundColor = badColor
+	    	document.getElementById('dateFin').style.backgroundColor = badColor
+	    	message.style.color = badColor
+	    	message.innerHTML = "La durée de la mission doit être d'au moins 7 jours!"
+			return false
+		}else if (erreurD <= 7){
+			document.getElementById('dateDebut').style.backgroundColor = badColor
+	    	message.style.color = badColor
+	    	message.innerHTML = "Le début de la mission doit être dans 7 jours ou plus!"
+			return false
+		}else if (erreurF <= 14){
+	    	document.getElementById('dateFin').style.backgroundColor = badColor
+	    	message.style.color = badColor
+	    	message.innerHTML = "La fin de la mission doit être dans 14 jours ou plus!"
+			return false
+		}else{
+			document.getElementById('dateDebut').style.backgroundColor = goodColor
+	    	document.getElementById('dateFin').style.backgroundColor = goodColor
+	    	message.innerHTML = ""
+	        return true
+		}
+	}
+</script>
 
 	<div id="header">
 		<c:choose>
-			<c:when test="${sessionScope.accreditation == 1}">
+			<c:when test="${sessionScope.accreditation == 2}">
 					<jsp:include page="../common/header.jsp" />
 					<spring:url value="/css/header.css" var="headerCss" />
 					<link href="${headerCss}" rel="stylesheet" /> 
@@ -113,14 +184,15 @@
 				<div class="form-group">
 				<label class="text-dark">Date de début</label>
 				<form:input type="text" path="debut" data-language='fr' class="form-control datepicker-here"  value="${missionForm.debut}" placeholder="12/01/2019" 
+							id="dateDebut"
 							required="required" 
 							data-position="bottom left" 
-							id="minMaxExample"
 							data-validation-length="max100"
 							data-validation="required length"
   							data-validation-error-msg-required="Champs config est Obligatoire"
  							data-validation-error-msg-length="Taille du champs config ne doit pas dépasser 100"/>
-				<form:errors path="debut" class="control-label" />		
+				<form:errors path="debut" class="control-label" />
+				<span id="confirmDate" class="confirmDate" ></span>
 				</div>
 			</div>
 		
@@ -131,7 +203,7 @@
 				<div class="form-group">
 				<label class="text-dark">Date de fin</label>
 				<form:input type="text" path="fin" data-language='fr' class="form-control datepicker-here" value="${missionForm.fin}" placeholder="30/01/2019" 
-							 data-position="bottom left" id="end"
+							id="dateFin"
 							required="required" 
 							data-validation-length="max100"
 							data-validation="required length"
@@ -156,10 +228,10 @@
 			   <c:choose>
 			   
 					<c:when test="${missionForm.idMission  != null}">
-						<button type="submit" class="btn btn-lg btn-primary">Modifier</button>
+						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">Modifier</button>
 					</c:when>
 					<c:otherwise>
-						<button type="submit" class="btn btn-lg btn-danger">Valider</button>
+						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-danger">Valider</button>
 					</c:otherwise>
 				</c:choose>
 	

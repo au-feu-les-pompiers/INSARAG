@@ -39,7 +39,7 @@ public class ConnexionController {
 	} 
 	
 	@RequestMapping(value="/submitConnexion", method = RequestMethod.POST)
-	public String submitFormAdmission (HttpServletRequest request, HttpServletResponse response)  throws Exception{
+	public String submitFormAdmission (HttpServletRequest request, HttpServletResponse response, Model model)  throws Exception{
 		String login = request.getParameter("user_identifiant");
 		String mdp = request.getParameter("user_mdp");
 		
@@ -56,6 +56,7 @@ public class ConnexionController {
 			return "redirect:/Accueil";
 		}
 		
+		model.addAttribute("error", "Erreur, votre email ou votre mot de passe est incorrect!");
 		return "Connexion";
 	}
 	

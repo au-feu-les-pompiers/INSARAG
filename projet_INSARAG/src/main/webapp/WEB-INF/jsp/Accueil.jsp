@@ -52,6 +52,15 @@
 	</div>
 	
 	<div id="body">
+	<c:choose>
+	<c:when test="${sessionScope.accreditation == 0}">
+		<h2>Un administrateur n'a pas encore accepté votre inscription</h2>
+	</c:when>
+	<c:when test="${sessionScope.accreditation == -1}">
+	<h4>Votre inscription a été refusée, si vous pensez qu'il s'agit d'une erreur, veuillez envoyer une demande par mail</h4>
+	</c:when>
+	<c:otherwise>
+
 		<h1>Prochaine mission</h1>
 		
 		<div class="container">
@@ -64,7 +73,8 @@
 				<h3 class="text-center">Consulter Mission</h3>
 			</div>
 			<br/>
-			
+			<c:choose>
+			<c:when test="${missionToShow.flagFin == 0}">
 			<div class="row">
 				<label class="col-sm-5">Lieu</label>
 				<div class="col-sm-7">${missionToShow.lieu}</div>
@@ -81,25 +91,33 @@
 			</div>
 			
 			<div>
-			<spring:url value="/mission/accept" var="utilisateurActionUrl" />
+			<spring:url value="/mission/accept/${missionToShow.idMission}" var="utilisateurActionUrl" />
 				<c:choose>
-					<c:when test="${sessionScope.enMission == 1}">
+					<c:when test="${utilisateurForm.enMission == 1}">
 						<h4>Vous avez accepté la mission</h4>	
 					</c:when>
-					<c:when test="${sessionScope.enMission == 2}">
+					<c:when test="${utilisateurForm.enMission == 2}">
 						<h4>Vous avez refusé la mission</h4>
 					</c:when>
 					<c:otherwise>
 						<form:form id="utilisateurform"  class="form"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >
-							<input class="btn btn-lg btn-success btn-block" id="connexion" name="Accepter" type="submit" value="Accepter la mission" href="/mission/accept">			
-							<input class="btn btn-lg btn-danger btn-block" id="connexion" name="Refuser" type="submit" value="Refuser la mission">							
+							<input class="btn btn-lg btn-success btn-block" id="connexion" name="Accepter" type="submit" value="Accepter la mission" href="/mission/accept/${missionToShow.idMission}">			
+							<input class="btn btn-lg btn-danger btn-block" id="connexion" name="Refuser" type="submit" value="Refuser la mission" >							
 						</form:form>
 					</c:otherwise>
 				</c:choose>
 			</div>
+			</c:when>
+			<c:otherwise>
+			<h5>Il n'y a pas de mission à venir</h5>
+			</c:otherwise>
+			</c:choose>
 		</div>
 		</div>
 		</div>
+			</c:otherwise>
+	</c:choose>
 	</div>
+	
 </body>
 </html>

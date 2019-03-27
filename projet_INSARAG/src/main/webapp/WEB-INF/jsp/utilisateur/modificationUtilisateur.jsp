@@ -50,6 +50,153 @@
 <!-- http://www.jqueryscript.net/form/HTML5-Form-Validation-Plugin-For-Bootstrap-Bootstrap-Validator.html -->
 
 <body>
+<script>  
+	function validateForm(){		
+		if (checkPass() && checkPhone()) {
+			return true
+		}else{
+			return false
+		}
+	}
+ 
+ 	function checkPass(){
+	    var pass = document.getElementById('mdp');
+	    var message = document.getElementById('message');
+	    var goodColor = "#66cc66";
+	    var badColor = "#ff6666";
+	    
+	    if(pass.value.length >= 12){
+	        pass.style.backgroundColor = goodColor
+	        message.innerHTML = ""
+	        pass.type = "password"
+		    return true
+	    }else{
+	    	if (pass.value != ""){
+		        pass.style.backgroundColor = badColor
+		        message.style.color = badColor
+		        message.innerHTML = "Votre mot de passe n'est pas assez long!"
+	    	}
+	    	return false
+	    }
+	}
+
+ 	function randomPass(){
+ 		var goodColor = "#66cc66";
+ 		var pass = document.getElementById('mdp');
+ 		var mdp = "";
+ 		var randC;
+ 		var randL;
+ 		var c;
+ 	 	
+ 	 	while (mdp.length < 12){
+ 	 	 	randC = Math.floor((Math.random() * 3))
+ 	 	 	if (randC == 0){
+ 	 	 	 	randL = Math.floor((Math.random() * 26) + 97)
+ 	 	 	 	c = String.fromCharCode(randL)
+ 	 	 	}else if (randC == 1){
+ 	 	 		randL = Math.floor((Math.random() * 26) + 65)
+ 	 	 	 	c = String.fromCharCode(randL)
+ 	 	 	}else{
+ 	 	 		randL = Math.floor((Math.random() * 10) + 48)
+ 	 	 	 	c = String.fromCharCode(randL)
+ 	 	 	}
+ 	 	 	mdp += c
+		}
+ 		pass.style.backgroundColor = goodColor
+ 		pass.type = "text"
+ 		document.getElementById('mdp').value = mdp
+ 	}
+
+ 	function checkPhone(){
+	    var phone = document.getElementById('phone');
+	    var ext = document.getElementById('selectExt');
+	    var telephone = phone.value.split(" ");
+	    var newTelephone = "";
+	    var test = "";
+	    var message = document.getElementById('confirmPhone');
+	    var goodColor = "#66cc66";
+	    var badColor = "#ff6666";
+	    var k;
+	    var verif;
+	    var copy;
+
+	    for (k = 0; k < telephone.length; k++){
+	    	newTelephone = newTelephone + telephone[k]
+		}
+
+		verif = parseInt(newTelephone)
+
+		//Vérification de la validité du numéro
+		if (verif != newTelephone && newTelephone != ""){
+			phone.style.backgroundColor = badColor
+			message.style.color = badColor
+			message.innerHTML = "Numéro de téléphone invalide!"
+			return false
+		}else{
+			//Vérification de la taille du numéro en fonction du pays
+			if (newTelephone.length != 10){
+				if (newTelephone != ""){
+					if (phone.value.length == 17){
+						telephone = phone.value.split(" ")
+						for (k = 0; k < telephone.length; k++){
+							test = test + telephone[k]
+						}
+						if (test.length == 12 && test.substring(0, 3) == "+33"){
+							phone.style.backgroundColor = goodColor
+							message.innerHTML = ""
+							return true
+						}else{
+							phone.style.backgroundColor = badColor
+							message.style.color = badColor
+							message.innerHTML = "Numéro de téléphone invalide!"
+							return false
+						}
+					}else{
+						phone.style.backgroundColor = badColor
+						message.style.color = badColor
+						message.innerHTML = "(+33) Votre numéro de téléphone doit comporter 10 chiffres!"
+						return false
+					}					
+				}else{
+					message.innerHTML = ""
+					return false
+				}
+			}else{
+				if (newTelephone.substring(0, 1) != "0"){
+					phone.style.backgroundColor = badColor
+					message.style.color = badColor
+					message.innerHTML = "Numéro de téléphone invalide! Votre numéro doit commencer par un 0!"
+					return false
+				}else{
+					phone.style.backgroundColor = goodColor
+					message.innerHTML = ""
+					copy = newTelephone.substring(1, 10)
+					newTelephone = copy.substring(0, 1) + " "
+					copy = copy.substring(1, 9)
+					k = 0
+					
+					while (copy != ""){
+						newTelephone = newTelephone + copy.substring(0, 2) + " "
+						copy = copy.substring(2, 8 - 2*k)
+						k++
+					}
+					document.getElementById('phone').value = "+33 " + newTelephone.substring(0, newTelephone.length-1)
+					return true
+				}
+			}
+		}
+	}
+
+ 	function changePassword2Text() {
+ 		var pass = document.getElementById("mdp");
+ 		
+ 		if (pass.type == 'text') {
+ 			pass.type = "password"
+ 		}else{
+ 			pass.type = "text"
+ 		}
+ 	}
+</script>
 	<div id="header">
 		<c:choose>
 			<c:when test="${sessionScope.accreditation == 2}">
@@ -70,6 +217,9 @@
 	
 	<div class="row justify-content-center align-items-center">
 				<h3 class="text-center">Modifier votre profil</h3>
+				<h6 class="text-center text-dark mb-5">
+			    <font color = 'red'>${error}</font>
+			    </h6>
 	</div>
 			
 	<spring:url value="/utilisateur/save" var="utilisateurActionUrl" />
@@ -100,7 +250,11 @@
 
 					<div class="form-group">
 						<label>Mot de passe</label>
+						<button type="button" class="btn btn-sm btn-primary" onclick="randomPass();">Générer un mot de passe</button>
+                        <br>
 						<form:input type="text"   path="mdp" class="form-control" value="defaultINSARAG" placeholder="Mdp de l'utilisateur" 
+									id="mdp"
+									onblur='checkPass();'
 									required="required" 
 									data-validation-length="max100"
 									data-validation-allowing="-_ éèà'&"
@@ -108,7 +262,9 @@
 		  							data-validation-error-msg-required="Champs designation est Obligatoire"
 		 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 		 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-						<form:errors path="mdp" class="control-label" />		
+						<form:errors path="mdp" class="control-label" />
+						<button type="button" class="btn btn-sm btn-primary" onclick="changePassword2Text();">See/Hide</button>	
+						<span id="message" class="message" ></span>		
 					</div>
 		
 		</spring:bind>
@@ -158,6 +314,8 @@
 				<div class="form-group">
 					<label>Numéro de téléphone</label>
 					<form:input type="text"   path="telephone"  class="form-control"  value="${utilisateurForm.telephone}" placeholder="Téléphone de l'utilisateur" 
+								id="phone"
+								onblur='checkPhone();'
 								required="required" 
 								data-validation-length="max100"
 								data-validation-allowing="-_ éèà'&"
@@ -165,7 +323,8 @@
 	  							data-validation-error-msg-required="Champs designation est Obligatoire"
 	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
-					<form:errors path="telephone" class="control-label" />		
+					<form:errors path="telephone" class="control-label" />
+					<span id="confirmPhone" class="confirmPhone" ></span>		
 				</div>
 			</div>
 		
@@ -219,7 +378,7 @@
 		
 		<div class="form-group">
 			<div class="row justify-content-center align-items-center">
-				<button type="submit" class="btn  btn-primary pull-left">Modifier</button>
+				<button type="submit" onclick="return validateForm()" class="btn  btn-primary pull-left">Modifier</button>
 	      		<button type="reset" class="btn  btn-default">Reset</button>
 	       </div>
    		</div>

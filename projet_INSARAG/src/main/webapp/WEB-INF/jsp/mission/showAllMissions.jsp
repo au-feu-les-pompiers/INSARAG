@@ -44,7 +44,7 @@
 
 	<div id="header">
 		<c:choose>
-			<c:when test="${sessionScope.accreditation == 1}">
+			<c:when test="${sessionScope.accreditation == 2}">
 					<jsp:include page="../common/header.jsp" />
 					<spring:url value="/css/header.css" var="headerCss" />
 					<link href="${headerCss}" rel="stylesheet" /> 
@@ -76,7 +76,17 @@
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 				<strong>Aucune mission trouvée ! La liste est vide !</strong>
 			</div>
-		</c:when>
+					<div class="row justify-content-center align-items-center">
+			
+			           <button type="button" style="margin-top:20px;" class="btn btn-warning pull-right" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
+				 Nouvelle mission
+			</button>
+			
+		</div>
+
+		
+		
+				</c:when>
 		
  <c:otherwise>  <%-- Debut c:otherwise  --%>
 		
@@ -86,11 +96,23 @@
 					<h1> Liste des missions </h1>				
 		</div>
 		<div class="row justify-content-center align-items-center">
-			
-			<button type="button" style="margin-top:20px;" class="btn btn-warning pull-right" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
+<c:set var="bool" value="${0}"/>
+<c:forEach var="item" items="${missions}" varStatus="loop">
+       	<c:if test="${item.flagFin == 0}" >
+       	<c:set var="bool" value="${1}"/>
+       	</c:if>
+       			</c:forEach>
+       	<c:choose>
+           <c:when test="${bool != 1}">
+           <button type="button" style="margin-top:20px;" class="btn btn-warning pull-right" onclick="location.href='${pageContext.request.contextPath}/mission/new'">
 				 Nouvelle mission
 			</button>
-			
+           </c:when>
+			<c:otherwise>
+			<h5>Veuillez cloturer la mission en cours avant de créer une nouvelle mission</h5>
+			</c:otherwise>
+           </c:choose>
+
 		</div>
 
 

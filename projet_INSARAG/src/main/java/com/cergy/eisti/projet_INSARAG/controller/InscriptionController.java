@@ -59,6 +59,9 @@ public class InscriptionController {
 	 	@RequestMapping(value = "/utilisateur/list", method = RequestMethod.GET)
 	    public String list(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	 		HttpSession session = request.getSession();
+	        if ((int) session.getAttribute("accreditation" ) != 2) {
+				return "redirect:/Accueil";
+	        }
 	        model.addAttribute("utilisateurs", utilisateurService.getAll());
 	        if (session.getAttribute("connected") == "connected") {
 		        return "/utilisateur/showAllUtilisateurs"; // Afficher la page showAllUtilisateurs.jsp qui se trouve sous /utilisateur
@@ -71,6 +74,9 @@ public class InscriptionController {
 	    @RequestMapping(value = "/utilisateur/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model, HttpServletRequest request) throws Exception {
 			HttpSession session = request.getSession();
+			if ((int) session.getAttribute("accreditation" ) < 1) {
+				return ("redirect:/Accueil");
+	        }
 	        if (session.getAttribute("connected") != "connected") {
 		        return "redirect:/";	        
 	        }
@@ -87,6 +93,7 @@ public class InscriptionController {
 	    	String currentEmail = utilisateur.getEmail();
 	    	String currentMatricule = utilisateur.getMatricule();
 	    	String currentPhone = utilisateur.getTelephone();
+	    	Long currentId = utilisateur.getId();
 	    	/*
 			 * Lancement du Service et récupération données en base
 			 */
@@ -95,14 +102,35 @@ public class InscriptionController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			
 			for (Utilisateur util : listeUtilisateurs) {
-				if (util.getEmail().equals(currentEmail)) {
-					return "redirect:/utilisateur/new?error=email";
-				}else if (util.getMatricule().equals(currentMatricule)){
-					return "redirect:/utilisateur/new?error=matricule";
-				}else if (util.getTelephone().equals(currentPhone)) {
-					return "redirect:/utilisateur/new?error=telephone";
+				if (util.getId().equals(currentId)) {
+					newU = false;
+					break;
+				}
+			}
+			
+			if (newU) {
+				for (Utilisateur util : listeUtilisateurs) {
+					if (util.getEmail().equals(currentEmail)) {
+						return "redirect:/utilisateur/new?error=email";
+					}else if (util.getMatricule().equals(currentMatricule)){
+						return "redirect:/utilisateur/new?error=matricule";
+					}else if (util.getTelephone().equals(currentPhone)) {
+						return "redirect:/utilisateur/new?error=telephone";
+					}
+				}
+			}else {
+				for (Utilisateur util : listeUtilisateurs) {
+					if (util.getEmail().equals(currentEmail) && !(util.getId().equals(currentId))) {
+						model.addAttribute("error", "Erreur, cet email existe déjà dans la base!");
+						return "/utilisateur/modificationUtilisateur";
+					}else if (util.getMatricule().equals(currentMatricule) && !(util.getId().equals(currentId))){
+						model.addAttribute("error", "Erreur, ce matricule existe déjà dans la base!");
+						return "/utilisateur/modificationUtilisateur";
+					}else if (util.getTelephone().equals(currentPhone) && !(util.getId().equals(currentId))) {
+						model.addAttribute("error", "Erreur, ce numéro de téléphone existe déjà dans la base!");
+						return "/utilisateur/modificationUtilisateur";
+					}
 				}
 			}
 	    	
@@ -120,7 +148,7 @@ public class InscriptionController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return ("redirect:/utilisateur/get/"+Long.toString(id));
+	        return ("redirect:/Accueil");
 	    }
 	    
 

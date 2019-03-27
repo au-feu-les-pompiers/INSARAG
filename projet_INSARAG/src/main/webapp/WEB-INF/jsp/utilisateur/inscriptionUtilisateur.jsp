@@ -51,7 +51,7 @@
 </head>
 
 <body>
- <script>  
+<script>  
 	function validateForm(){		
 		if (checkPass() && checkPassConfirm() && checkNaissance() && checkNom() && checkPrenom() && checkPhone()) {
 			return true
@@ -339,7 +339,7 @@
  			pass.type = "text"
  		}
  	}
- 	</script>
+</script>
  	 
 <div class="container">
 <div class="row justify-content-center align-items-center">

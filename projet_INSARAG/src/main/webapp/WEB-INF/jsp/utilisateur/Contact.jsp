@@ -40,7 +40,7 @@
 <body>
 	<div id="header">
 		<c:choose>
-			<c:when test="${sessionScope.accreditation == 1}">
+			<c:when test="${sessionScope.accreditation == 2}">
 					<jsp:include page="../common/header.jsp" />
 					<spring:url value="/css/header.css" var="headerCss" />
 					<link href="${headerCss}" rel="stylesheet" /> 
@@ -83,7 +83,7 @@
 
 				<div class="row">
 					<div class="col-md-7">
-						<h1>Pompier en mission</h1>
+						<h1>Pompiers en mission</h1>
 					</div>
 				</div>
 

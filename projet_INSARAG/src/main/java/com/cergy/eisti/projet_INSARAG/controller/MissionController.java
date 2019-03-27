@@ -1,5 +1,6 @@
 package com.cergy.eisti.projet_INSARAG.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,6 +65,9 @@ public class MissionController {
 	    @RequestMapping(value = "/mission/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
 	 		HttpSession session = request.getSession();
+	 		if ((int) session.getAttribute("accreditation" ) < 1) {
+				return ("redirect:/Accueil");
+	        }
 	        if (session.getAttribute("connected") == "connected") {
 	        	Long idUtilisateur = (Long) session.getAttribute("id");
 
@@ -74,25 +78,29 @@ public class MissionController {
 	        return "redirect:/";
 	    }
 	    
-	    @RequestMapping(value = "/mission/accept", method = RequestMethod.POST)
-		public String acceptMission(Model model, HttpServletRequest request, HttpServletResponse response,final RedirectAttributes redirectAttributes) throws Exception {
+	    @RequestMapping(value = "/mission/accept/{id}", method = RequestMethod.POST)
+		public String acceptMission(@PathVariable Long id,Model model, HttpServletRequest request, HttpServletResponse response,final RedirectAttributes redirectAttributes) throws Exception {
 	 		HttpSession session = request.getSession();
+	 		if ((int) session.getAttribute("accreditation" ) < 1) {
+				return ("redirect:/Accueil");
+	        }
 	        if (session.getAttribute("connected") == "connected") {
 		    	Long idUtilisateur = (Long) session.getAttribute("id");
 	    		Utilisateur utilisateur=utilisateurService.getByIdUtilisateur(idUtilisateur);
 	
 		    	if(utilisateur.getId()!=null) {
 		    		if(request.getParameter("Accepter")!= null) {
+		    			Long idM = missionService.getByIdMission(id).getIdMission();
 			    		utilisateur.setEnMission(1);
 			    		utilisateurService.save(utilisateur);
-			    		return "redirect:/mission/get/21";
+			    		return "redirect:/mission/get/"+idM;
 		    		}
 		    		if(request.getParameter("Refuser")!= null) {
 			    		utilisateur.setEnMission(2);
 			    		utilisateurService.save(utilisateur);
 		    		}
 		    	}
-		    	return "redirect:/mission/listAll";
+		    	return "redirect:/Accueil";
 	        }
 	        return "redirect:/";	        
 	    }
@@ -117,7 +125,7 @@ public class MissionController {
 		
 			}else{
 				redirectAttributes.addFlashAttribute("typeAlert", "success");
-		    	redirectAttributes.addFlashAttribute("msgAlert", "Nouveau Mission a été enregsitrée avec ID : "+idMission);
+		    	redirectAttributes.addFlashAttribute("msgAlert", "Nouvelle Mission a été enregsitrée avec ID : "+idMission);
 			}
 			
 			} catch (Exception e) {
