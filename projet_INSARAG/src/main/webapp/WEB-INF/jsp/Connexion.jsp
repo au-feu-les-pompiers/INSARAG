@@ -73,7 +73,7 @@
 	                  </ol>
 	            <div class="carousel-inner" role="listbox">
 	                <div class="carousel-item active">
-	                  <img class="d-block img-fluid" style="height: 536px; width:auto;" src="https://images.pexels.com/photos/36031/firefighter-fire-portrait-training.jpg" alt="First slide">
+	                  <img class="d-block img-fluid"  width:auto;" src="/images/pexels-photo-266403R.jpeg" alt="First slide">
 	                  <div class="carousel-caption d-none d-md-block">
 	                    <div class="banner-text">
 	                        <h2>INSARAG</h2>
@@ -82,7 +82,7 @@
 	              </div>
 	                </div>
 	                <div class="carousel-item">
-	                  <img class="d-block img-fluid" style="height: 536px; width:auto;" src="https://images.pexels.com/photos/266403/pexels-photo-266403.jpeg" alt="Second slide">
+	                  <img class="d-block img-fluid"  width:auto;" src="/images/fireman-firefighter-rubble-9-11-70573R.png" alt="Second slide">
 	                  <div class="carousel-caption d-none d-md-block">
 	                    <div class="banner-text">
 	                        <h2>INSARAG</h2>
@@ -91,7 +91,7 @@
 	                </div>
 	                </div>
 	                <div class="carousel-item">
-	                  <img class="d-block img-fluid" style="height: 536px; width:auto;" src="https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg" alt="Third slide">
+	                  <img class="d-block img-fluid"  width:auto;" src="/images/firefighter-fire-portrait-trainingR.png" alt="Third slide">
 	                  <div class="carousel-caption d-none d-md-block">
 	                    <div class="banner-text">
 	                        <h2>INSARAG</h2>
