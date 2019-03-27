@@ -196,7 +196,7 @@
 			   <c:choose>
 			   
 					<c:when test="${missionForm.idMission  != null}">
-						<button type="submit" class="btn btn-lg btn-primary">Modifier</button>
+						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">Modifier</button>
 					</c:when>
 					<c:otherwise>
 						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-danger">Valider</button>

@@ -51,7 +51,7 @@
 </head>
 
 <body>
- <script>  
+<script>  
 	function validateForm(){		
 		if (checkPass() && checkPassConfirm() && checkNaissance() && checkNom() && checkPrenom() && checkPhone()) {
 			return true

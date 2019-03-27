@@ -119,6 +119,19 @@ public class InscriptionController {
 						return "redirect:/utilisateur/new?error=telephone";
 					}
 				}
+			}else {
+				for (Utilisateur util : listeUtilisateurs) {
+					if (util.getEmail().equals(currentEmail) && !(util.getId().equals(currentId))) {
+						model.addAttribute("error", "Erreur, cet email existe déjà dans la base!");
+						return "/utilisateur/modificationUtilisateur";
+					}else if (util.getMatricule().equals(currentMatricule) && !(util.getId().equals(currentId))){
+						model.addAttribute("error", "Erreur, ce matricule existe déjà dans la base!");
+						return "/utilisateur/modificationUtilisateur";
+					}else if (util.getTelephone().equals(currentPhone) && !(util.getId().equals(currentId))) {
+						model.addAttribute("error", "Erreur, ce numéro de téléphone existe déjà dans la base!");
+						return "/utilisateur/modificationUtilisateur";
+					}
+				}
 			}
 	    	
 	    	utilisateur.setMdp(utilisateurService.hash(utilisateur.getEmail(), utilisateur.getMdp()));
