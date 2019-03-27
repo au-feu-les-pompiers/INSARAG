@@ -88,7 +88,8 @@
 	    var erreurF;
 	    var month = parseInt(dateOld.getMonth());
 	    var date = new Date(parseInt(dateOld.getFullYear()).toString() + "-" + parseInt(dateOld.getMonth() + 1).toString() + "-" + parseInt(dateOld.getDate()).toString());
-
+	    var r;
+		
 	    duree = dateDiff(dateDebut, dateFin)
 	    erreurD = dateDiff(date, dateDebut)
 	    erreurF = dateDiff(date, dateFin)
@@ -113,7 +114,13 @@
 			document.getElementById('dateDebut').style.backgroundColor = goodColor
 	    	document.getElementById('dateFin').style.backgroundColor = goodColor
 	    	message.innerHTML = ""
-	        return true
+    		r = confirm("Êtes-vous sûr de vouloir envoyer l'alerte?")
+		  	if (r == true){
+		  		alert("Alerte envoyée!")
+		  		return true
+		  	}else{
+		  		return false
+		  	}
 		}
 	}
 </script>
