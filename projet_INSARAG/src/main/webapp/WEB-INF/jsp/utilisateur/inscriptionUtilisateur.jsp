@@ -21,6 +21,11 @@
 <spring:url value="/css/datepicker.min.css" var="datePickerCss" />
 <link href="${datePickerCss}" rel="stylesheet" />
 
+
+<spring:url value="https://use.fontawesome.com/releases/v5.5.0/css/all.css" var="fontawesome" />
+<link href="${fontawesome}" rel="stylesheet" />
+
+
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
@@ -329,8 +334,8 @@
 			}
 		}
 	}
-
- 	function changePassword2Text() {
+/* 
+	function changePassword2Text() {
  		var pass = document.getElementById("mdp1");
  		
  		if (pass.type == 'text') {
@@ -338,14 +343,62 @@
  		}else{
  			pass.type = "text"
  		}
+ 	}  */
+
+
+/* 	function changePassword2Text2() {
+ 		var pass = document.getElementById("mdp1");
+ 	 	var open = 'fa-eye';
+ 	 	var close = 'fa-eye-slash';
+ 		
+ 		if (pass.type == 'text') {
+ 			pass.type = "password";
+ 		 	this.classList.remove(open);
+ 	 	    this.className += ' '+close;
+ 		}else{
+ 			pass.type = "text";
+ 		 	this.classList.remove(close);
+ 	 	    this.className += ' '+open;
+ 		}
+ 	}   */
+
+ 	
+/*  	var open = 'fa-eye';
+ 	var close = 'fa-eye-slash';
+ 	var ele = document.getElementById('mdp1');
+
+ 	document.getElementById('toggleBtn').onclick = function() {
+ 		if( this.classList.contains(open) ) {
+ 	  	ele.type="text";
+ 	    this.classList.remove(open);
+ 	    this.className += ' '+close;
+ 	  } else {
+ 	  	ele.type="password";
+ 	    this.classList.remove(close);
+ 	    this.className += ' '+open;
+ 	  }
  	}
+ */
+
+   	$(".toggle-password").click(function() {
+
+ 		  $(this).toggleClass("fa-eye fa-eye-slash");
+ 		  var input = $($(this).attr("toggle"));
+ 		  if (input.attr("type") == "password") {
+ 		    input.attr("type", "text");
+ 		  } else {
+ 		    input.attr("type", "password");
+ 		  }
+ 		}); 
+ 
+	
 </script>
  	 
 <div class="container">
 <div class="row justify-content-center align-items-center">
         <div class="col-xs-12 col-sm-12 col-md-8 well well-sm formulaire">
-            <h3 class="text-center text-dark mb-5">Inscription</h3>
-            <h6 class="text-center text-dark mb-5">
+            <h3 class="text-center text-dark mb-1">Inscription</h3>
+            <h6 class="text-center text-dark mb-3">
             <%
 	       	try {
 	        	String error = request.getParameter("error");
@@ -414,7 +467,7 @@
                         <label for="password" class="text-dark">Mot de passe*</label>
                         <button type="button" class="btn btn-sm btn-primary" onclick="randomPass();">Générer un mot de passe</button>
                         <br>
-					<form:input type="password" path="mdp"  class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
+					<form:input type="password" path="mdp" class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
 								id="mdp1"
 								onblur='checkPass();'
 								ng-model="thePassword"
@@ -424,9 +477,15 @@
 								data-validation="required alphanumeric length"
 	  							data-validation-error-msg-required="Champs designation est Obligatoire"
 	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
-	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/>
+	 				 
+	 				 
+	 			<!-- 	  <button  onclick="changePassword2Text2(); class="fa fa-fw fa-eye toggler-ico" type="button"></button> -->
+	 				
+	  	 				<span toggle="#mdp1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+				
 					<form:errors path="mdp" class="control-label" />
-					<button type="button" class="btn btn-sm btn-primary" onclick="changePassword2Text();">See/Hide</button>		
+	<!-- 		<button type="button" class="btn btn-sm btn-primary" onclick="changePassword2Text();">See/Hide</button> -->		
 					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 12 caratères.</small>
 					<span id="message" class="message" ></span>
 					</div>
@@ -491,6 +550,9 @@
 			</div>
 		</div>
 		</spring:bind>
+		
+		
+		
 		<spring:bind path="telephone">
 		<div class="row">
 		
@@ -535,28 +597,34 @@
 				<span id="confirmNaissance" class="confirmNaissance" ></span>
 				</div>
 			</div>
+		</div>
 		</spring:bind>
-				<spring:bind path="role">
-	<div class="form-group">
-			<div class="col-xs-12 col-md-12">
-				<label for="username" class="text-dark">Role*</label><br>
-                  <div class="form-group input-group"> 
-					    <form:select path="role">
-						    <form:option value="1" label="Recherche/Secouriste/Logistique"/>
-							<form:option value="2" label="Médecin"/>
-							<form:option value="3" label="Management"/>   
-						</form:select> 
+		
+		<spring:bind path="role">
+		<div class="row">
+			<div class="col-xs-6 col-md-6">
+				<div class="form-group">
+					
+						<label for="username" class="text-dark">Rôle*</label><br>
+		                  <div class="form-group input-group"> 
+							    <form:select class="form-control" path="role">
+								    <form:option value="1" label="Recherche/Secouriste/Logistique"/>
+									<form:option value="2" label="Médecin"/>
+									<form:option value="3" label="Management"/>   
+								</form:select> 
+						</div>
+					</div>
 				</div>
-			</div>
-			</div>
+		</div>
 		
 		</spring:bind>
-		</div>
-		<div class="row justify-content-center align-items-center mb-3">
+		
+	
+		<div class="row justify-content-center align-items-center mb-1">
 			<small class="form-text text-muted">L'administrateur devra valider votre inscription.</small>
 		</div>
 		
-		<div class="row justify-content-center align-items-center mb-3">
+		<div class="row justify-content-center align-items-center mb-2">
 			<small class="form-text text-muted">* Champs obligatoires</small>
 		</div>		
 		
@@ -567,6 +635,7 @@
 
    </div>
  </form:form>
+ 	</div>
 </div>
 </div>
 </div>
