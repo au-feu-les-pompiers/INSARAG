@@ -18,12 +18,12 @@
 <%--               <a class="dropdown-item" href="${pageContext.request.contextPath}/documents">Documents</a> --%>
             </div>
           </li>
-<!--           <li class="nav-item"> -->
-<!--             <a class="nav-link" href="#"> -->
-<!--                 <span style="color: blue;"> -->
-<!--                     <i class="far fa-comments"></i> -->
-<!--                 </span>  Chat</a> -->
-<!--           </li> -->
+          <li class="nav-item"> 
+             <a class="nav-link" href="https://web.whatsapp.com/"> 
+                 <span style="color: blue;"> 
+                     <i class="far fa-comments"></i> 
+                 </span>  Chat</a> 
+           </li> 
           <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/carte">
                 <span style="color: #006600;">
