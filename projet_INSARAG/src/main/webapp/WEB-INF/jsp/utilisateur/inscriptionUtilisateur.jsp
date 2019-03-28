@@ -231,6 +231,8 @@
  	function randomPass(){
  		var goodColor = "#66cc66";
  		var pass = document.getElementById('mdp1');
+ 		var image = document.getElementById("#mdp1");
+ 		var open = "fa-eye";
  		var mdp = "";
  		var randC;
  		var randL;
@@ -252,6 +254,7 @@
 		}
  		pass.style.backgroundColor = goodColor
  		pass.type = "text"
+ 		image.className = "fa fa-fw field-icon " + open
  		document.getElementById('mdp1').value = mdp
  	}
 
@@ -437,7 +440,7 @@
 	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/>
 	 				
-	  	 			<span id="#mdp1" onclick="changePassword2Text2();" class="fa fa-fw field-icon fa-eye"></span>
+	  	 			<span id="#mdp1" onclick="changePassword2Text2();" class="fa fa-fw field-icon fa-eye-slash"></span>
 				
 					<form:errors path="mdp" class="control-label" />
 					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 12 caratères.</small>

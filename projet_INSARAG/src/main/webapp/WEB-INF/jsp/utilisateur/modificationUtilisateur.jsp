@@ -83,6 +83,8 @@
  	function randomPass(){
  		var goodColor = "#66cc66";
  		var pass = document.getElementById('mdp');
+ 		var image = document.getElementById("#mdp");
+ 		var open = "fa-eye";
  		var mdp = "";
  		var randC;
  		var randL;
@@ -104,6 +106,7 @@
 		}
  		pass.style.backgroundColor = goodColor
  		pass.type = "text"
+ 		image.className = "fa fa-fw field-icon " + open
  		document.getElementById('mdp').value = mdp
  	}
 
@@ -187,14 +190,19 @@
 		}
 	}
 
- 	function changePassword2Text() {
- 		var pass = document.getElementById("mdp");
- 		
- 		if (pass.type == 'text') {
- 			pass.type = "password"
- 		}else{
- 			pass.type = "text"
- 		}
+ 	function changePassword2Text2() {
+ 		var open = "fa-eye";
+ 	 	var close = "fa-eye-slash";
+ 	 	var ele = document.getElementById("mdp");
+ 	 	var image = document.getElementById("#mdp");
+
+ 		if (image.classList.contains(close)){
+	 	  	ele.type="text";
+	 	  	image.className = "fa fa-fw field-icon " + open
+ 	  	}else{
+	 	  	ele.type="password";
+	 	  	image.className = "fa fa-fw field-icon " + close
+ 	  	}
  	}
 </script>
 	<div id="header">
@@ -247,14 +255,14 @@
 		</spring:bind>
 		
 		<spring:bind path="mdp">
-
 					<div class="form-group">
-						<label>Mot de passe</label>
+						<label for="password" class="text-dark">Mot de passe</label>
 						<button type="button" class="btn btn-sm btn-primary" onclick="randomPass();">Générer un mot de passe</button>
                         <br>
 						<form:input type="text"   path="mdp" class="form-control" value="defaultINSARAG" placeholder="Mdp de l'utilisateur" 
 									id="mdp"
 									onblur='checkPass();'
+									ng-model="thePassword"
 									required="required" 
 									data-validation-length="max100"
 									data-validation-allowing="-_ éèà'&"
@@ -262,11 +270,13 @@
 		  							data-validation-error-msg-required="Champs designation est Obligatoire"
 		 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 		 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
+						
+						<span id="#mdp" onclick="changePassword2Text2();" class="fa fa-fw field-icon fa-eye"></span>
+						
 						<form:errors path="mdp" class="control-label" />
-						<button type="button" class="btn btn-sm btn-primary" onclick="changePassword2Text();">See/Hide</button>	
 						<span id="message" class="message" ></span>		
 					</div>
-		
+			
 		</spring:bind>
 	
 		<spring:bind path="nom">
