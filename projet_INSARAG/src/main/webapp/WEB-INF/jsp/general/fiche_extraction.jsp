@@ -158,7 +158,7 @@
             <div class="row">
             	<div class="col-xs-4 col-md-4">
                   <div class="form-group">
-                   <label class="text-dark">Niveau de travail nécessaire pour extraire la victime</label><br>
+                   <label class="text-dark">Niveau de travail nécessaire pour extraire la victime :</label><br>
 			  		 <div class="custom-control custom-radio">
 			  			 <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
 			          	<label class="custom-control-label" for="customRadio1">Assistance</label>
@@ -184,7 +184,7 @@
 			     
 			     <div class="col-xs-4 col-md-4">
                   <div class="form-group">
-                   <label class="text-dark">Condition de la victime</label><br>
+                   <label class="text-dark">Condition de la victime :</label><br>
 			  		 <div class="custom-control custom-radio">
 			  			 <input type="radio" id="customRadio6" name="customRadio" class="custom-control-input">
 			          	<label class="custom-control-label" for="customRadio6">Live</label>
@@ -198,10 +198,10 @@
 			     
 			     <div class="col-xs-4 col-md-4">
                   <div class="form-group">
-                   <label class="text-dark">Etat des blessures de la victime</label><br>
+                   <label class="text-dark">Etat des blessures de la victime :</label><br>
 			  		 <div class="custom-control custom-radio">
 			  			 <input type="radio" id="customRadio8" name="customRadio" class="custom-control-input">
-			          	<label class="custom-control-label" for="customRadio8">None</label>
+			          	<label class="custom-control-label" for="customRadio8">Aucune</label>
 			        </div>
 					<div class="custom-control custom-radio">
 					    <input type="radio" id="customRadio9" name="customRadio" class="custom-control-input">
@@ -285,6 +285,11 @@
                         <input class="form-control" placeholder="Médecin" type="text" required />
                     </div>
                 </div>
+            </div>
+            
+         
+             <div class="row justify-content-center align-items-center">
+						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">Envoyer</button>
             </div>
 
 

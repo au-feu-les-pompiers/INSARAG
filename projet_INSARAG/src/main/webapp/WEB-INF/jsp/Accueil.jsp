@@ -157,14 +157,21 @@
 				<c:choose>
 					<c:when test="${utilisateurForm.enMission == 1}">
 						<h4 class="text-center mt-3 mb-3">Vous avez accepté la mission</h4>	
+						<div class="text-center mt-3 mb-3">
+							<button class="btn btn-warning"	onclick="location.href='${updateUrl}'">Voir la mission</button>
+						</div>
+						
 					</c:when>
 					<c:when test="${utilisateurForm.enMission == 2}">
 						<h4 class="text-center mt-3 mb-3">Vous avez refusé la mission</h4>
 					</c:when>
 					<c:otherwise>
 						<form:form id="utilisateurform"  class="form"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >
+						
+	
+							<button class="btn btn-lg btn-warning btn-block mt-3"	onclick="location.href='${updateUrl}'">Voir la mission</button>
 							<input class="btn btn-lg btn-success btn-block" id="connexion" name="Accepter" type="submit" value="Accepter la mission" href="/mission/accept/${missionToShow.idMission}">			
-							<input class="btn btn-lg btn-danger btn-block" id="connexion" name="Refuser" type="submit" value="Refuser la mission" >							
+							<input class="btn btn-lg btn-danger btn-block mb-3" id="connexion" name="Refuser" type="submit" value="Refuser la mission" >							
 						</form:form>
 					</c:otherwise>
 				</c:choose>

@@ -586,11 +586,9 @@
 		</div>		
 		
 		<div class="row justify-content-center align-items-center">
-			
 						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">S'inscrire</button>
-	    
-
-   </div>
+   		</div>
+   		
  </form:form>
  	</div>
 </div>
