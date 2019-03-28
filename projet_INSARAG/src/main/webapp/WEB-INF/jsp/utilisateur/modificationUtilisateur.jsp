@@ -271,7 +271,12 @@
 		 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 		 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
 						
-						<span id="#mdp" onclick="changePassword2Text2();" class="fa fa-fw field-icon fa-eye"></span>
+						<span id="#mdp" onclick="changePassword2Text2();" class="fa fa-fw field-icon fa-eye" 
+							style="float: right;
+  									right:10px;
+  									margin-top: -25px;
+ 									position: relative;">
+ 						</span>
 						
 						<form:errors path="mdp" class="control-label" />
 						<span id="message" class="message" ></span>		
