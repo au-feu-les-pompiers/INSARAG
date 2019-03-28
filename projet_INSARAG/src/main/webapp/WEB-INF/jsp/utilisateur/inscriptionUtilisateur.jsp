@@ -687,7 +687,7 @@
 		</spring:bind>
 		<%}
 	       	}catch (Exception e){
-	       	}%>
+	    }%>
 	
 		<div class="row justify-content-center align-items-center mb-1">
 			<small class="form-text text-muted">L'administrateur devra valider votre inscription.</small>
@@ -699,8 +699,15 @@
 		
 		<div class="row justify-content-center align-items-center">
 			
-						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">S'inscrire</button>
-	    
+		<%
+            try {
+	        	String psswd = request.getParameter("psswd");
+	        	if (psswd.equals("0")){%>
+		<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">Soumettre</button>
+	    <%}
+	       	}catch (Exception e){%>
+	    <button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">S'inscrire</button>
+	    <%}%>
 
    </div>
  </form:form>
