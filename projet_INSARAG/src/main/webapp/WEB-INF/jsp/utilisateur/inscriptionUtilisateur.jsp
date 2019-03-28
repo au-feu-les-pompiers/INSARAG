@@ -334,64 +334,22 @@
 			}
 		}
 	}
-/* 
-	function changePassword2Text() {
- 		var pass = document.getElementById("mdp1");
- 		
- 		if (pass.type == 'text') {
- 			pass.type = "password"
- 		}else{
- 			pass.type = "text"
- 		}
- 	}  */
 
+ 	function changePassword2Text2() {
+ 		var open = "fa-eye";
+ 	 	var close = "fa-eye-slash";
+ 	 	var ele = document.getElementById("mdp1");
+ 	 	var image = document.getElementById("#mdp1");
 
-/* 	function changePassword2Text2() {
- 		var pass = document.getElementById("mdp1");
- 	 	var open = 'fa-eye';
- 	 	var close = 'fa-eye-slash';
- 		
- 		if (pass.type == 'text') {
- 			pass.type = "password";
- 		 	this.classList.remove(open);
- 	 	    this.className += ' '+close;
- 		}else{
- 			pass.type = "text";
- 		 	this.classList.remove(close);
- 	 	    this.className += ' '+open;
- 		}
- 	}   */
-
- 	
-/*  	var open = 'fa-eye';
- 	var close = 'fa-eye-slash';
- 	var ele = document.getElementById('mdp1');
-
- 	document.getElementById('toggleBtn').onclick = function() {
- 		if( this.classList.contains(open) ) {
- 	  	ele.type="text";
- 	    this.classList.remove(open);
- 	    this.className += ' '+close;
- 	  } else {
- 	  	ele.type="password";
- 	    this.classList.remove(close);
- 	    this.className += ' '+open;
- 	  }
+ 		if (image.classList.contains(close)){
+	 	  	ele.type="text";
+	 	  	image.className = "fa fa-fw field-icon " + open
+ 	  	}else{
+	 	  	ele.type="password";
+	 	  	image.className = "fa fa-fw field-icon " + close
+ 	  	}
  	}
- */
 
-   	$(".toggle-password").click(function() {
-
- 		  $(this).toggleClass("fa-eye fa-eye-slash");
- 		  var input = $($(this).attr("toggle"));
- 		  if (input.attr("type") == "password") {
- 		    input.attr("type", "text");
- 		  } else {
- 		    input.attr("type", "password");
- 		  }
- 		}); 
- 
-	
 </script>
  	 
 <div class="container">
@@ -478,14 +436,10 @@
 	  							data-validation-error-msg-required="Champs designation est Obligatoire"
 	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/>
-	 				 
-	 				 
-	 			<!-- 	  <button  onclick="changePassword2Text2(); class="fa fa-fw fa-eye toggler-ico" type="button"></button> -->
 	 				
-	  	 				<span toggle="#mdp1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	  	 			<span id="#mdp1" onclick="changePassword2Text2();" class="fa fa-fw field-icon fa-eye"></span>
 				
 					<form:errors path="mdp" class="control-label" />
-	<!-- 		<button type="button" class="btn btn-sm btn-primary" onclick="changePassword2Text();">See/Hide</button> -->		
 					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 12 caratères.</small>
 					<span id="message" class="message" ></span>
 					</div>
