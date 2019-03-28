@@ -55,7 +55,16 @@
 	              <div class="form-group">
 	                <label for="exampleInputPassword1">Mot de passe</label>
 	                <input type="password" name="user_mdp" class="form-control" placeholder="********">
+	                
+	                 <a class="float-right mb-2" href="${pageContext.request.contextPath}/utilisateur/new?psswd=0">
+                		<span style="color: #006600;">
+                  		  <i class="fas fa-map-marked-alt"></i>
+                		</span>Mot de passe oublié ?
+                	</a>
+                
 	              </div>
+	              
+	             
 	              
 	            <input class="btn btn-lg btn-danger btn-block" id="connexion"  type="submit" value="Connexion">	
 	            
@@ -66,10 +75,7 @@
 	                <button onclick="location.href='${pageContext.request.contextPath}/utilisateur/new'" class="btn btn-block btn-lg inscription" id="inscription" type="submit">Inscription</button>        
 	            </div>
 	            
-            <a class="nav-link" href="${pageContext.request.contextPath}/utilisateur/new?psswd=0">
-                <span style="color: #006600;">
-                    <i class="fas fa-map-marked-alt"></i>
-                </span>Mot de passe oublié?</a>
+            
 	
 			</div>
 			<div class="col-md-8 banner-sec d-none d-sm-none d-md-none d-lg-block">
