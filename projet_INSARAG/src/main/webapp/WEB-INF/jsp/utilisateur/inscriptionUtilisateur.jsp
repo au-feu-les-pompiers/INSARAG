@@ -189,7 +189,7 @@
 		}else{
 			nom.style.backgroundColor = badColor
 			message.style.color = badColor
-			message.innerHTML = "Nom invalide! "
+			message.innerHTML = "Nom invalide"
 			return false
 		}
 	}
@@ -281,7 +281,7 @@
 		if (verif != newTelephone && newTelephone != ""){
 			phone.style.backgroundColor = badColor
 			message.style.color = badColor
-			message.innerHTML = "Numéro de téléphone invalide!"
+			message.innerHTML = "Numéro de téléphone invalide"
 			return false
 		}else{
 			//Vérification de la taille du numéro en fonction du pays
@@ -299,13 +299,13 @@
 						}else{
 							phone.style.backgroundColor = badColor
 							message.style.color = badColor
-							message.innerHTML = "Numéro de téléphone invalide!"
+							message.innerHTML = "Numéro de téléphone invalide"
 							return false
 						}
 					}else{
 						phone.style.backgroundColor = badColor
 						message.style.color = badColor
-						message.innerHTML = "(+33) Votre numéro de téléphone doit comporter 10 chiffres!"
+						message.innerHTML = "Votre numéro de téléphone doit comporter 10 chiffres"
 						return false
 					}					
 				}else{
@@ -316,7 +316,7 @@
 				if (newTelephone.substring(0, 1) != "0"){
 					phone.style.backgroundColor = badColor
 					message.style.color = badColor
-					message.innerHTML = "Numéro de téléphone invalide! Votre numéro doit commencer par un 0!"
+					message.innerHTML = "Numéro de téléphone invalide! Votre numéro doit commencer par un 0 "
 					return false
 				}else{
 					phone.style.backgroundColor = goodColor

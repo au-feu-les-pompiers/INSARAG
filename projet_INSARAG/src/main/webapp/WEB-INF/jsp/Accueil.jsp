@@ -134,29 +134,32 @@
 			<br/>
 			<c:choose>
 			<c:when test="${missionToShow.flagFin == 0}">
+			<div class="container">
 			<div class="row">
-				<label class="col-sm-5">Lieu</label>
-				<div class="col-sm-7">${missionToShow.lieu}</div>
+				<label class="">Lieu : </label>
+				<div class="">${missionToShow.lieu}</div>
 			</div>		
 	
 			<div class="row">
-				<label class="col-sm-5">Date de début</label>
-				<div class="col-sm-7">${missionToShow.debut}</div>
+				<label class="">Date de début : </label>
+				<div class="">${missionToShow.debut}</div>
 			</div>
 	
 			<div class="row">
-				<label class="col-sm-5">Date de fin</label>
-				<div class="col-sm-7">${missionToShow.fin}</div>
+				<label class="">Date de fin : </label>
+				<div class="">${missionToShow.fin}</div>
+				
+			</div>
 			</div>
 			
 			<div>
 			<spring:url value="/mission/accept/${missionToShow.idMission}" var="utilisateurActionUrl" />
 				<c:choose>
 					<c:when test="${utilisateurForm.enMission == 1}">
-						<h4>Vous avez accepté la mission</h4>	
+						<h4 class="text-center mt-3 mb-3">Vous avez accepté la mission</h4>	
 					</c:when>
 					<c:when test="${utilisateurForm.enMission == 2}">
-						<h4>Vous avez refusé la mission</h4>
+						<h4 class="text-center mt-3 mb-3">Vous avez refusé la mission</h4>
 					</c:when>
 					<c:otherwise>
 						<form:form id="utilisateurform"  class="form"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >
