@@ -15,6 +15,12 @@
 <!--                     <i class="far fa-comments"></i> -->
 <!--                 </span>  Chat</a> -->
 <!--           </li> -->
+          <li class="nav-item"> 
+             <a class="nav-link" href="https://web.whatsapp.com/"> 
+                 <span style="color: blue;"> 
+                     <i class="far fa-comments"></i> 
+                 </span>  Chat</a> 
+           </li> 
           <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/carte">
                 <span style="color: #006600;">
@@ -27,7 +33,7 @@
                     <i class="fas fa-file-alt"></i>
                 </span>  Documents</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown06">
-             		 <a class="dropdown-item" href="${pageContext.request.contextPath}/fiche_extraction">Fiche opérationelle</a>
+             		 <a class="dropdown-item" href="${pageContext.request.contextPath}/fiche">Fiche opérationelle</a>
              		  <a class="dropdown-item" href="${pageContext.request.contextPath}/documents">Autres documents</a>
             	</div>
           </li>

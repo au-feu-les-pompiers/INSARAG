@@ -14,6 +14,8 @@
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<spring:url value="/css/footer.css" var="footer" />
+<link href="${footer}" rel="stylesheet" />
 
 <spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
 <link href="${bootstrap4Css}" rel="stylesheet" /> 
@@ -42,7 +44,6 @@
 			    <h2 class="text-center"><img src="images/Insarag_logo.jpg" style="height:110px; width:155px;"></img></h2>
 			    <h6 class="text-center text-dark">
 			    <font color = 'red'>${error}</font>
-			    <font color = 'green'>${success}</font>
 			    </h6>
 			    <form action="submitConnexion" method="post" class="login-form" >
 	              <div class="form-group">

@@ -20,6 +20,9 @@
 
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
+
+<spring:url value="/css/footer.css" var="footer" />
+<link href="${footer}" rel="stylesheet" />
 <%-- 
 <spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
 <script src="${jqueryJs}"></script>
@@ -167,5 +170,6 @@ function initMap() {
     <script async defer
 	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdzFj2ni5izYop3rXhtKOKC2ytCU7y3_4&callback=initMap">
 	</script> 
+	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

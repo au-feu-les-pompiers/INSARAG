@@ -177,14 +177,11 @@ public class InscriptionController {
 					if (util.getMatricule().equals(currentMatricule) && util.getTelephone().equals(currentPhone) && util.getNom().equals(currentName) && util.getPrenom().equals(currentFirstname) && (util.getRole() == currentRole) && utilisateurService.hash(currentQuestion, currentResponse).equals(util.getReponse())){
 						util.setMdp(utilisateurService.hash(utilisateur.getEmail(), utilisateur.getMdp()));
 						Long id = utilisateurService.save(util);
-						break;
-					}else {
-						model.addAttribute("error", "Erreur, vos informations sont erronées!");
-						return "Connexion";
+						return "redirect:/Accueil";
 					}
 				}
 			}
-			return "redirect:/Accueil";
+			return "redirect:/utilisateur/new?psswd=0&error=modif";
 	    }
 	    
  

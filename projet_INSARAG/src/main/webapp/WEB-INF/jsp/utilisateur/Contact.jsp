@@ -24,6 +24,9 @@
 <spring:url value="/css/datatables.css" var="bootstrapdataTablesCss" />
 <link href="${bootstrapdataTablesCss}" rel="stylesheet" /> 
 
+<spring:url value="/css/footer.css" var="footer" />
+<link href="${footer}" rel="stylesheet" />
+
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
@@ -123,5 +126,6 @@
 		</c:choose>
 		<%-- Fin c:choose  --%>
 	</div>
+	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

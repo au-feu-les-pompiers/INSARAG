@@ -18,7 +18,8 @@
 <spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
 <link href="${bootstrap4Css}" rel="stylesheet" /> 
 
-
+<spring:url value="/css/footer.css" var="footer" />
+<link href="${footer}" rel="stylesheet" />
 
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
@@ -246,5 +247,6 @@ $('#prodtable').DataTable( {
     }
 } );
 </script>
+<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

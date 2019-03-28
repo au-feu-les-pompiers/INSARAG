@@ -21,6 +21,8 @@
 <spring:url value="/css/datepicker.min.css" var="datePickerCss" />
 <link href="${datePickerCss}" rel="stylesheet" />
 
+<spring:url value="/css/footer.css" var="footer" />
+<link href="${footer}" rel="stylesheet" />
 
 <spring:url value="https://use.fontawesome.com/releases/v5.5.0/css/all.css" var="fontawesome" />
 <link href="${fontawesome}" rel="stylesheet" />
@@ -358,7 +360,6 @@
 <div class="container">
 <div class="row justify-content-center align-items-center">
         <div class="col-xs-12 col-sm-12 col-md-8 well well-sm formulaire">
-            <h3 class="text-center text-dark mb-1">Inscription</h3>
            <%
             try {
 	        	String psswd = request.getParameter("psswd");
@@ -369,6 +370,9 @@
 	       	%>
 	       		<h3 class="text-center text-dark mb-1">Inscription</h3>                   		
 	       	<%}%>
+	       	<h6 class="text-center text-dark">
+	       	<font color = 'red'>${error}</font>
+	       	</h6>
             <h6 class="text-center text-dark mb-3">
             <%
 	       	try {
@@ -377,15 +381,26 @@
 	     	<font color = 'red'> Erreur, cet email est déjà enregistré dans la base de donnée!</font>
 	        	<%}else if (error.equals("matricule")){%>
 	        <font color = 'red'> Erreur, ce matricule est déjà enregistré dans la base de donnée!</font>		
-	        	<%}else{%>
+	        	<%}else if (error.equals("matricule")){%>
 	        <font color = 'red'> Erreur, ce numéro de téléphone est déjà enregistré dans la base de donnée!</font>	
-	        	<%}
+	        	<%}else{%>
+	        <font color = 'red'> Erreur, vos données sont erronées!</font>	
+	        <%}
 	       	}catch (Exception e){
 	            out.println("");	                   		
 	       	}
 	       	%>
 	       	</h6>
+	
+	<%try {
+      	String psswd = request.getParameter("psswd");
+      	if (psswd.equals("0")){%>
+	<spring:url value="/utilisateur/savePassword" var="utilisateurActionUrl"/>
+	<%}
+	       	}catch (Exception e){
+	       	%>
 	<spring:url value="/utilisateur/save" var="utilisateurActionUrl"/>
+	<%}%>
 
 	<form:form id="utilisateurform" name="frm" 
 	class="form-horizontal"  method="post"  modelAttribute="utilisateurForm"  
@@ -431,6 +446,13 @@
 			
 		</spring:bind>
 		</div>
+		
+		<%
+            try {
+	        	String psswd = request.getParameter("psswd");
+	        	if (psswd.equals("0")){}
+            }catch (Exception e){
+	        %>
 		<spring:bind path="mdp">
 			<div class="row">
                 <div class="col-xs-6 col-md-6">
@@ -478,6 +500,38 @@
 				</div>
 			</div>
 		</spring:bind>
+		
+		<%}%>
+
+		<div class="row">
+			<div class="col-xs-6 col-md-7">
+				<div class="form-group">
+
+						<label for="question" class="text-dark">Question personnelle*</label><br>
+		                  <div class="form-group input-group"> 
+							    <form:select class="form-control" path="question">
+								    <form:option value="1" label="Le nom de jeune fille de votre mère"/>
+									<form:option value="2" label="Le nom de jeune fille de votre grand-mère"/>
+									<form:option value="3" label="Le prénom de votre premier amour"/> 
+									<form:option value="4" label="Le nom de votre premier animal de compagnie"/>
+									<form:option value="5" label="Le surnom que vous donnaient vos parents étant petit"/>  
+								</form:select> 
+						</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+                   <form:input type="text" path="reponse" value="${utilisateurForm.reponse}" id="response" class="form-control"
+                   				required="required" 
+								data-validation-length="max100"
+								data-validation-allowing="-_ éèà'&"
+								data-validation="required alphanumeric length"
+	  							data-validation-error-msg-required="Champs designation est Obligatoire"
+	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/>
+                   <form:errors path="confirmationMdp" class="control-label" />	
+         </div>
 	
 		<spring:bind path="nom">
 		<div class="row">
@@ -586,6 +640,66 @@
 		
 		</spring:bind>
 		
+		<%
+            try {
+	        	String psswd = request.getParameter("psswd");
+	        	if (psswd.equals("0")){%>
+	        	
+	    <br>
+	    <h3 class="text-center text-dark mb-1">---------------------------------------------------</h3>
+	    <br>
+	    
+	    <spring:bind path="mdp">
+			<div class="row">
+                <div class="col-xs-6 col-md-6">
+                   <div class="form-group">
+                        <label for="password" class="text-dark">Nouveau mot de passe*</label>
+                        <button type="button" class="btn btn-sm btn-primary" onclick="randomPass();">Générer un mot de passe</button>
+                        <br>
+					<form:input type="password" path="mdp" class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
+								id="mdp1"
+								onblur='checkPass();'
+								ng-model="thePassword"
+								required="required" 
+								data-validation-length="max100"
+								data-validation-allowing="-_ éèà'&"
+								data-validation="required alphanumeric length"
+	  							data-validation-error-msg-required="Champs designation est Obligatoire"
+	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/>
+	 				
+	  	 			<span id="#mdp1" onclick="changePassword2Text2();" class="fa fa-fw field-icon fa-eye-slash"></span>
+				
+					<form:errors path="mdp" class="control-label" />
+					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 12 caratères.</small>
+					<span id="message" class="message" ></span>
+					</div>
+				</div>
+			
+                <div class="col-xs-6 col-md-6">
+                   <div class="form-group">
+                        <label for="password" class="text-dark">Confirmer nouveau mot de passe*</label><br>
+					<form:input type="password"   path="confirmationMdp"  class="form-control"  value="${utilisateurForm.confirmationMdp}" placeholder="**********" 
+								id="mdp2"
+								onblur="checkPassConfirm();return false;"
+								required="required" 
+								data-validation-length="max100"
+								data-validation-allowing="-_ éèà'&"
+								data-validation="required alphanumeric length"
+	  							data-validation-error-msg-required="Champs designation est Obligatoire"
+	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
+					<form:errors path="confirmationMdp" class="control-label" />	
+					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 12 caratères.</small>	
+					<span id="confirmMessage" class="confirmMessage" ></span>
+					</div>
+				</div>
+			</div>
+		</spring:bind>
+	    
+	    <%}
+	       	}catch (Exception e){}
+	    %>
 	
 		<div class="row justify-content-center align-items-center mb-1">
 			<small class="form-text text-muted">L'administrateur devra valider votre inscription.</small>
@@ -594,19 +708,19 @@
 		<div class="row justify-content-center align-items-center mb-2">
 			<small class="form-text text-muted">* Champs obligatoires</small>
 		</div>		
-		
-		<div class="row justify-content-center align-items-center">
-						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">S'inscrire</button>
-   		</div>
    		
 		<%
             try {
 	        	String psswd = request.getParameter("psswd");
 	        	if (psswd.equals("0")){%>
-		<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">Soumettre</button>
+		<div class="row justify-content-center align-items-center">
+						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">Soumettre</button>
+   		</div>
 	    <%}
 	       	}catch (Exception e){%>
-	    <button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">S'inscrire</button>
+	    <div class="row justify-content-center align-items-center">
+						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">S'inscrire</button>
+   		</div>
 	    <%}%>
 
    </div>
@@ -616,6 +730,6 @@
 </div>
 </div>
 
-
+<jsp:include page="../common/footer.jsp" />
 </body>
 </html>
