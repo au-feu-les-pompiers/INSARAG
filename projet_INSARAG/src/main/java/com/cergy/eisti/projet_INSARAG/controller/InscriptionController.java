@@ -161,6 +161,7 @@ public class InscriptionController {
 	    	String currentPhone = utilisateur.getTelephone();
 	    	String currentName = utilisateur.getNom();
 	    	String currentFirstname = utilisateur.getPrenom();
+	    	String currentBirth = utilisateur.getNaissance();
 	    	String currentQuestion = utilisateur.getQuestion();
 	    	String currentResponse = utilisateur.getReponse();
 	    	int currentRole = utilisateur.getRole();
@@ -174,7 +175,7 @@ public class InscriptionController {
 			 */
 			for (Utilisateur util : listeUtilisateurs) {
 				if (util.getEmail().equals(currentEmail)) {
-					if (util.getMatricule().equals(currentMatricule) && util.getTelephone().equals(currentPhone) && util.getNom().equals(currentName) && util.getPrenom().equals(currentFirstname) && (util.getRole() == currentRole) && utilisateurService.hash(currentQuestion, currentResponse).equals(util.getReponse())){
+					if (util.getMatricule().equals(currentMatricule) && util.getTelephone().equals(currentPhone) && util.getNaissance().equals(currentBirth) && util.getNom().equals(currentName) && util.getPrenom().equals(currentFirstname) && (util.getRole() == currentRole) && utilisateurService.hash(currentQuestion, currentResponse).equals(util.getReponse())){
 						util.setMdp(utilisateurService.hash(utilisateur.getEmail(), utilisateur.getMdp()));
 						Long id = utilisateurService.save(util);
 						return "redirect:/Accueil";
