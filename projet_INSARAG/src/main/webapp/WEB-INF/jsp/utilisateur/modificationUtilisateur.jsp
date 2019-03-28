@@ -216,7 +216,7 @@
 		</c:choose>
 	</div>
 	 
- 
+<div style="margin-top:100px;"></div>
 <div class="container">
 <div class="row justify-content-center align-items-center">
 <div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
@@ -271,7 +271,12 @@
 		 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
 		 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
 						
-						<span id="#mdp" onclick="changePassword2Text2();" class="fa fa-fw field-icon fa-eye"></span>
+						<span id="#mdp" onclick="changePassword2Text2();" class="fa fa-fw field-icon fa-eye" 
+							style="float: right;
+  									right:10px;
+  									margin-top: -25px;
+ 									position: relative;">
+ 						</span>
 						
 						<form:errors path="mdp" class="control-label" />
 						<span id="message" class="message" ></span>		

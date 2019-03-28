@@ -22,6 +22,9 @@ public class Utilisateur implements java.io.Serializable {
 	private String mdp;
 	@Transient
 	private String confirmationMdp;
+	@Transient
+	private String question;
+	private String reponse;
 	private String nom;
 	private String prenom;
 	private String telephone;
@@ -42,11 +45,12 @@ public class Utilisateur implements java.io.Serializable {
 		this.role = role;
 	}
 
-	public Utilisateur(Long id, String email, String mdp, String nom, String prenom, String telephone, String naissance, String matricule,
+	public Utilisateur(Long id, String email, String mdp, String reponse, String nom, String prenom, String telephone, String naissance, String matricule,
 			int autorisation, int enMission, int role) {
 		this.id = id;
 		this.email = email;
 		this.mdp = mdp;
+		this.reponse = reponse;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.telephone = telephone;
@@ -95,6 +99,24 @@ public class Utilisateur implements java.io.Serializable {
 
 	public void setConfirmationMdp(String confirmationMdp) {
 		this.confirmationMdp = confirmationMdp;
+	}
+	
+	@Column(name = "REPONSE", nullable = false, length = 30)
+	public String getReponse() {
+		return reponse;
+	}
+
+	public void setReponse(String reponse) {
+		this.reponse = reponse;
+	}
+	
+	@Transient
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 
 	@Column(name = "NOM", nullable = false, length = 30)

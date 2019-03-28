@@ -72,21 +72,21 @@
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
       <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/RCAhiGJsUUE/1920x1080')">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption d-block">
           <h3 class="display-4">Bienvenue</h3>
           <p class="lead">L'INSARAG, porte secours et assistance aux pays victime de catastrophes naturelles ou humanitaires </p>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1512752191916-e728edecd1e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption d-block ">
           <h3 class="display-4">Un organigramme</h3>
           <p class="lead">Pour voir la liste des pompiers présents sur chaque mission</p>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1506402591084-12b14ad3129d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80')">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption d-block ">
           <h3 class="display-4">La carte</h3>
           <p class="lead">Pour vous aider à vous situer en pleine mission</p>
         </div>
@@ -134,29 +134,32 @@
 			<br/>
 			<c:choose>
 			<c:when test="${missionToShow.flagFin == 0}">
+			<div class="container">
 			<div class="row">
-				<label class="col-sm-5">Lieu</label>
-				<div class="col-sm-7">${missionToShow.lieu}</div>
+				<label class="">Lieu : </label>
+				<div class="">${missionToShow.lieu}</div>
 			</div>		
 	
 			<div class="row">
-				<label class="col-sm-5">Date de début</label>
-				<div class="col-sm-7">${missionToShow.debut}</div>
+				<label class="">Date de début : </label>
+				<div class="">${missionToShow.debut}</div>
 			</div>
 	
 			<div class="row">
-				<label class="col-sm-5">Date de fin</label>
-				<div class="col-sm-7">${missionToShow.fin}</div>
+				<label class="">Date de fin : </label>
+				<div class="">${missionToShow.fin}</div>
+				
+			</div>
 			</div>
 			
 			<div>
 			<spring:url value="/mission/accept/${missionToShow.idMission}" var="utilisateurActionUrl" />
 				<c:choose>
 					<c:when test="${utilisateurForm.enMission == 1}">
-						<h4>Vous avez accepté la mission</h4>	
+						<h4 class="text-center mt-3 mb-3">Vous avez accepté la mission</h4>	
 					</c:when>
 					<c:when test="${utilisateurForm.enMission == 2}">
-						<h4>Vous avez refusé la mission</h4>
+						<h4 class="text-center mt-3 mb-3">Vous avez refusé la mission</h4>
 					</c:when>
 					<c:otherwise>
 						<form:form id="utilisateurform"  class="form"  method="post"  modelAttribute="utilisateurForm"  action="${utilisateurActionUrl}" >

@@ -189,7 +189,7 @@
 		}else{
 			nom.style.backgroundColor = badColor
 			message.style.color = badColor
-			message.innerHTML = "Nom invalide! "
+			message.innerHTML = "Nom invalide"
 			return false
 		}
 	}
@@ -281,7 +281,7 @@
 		if (verif != newTelephone && newTelephone != ""){
 			phone.style.backgroundColor = badColor
 			message.style.color = badColor
-			message.innerHTML = "Numéro de téléphone invalide!"
+			message.innerHTML = "Numéro de téléphone invalide"
 			return false
 		}else{
 			//Vérification de la taille du numéro en fonction du pays
@@ -299,13 +299,13 @@
 						}else{
 							phone.style.backgroundColor = badColor
 							message.style.color = badColor
-							message.innerHTML = "Numéro de téléphone invalide!"
+							message.innerHTML = "Numéro de téléphone invalide"
 							return false
 						}
 					}else{
 						phone.style.backgroundColor = badColor
 						message.style.color = badColor
-						message.innerHTML = "(+33) Votre numéro de téléphone doit comporter 10 chiffres!"
+						message.innerHTML = "Votre numéro de téléphone doit comporter 10 chiffres"
 						return false
 					}					
 				}else{
@@ -316,7 +316,7 @@
 				if (newTelephone.substring(0, 1) != "0"){
 					phone.style.backgroundColor = badColor
 					message.style.color = badColor
-					message.innerHTML = "Numéro de téléphone invalide! Votre numéro doit commencer par un 0!"
+					message.innerHTML = "Numéro de téléphone invalide! Votre numéro doit commencer par un 0 "
 					return false
 				}else{
 					phone.style.backgroundColor = goodColor
@@ -358,7 +358,16 @@
 <div class="container">
 <div class="row justify-content-center align-items-center">
         <div class="col-xs-12 col-sm-12 col-md-8 well well-sm formulaire">
-            <h3 class="text-center text-dark mb-1">Inscription</h3>
+        	<%
+            try {
+	        	String psswd = request.getParameter("psswd");
+	        	if (psswd.equals("0")){%>
+	     	<h3 class="text-center text-dark mb-1">Changement de mot de passe</h3>
+	        <%}
+	       	}catch (Exception e){
+	       	%>
+	       		<h3 class="text-center text-dark mb-1">Inscription</h3>                   		
+	       	<%}%>
             <h6 class="text-center text-dark mb-3">
             <%
 	       	try {
@@ -375,8 +384,18 @@
 	       	}
 	       	%>
 	       	</h6>
+	
+	<%
+            try {
+	        	String psswd = request.getParameter("psswd");
+	        	if (psswd.equals("0")){%>
+	<spring:url value="/utilisateur/savePassword" var="utilisateurActionUrl"/>
+	<%}
+	       	}catch (Exception e){
+	       	%>
 	<spring:url value="/utilisateur/save" var="utilisateurActionUrl"/>
-
+	<%}%>
+	
 	<form:form id="utilisateurform" name="frm" 
 	class="form-horizontal"  method="post"  modelAttribute="utilisateurForm"  
 	action="${utilisateurActionUrl}">
@@ -421,6 +440,11 @@
 			
 		</spring:bind>
 		</div>
+		<%
+            try {
+	        	String psswd = request.getParameter("psswd");
+	        	if (psswd.equals("0")){}
+	        }catch (Exception e){%>
 		<spring:bind path="mdp">
 			<div class="row">
                 <div class="col-xs-6 col-md-6">
@@ -468,6 +492,37 @@
 				</div>
 			</div>
 		</spring:bind>
+	    <%}%>
+		
+		<div class="row">
+			<div class="col-xs-6 col-md-7">
+				<div class="form-group">
+					
+						<label for="question" class="text-dark">Question personnelle*</label><br>
+		                  <div class="form-group input-group"> 
+							    <form:select class="form-control" path="question">
+								    <form:option value="1" label="Le nom de jeune fille de votre mère"/>
+									<form:option value="2" label="Le nom de jeune fille de votre grand-mère"/>
+									<form:option value="3" label="Le prénom de votre premier amour"/> 
+									<form:option value="4" label="Le nom de votre premier animal de compagnie"/>
+									<form:option value="5" label="Le surnom que vous donnaient vos parents étant petit"/>  
+								</form:select> 
+						</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+                   <form:input type="text" path="reponse" value="${utilisateurForm.reponse}" id="response" class="form-control"
+                   				required="required" 
+								data-validation-length="max100"
+								data-validation-allowing="-_ éèà'&"
+								data-validation="required alphanumeric length"
+	  							data-validation-error-msg-required="Champs designation est Obligatoire"
+	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/>
+                   <form:errors path="confirmationMdp" class="control-label" />	
+         </div>
 	
 		<spring:bind path="nom">
 		<div class="row">
@@ -575,7 +630,64 @@
 		</div>
 		
 		</spring:bind>
-		
+		<%
+            try {
+	        	String psswd = request.getParameter("psswd");
+	        	if (psswd.equals("0")){%>
+	        	
+	    <br>
+	    <h6 class="text-center text-dark mb-1">------------------------------------------------------------------</h6>
+	    <br>
+	    <spring:bind path="mdp">
+			<div class="row">
+                <div class="col-xs-6 col-md-6">
+                   <div class="form-group">
+                        <label for="password" class="text-dark">Nouveau mot de passe*</label>
+                        <button type="button" class="btn btn-sm btn-primary" onclick="randomPass();">Générer un mot de passe</button>
+                        <br>
+					<form:input type="password" path="mdp" class="form-control"  value="${utilisateurForm.mdp}" placeholder="**********" 
+								id="mdp1"
+								onblur='checkPass();'
+								ng-model="thePassword"
+								required="required" 
+								data-validation-length="max100"
+								data-validation-allowing="-_ éèà'&"
+								data-validation="required alphanumeric length"
+	  							data-validation-error-msg-required="Champs designation est Obligatoire"
+	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/>
+	 				
+	  	 			<span id="#mdp1" onclick="changePassword2Text2();" class="fa fa-fw field-icon fa-eye-slash"></span>
+				
+					<form:errors path="mdp" class="control-label" />
+					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 12 caratères.</small>
+					<span id="message" class="message" ></span>
+					</div>
+				</div>
+			
+                <div class="col-xs-6 col-md-6">
+                   <div class="form-group">
+                        <label for="password" class="text-dark">Confirmer nouveau mot de passe*</label><br>
+					<form:input type="password"   path="confirmationMdp"  class="form-control"  value="${utilisateurForm.confirmationMdp}" placeholder="**********" 
+								id="mdp2"
+								onblur="checkPassConfirm();return false;"
+								required="required" 
+								data-validation-length="max100"
+								data-validation-allowing="-_ éèà'&"
+								data-validation="required alphanumeric length"
+	  							data-validation-error-msg-required="Champs designation est Obligatoire"
+	 							data-validation-error-msg-alphanumeric="La designation doit contenir uniquement des cacartères alphanumérique"
+	 							data-validation-error-msg-length="Taille du champs designation ne doit pas dépasser 100"/> 
+					<form:errors path="confirmationMdp" class="control-label" />	
+					<small class="form-text text-muted">Votre mot de passe doit contenir au moins 12 caratères.</small>	
+					<span id="confirmMessage" class="confirmMessage" ></span>
+					</div>
+				</div>
+			</div>
+		</spring:bind>
+		<%}
+	       	}catch (Exception e){
+	       	}%>
 	
 		<div class="row justify-content-center align-items-center mb-1">
 			<small class="form-text text-muted">L'administrateur devra valider votre inscription.</small>

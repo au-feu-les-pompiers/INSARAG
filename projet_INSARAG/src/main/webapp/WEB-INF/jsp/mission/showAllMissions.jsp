@@ -109,7 +109,9 @@
 			</button>
            </c:when>
 			<c:otherwise>
-			<h5>Veuillez cloturer la mission en cours avant de créer une nouvelle mission</h5>
+			<div class="row text-center">
+				<h5>Veuillez cloturer la mission en cours avant de créer une nouvelle mission</h5>
+			</div>
 			</c:otherwise>
            </c:choose>
 

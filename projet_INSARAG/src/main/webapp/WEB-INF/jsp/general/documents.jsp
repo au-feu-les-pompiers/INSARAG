@@ -18,17 +18,8 @@
 <spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
 <link href="${bootstrap4Css}" rel="stylesheet" /> 
 
-<spring:url value="/css/header.css" var="headerCss" />
-<link href="${headerCss}" rel="stylesheet" /> 
-
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
-<%-- 
-<spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
-<script src="${jqueryJs}"></script>
-
-<spring:url value="/js/bootstrap.min.js" var="bootstrap3Js" />
-<script src="${bootstrap3Js}"></script> --%>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
@@ -43,14 +34,20 @@
 		<c:choose>
 			<c:when test="${sessionScope.accreditation == 2}">
 					<jsp:include page="../common/header.jsp" />
+					<spring:url value="/css/header.css" var="headerCss" />
+					<link href="${headerCss}" rel="stylesheet" />
 			</c:when>
 			<c:otherwise>
 				<jsp:include page="../common/navbar_uti.jsp" />
+				<spring:url value="/css/navbar_uti.css" var="navbar_uti" />
+				<link href="${navbar_uti}" rel="stylesheet" /> 
 			</c:otherwise>
 		</c:choose>
 	</div>
 	
-	<iframe src="https://docs.google.com/file/d/1Uy08SvlBGGBRJzX6U4bTMRCWBCiL6z1N/preview" width="100%" height="500"></iframe>
+		<div style="margin-top:80px;"></div>
+	
+	<iframe src="https://docs.google.com/file/d/1Uy08SvlBGGBRJzX6U4bTMRCWBCiL6z1N/preview" width="100%" height="500px"></iframe>
 	
 
 </body>

@@ -16,6 +16,7 @@ CREATE TABLE utilisateur(
 idUtilisateur NUMBER(19,0) NOT NULL ENABLE PRIMARY KEY,
 email VARCHAR(50),
 mdp VARCHAR(30),
+reponse VARCHAR(30),
 nom VARCHAR(30),
 prenom VARCHAR(30),
 numero_de_telephone VARCHAR(17),

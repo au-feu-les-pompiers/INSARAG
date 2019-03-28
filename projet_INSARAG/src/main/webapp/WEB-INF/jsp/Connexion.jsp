@@ -42,6 +42,7 @@
 			    <h2 class="text-center"><img src="images/Insarag_logo.jpg" style="height:110px; width:155px;"></img></h2>
 			    <h6 class="text-center text-dark">
 			    <font color = 'red'>${error}</font>
+			    <font color = 'green'>${success}</font>
 			    </h6>
 			    <form action="submitConnexion" method="post" class="login-form" >
 	              <div class="form-group">
@@ -62,9 +63,14 @@
 	            <div class="form-group">
 	                <button onclick="location.href='${pageContext.request.contextPath}/utilisateur/new'" class="btn btn-block btn-lg inscription" id="inscription" type="submit">Inscription</button>        
 	            </div>
+	            
+            <a class="nav-link" href="${pageContext.request.contextPath}/utilisateur/new?psswd=0">
+                <span style="color: #006600;">
+                    <i class="fas fa-map-marked-alt"></i>
+                </span>Mot de passe oublié?</a>
 	
 			</div>
-			<div class="col-md-8 banner-sec">
+			<div class="col-md-8 banner-sec d-none d-sm-none d-md-none d-lg-block">
 	            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 	                 <ol class="carousel-indicators">
 	                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
