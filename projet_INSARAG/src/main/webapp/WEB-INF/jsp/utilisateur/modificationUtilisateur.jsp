@@ -15,6 +15,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
   	
+<spring:url value="/css/footer.css" var="footer" />
+<link href="${footer}" rel="stylesheet" />
+
 <spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
 <link href="${bootstrap4Css}" rel="stylesheet" /> 
 
@@ -410,6 +413,6 @@
 </div>
 </div>
 </div>
-
+<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

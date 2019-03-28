@@ -21,6 +21,9 @@
 <spring:url value="/css/header.css" var="headerCss" />
 <link href="${headerCss}" rel="stylesheet" /> 
 
+<spring:url value="/css/footer.css" var="footer" />
+<link href="${footer}" rel="stylesheet" />
+
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
 
@@ -297,8 +300,7 @@
         </div>
     </div>
  </div> 
-  
- 
-  </body>
+  <jsp:include page="../common/footer.jsp" />
+
 </body>
 </html>

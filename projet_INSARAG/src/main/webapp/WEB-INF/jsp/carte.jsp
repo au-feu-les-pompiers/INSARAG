@@ -23,6 +23,8 @@
 <spring:url value="/css/datatables.css" var="bootstrapdataTablesCss" />
 <link href="${bootstrapdataTablesCss}" rel="stylesheet" /> 
 
+<spring:url value="/css/footer.css" var="footer" />
+<link href="${footer}" rel="stylesheet" />
 
 <spring:url value="/css/normalize.css" var="normalize" />
 <link href="${normalize}" rel="stylesheet" /> 
@@ -132,6 +134,6 @@
 	    	src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDdzFj2ni5izYop3rXhtKOKC2ytCU7y3_4 &callback=initMap">
 	    </script>
     </div>
-
+	<jsp:include page="common/footer.jsp" />
 </body>
 </html>

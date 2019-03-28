@@ -21,6 +21,8 @@
 <spring:url value="/css/datepicker.min.css" var="datePickerCss" />
 <link href="${datePickerCss}" rel="stylesheet" />
 
+<spring:url value="/css/footer.css" var="footer" />
+<link href="${footer}" rel="stylesheet" />
 
 <spring:url value="https://use.fontawesome.com/releases/v5.5.0/css/all.css" var="fontawesome" />
 <link href="${fontawesome}" rel="stylesheet" />
@@ -616,6 +618,6 @@
 </div>
 </div>
 
-
+<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

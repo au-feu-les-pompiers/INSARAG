@@ -14,7 +14,9 @@
 <meta name="Content-Type" content="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  	
+<spring:url value="/css/footer.css" var="footer" />
+<link href="${footer}" rel="stylesheet" />
+
 <spring:url value="/css/bootstrap.min.css" var="bootstrap4Css" />
 <link href="${bootstrap4Css}" rel="stylesheet" /> 
 
@@ -49,6 +51,6 @@
 	
 	<iframe src="https://docs.google.com/file/d/1Uy08SvlBGGBRJzX6U4bTMRCWBCiL6z1N/preview" width="100%" height="500px"></iframe>
 	
-
+<jsp:include page="../common/footer.jsp" />
 </body>
 </html>
