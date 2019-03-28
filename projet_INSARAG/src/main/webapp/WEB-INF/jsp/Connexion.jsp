@@ -64,7 +64,7 @@
 	            </div>
 	
 			</div>
-			<div class="col-md-8 banner-sec">
+			<div class="col-md-8 banner-sec d-none d-sm-none d-md-none d-lg-block">
 	            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 	                 <ol class="carousel-indicators">
 	                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
