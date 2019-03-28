@@ -158,6 +158,19 @@ public class IndexController {
 					return "redirect:/";
 				}
 				
+				@RequestMapping(value = "/fiche", method = RequestMethod.GET)
+				public String showFiche(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+					HttpSession session = request.getSession();
+					if ((int) session.getAttribute("accreditation" ) < 1) {
+						return ("redirect:/Accueil");
+			        }
+					logger.debug(":::showFiche:::");
+					if (session.getAttribute("connected") == "connected") {
+					 return "/general/fiche_extraction";
+					}
+					return "redirect:/";
+				}
+				
 			 	@RequestMapping(value = "/organigramme", method = RequestMethod.GET)
 			    public String list(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 			 		HttpSession session = request.getSession();
