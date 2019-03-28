@@ -135,6 +135,7 @@ public class InscriptionController {
 			}
 	    	
 	    	utilisateur.setMdp(utilisateurService.hash(utilisateur.getEmail(), utilisateur.getMdp()));
+	    	utilisateur.setReponse(utilisateurService.hash(utilisateur.getQuestion(), utilisateur.getReponse()));
 	    	Long id = utilisateurService.save(utilisateur);
 	    	try {
 		    	if(  utilisateur.getId()!=null){
@@ -151,7 +152,41 @@ public class InscriptionController {
 	        return ("redirect:/Accueil");
 	    }
 	    
+	    @RequestMapping(value = "/utilisateur/savePassword", method = RequestMethod.POST)
+	    public String saveOrUpdatePassword(@ModelAttribute("utilisateurForm") Utilisateur utilisateur, Model model,
+	    		HttpServletRequest request, final RedirectAttributes redirectAttributes) throws Exception {
+	    	
+	    	String currentEmail = utilisateur.getEmail();
+	    	String currentMatricule = utilisateur.getMatricule();
+	    	String currentPhone = utilisateur.getTelephone();
+	    	String currentName = utilisateur.getNom();
+	    	String currentFirstname = utilisateur.getPrenom();
+	    	String currentQuestion = utilisateur.getQuestion();
+	    	String currentResponse = utilisateur.getReponse();
+	    	int currentRole = utilisateur.getRole();
+	    	/*
+			 * Lancement du Service et récupération données en base
+			 */
+			List<Utilisateur> listeUtilisateurs = utilisateurService.getAll();
 
+			/*
+			 * Envoi Vue + Modèle MVC pour Affichage données vue
+			 */
+			for (Utilisateur util : listeUtilisateurs) {
+				if (util.getEmail().equals(currentEmail)) {
+					if (util.getMatricule().equals(currentMatricule) && util.getTelephone().equals(currentPhone) && util.getNom().equals(currentName) && util.getPrenom().equals(currentFirstname) && (util.getRole() == currentRole) && utilisateurService.hash(currentQuestion, currentResponse).equals(util.getReponse())){
+						util.setMdp(utilisateurService.hash(utilisateur.getEmail(), utilisateur.getMdp()));
+						Long id = utilisateurService.save(util);
+						break;
+					}else {
+						model.addAttribute("error", "Erreur, vos informations sont erronées!");
+						return "Connexion";
+					}
+				}
+			}
+			return "redirect:/Accueil";
+	    }
+	    
  
 	    @RequestMapping("/utilisateur/update/{id}")
 	    public String update(@PathVariable Long id, Model model, HttpServletRequest request,

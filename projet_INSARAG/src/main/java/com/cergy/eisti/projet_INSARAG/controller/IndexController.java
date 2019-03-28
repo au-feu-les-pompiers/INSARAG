@@ -67,7 +67,7 @@ public class IndexController {
 
 		}
 		
-		// show new Mission form
+		// show new Utilisateur form
 		@RequestMapping(value = "/utilisateur/new", method = RequestMethod.GET)
 		public String showNewUtilisateur(Model model) {
 
@@ -81,7 +81,6 @@ public class IndexController {
 			 return "/utilisateur/inscriptionUtilisateur";
 
 		}
-		
 
 		
 		 // show list of All Mission

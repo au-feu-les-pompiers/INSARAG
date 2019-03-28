@@ -359,6 +359,16 @@
 <div class="row justify-content-center align-items-center">
         <div class="col-xs-12 col-sm-12 col-md-8 well well-sm formulaire">
             <h3 class="text-center text-dark mb-1">Inscription</h3>
+           <%
+            try {
+	        	String psswd = request.getParameter("psswd");
+	        	if (psswd.equals("0")){%>
+	     	<h3 class="text-center text-dark mb-1">Changement de mot de passe</h3>
+	        <%}
+	       	}catch (Exception e){
+	       	%>
+	       		<h3 class="text-center text-dark mb-1">Inscription</h3>                   		
+	       	<%}%>
             <h6 class="text-center text-dark mb-3">
             <%
 	       	try {
@@ -589,6 +599,17 @@
 						<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">S'inscrire</button>
    		</div>
    		
+		<%
+            try {
+	        	String psswd = request.getParameter("psswd");
+	        	if (psswd.equals("0")){%>
+		<button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">Soumettre</button>
+	    <%}
+	       	}catch (Exception e){%>
+	    <button type="submit" onclick="return validateForm()" class="btn btn-lg btn-primary">S'inscrire</button>
+	    <%}%>
+
+   </div>
  </form:form>
  	</div>
 </div>
