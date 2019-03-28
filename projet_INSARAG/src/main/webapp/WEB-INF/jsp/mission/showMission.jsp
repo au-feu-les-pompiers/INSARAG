@@ -116,7 +116,8 @@ function initMap() {
 		</c:choose>
 	</div>
 	
-	<div class="container">
+		<div style="margin-top:100px;"></div>
+	<div class="container mb-3">
 	<div class="row justify-content-center align-items-center">
 	<div class="col-md-10 col-lg-8 col-xl-6" style="max-width: 1500px; max-height: 1500px; background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);
 		padding: 10px 30px;
@@ -138,7 +139,7 @@ function initMap() {
 			<div id="localisation" class="col-sm-7">${missionToShow.lieu}</div>
 			<div id="floating-panel">
 		      <input id="address" type="hidden" value="${missionToShow.lieu}">
-		      <input id="submit" type="button" value="Localisation" onclick="hideThis('map')">
+		      <button  id="submit" type="button" class="btn btn-light"  onclick="hideThis('map')">Localisation</button>
 		    </div>			
 			<div id="map" class="col-xl-6" style="height:500px; width:750px; border: 1px solid grey; border-radius:10px; margin-top:25px">
     										    

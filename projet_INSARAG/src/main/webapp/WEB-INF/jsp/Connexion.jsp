@@ -40,7 +40,7 @@
 		<div class="row">
 			<div class="col-md-4 login-sec">
 			    <h2 class="text-center"><img src="images/Insarag_logo.jpg" style="height:110px; width:155px;"></img></h2>
-			    <h6 class="text-center text-dark mb-5">
+			    <h6 class="text-center text-dark">
 			    <font color = 'red'>${error}</font>
 			    </h6>
 			    <form action="submitConnexion" method="post" class="login-form" >

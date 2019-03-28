@@ -9,11 +9,11 @@ body {
 }
 
 .navbar-nav .nav-item .nav-link{
-  padding: 15px 25px;
+  padding: 15px 23px;
 
 }
 
-    
+/*     
 @media (max-width: 1450px) { 
     
 .navbar-nav .nav-item .nav-link{
@@ -32,4 +32,4 @@ body {
 
 }   
     
-}
+} */

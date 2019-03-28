@@ -129,7 +129,7 @@
 			border: 1px solid grey;">
 			
 			<div class="row justify-content-center align-items-center">
-				<h3 class="text-center">Consulter Mission</h3>
+				<h3 class="text-center">Consulter la mission</h3>
 			</div>
 			<br/>
 			<c:choose>
