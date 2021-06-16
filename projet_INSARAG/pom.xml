@@ -61,7 +61,7 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>3.3.7</version>
+			<version>4.5.0</version>
 		</dependency>
 		
 		<dependency>
@@ -100,7 +100,7 @@
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-webmvc</artifactId>
-		    <version>5.1.4.RELEASE</version>
+		    <version>5.2.15.RELEASE</version>
 		</dependency>
     
 	   	<!-- https://mvnrepository.com/artifact/org.webjars/angularjs -->
